@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1018712098218-a2c35j3j6kj0lkee349smojb4s5ah2d0.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1018712098218-a2c35j3j6kj0lkee349smojb4s5ah2d0</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA_OqhWRQpzKq1pYAhN4rmxNEgy8FkgoXU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1018712098218</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.lambdalabs.Artco</string>
+	<key>PROJECT_ID</key>
+	<string>artco-fcd7a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>artco-fcd7a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1018712098218:ios:8517f5e6ba637c1730d7d3</string>
+	<key>DATABASE_URL</key>
+	<string>https://artco-fcd7a.firebaseio.com</string>
+</dict>
+</plist>
