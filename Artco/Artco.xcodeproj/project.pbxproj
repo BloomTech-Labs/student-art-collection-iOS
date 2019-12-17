@@ -3,13 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		6EA5B40A23A9648C007DD6AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA5B40923A9648C007DD6AE /* AppDelegate.swift */; };
 		6EA5B40C23A9648C007DD6AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA5B40B23A9648C007DD6AE /* SceneDelegate.swift */; };
-		6EA5B40E23A9648C007DD6AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA5B40D23A9648C007DD6AE /* ViewController.swift */; };
 		6EA5B41123A9648C007DD6AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EA5B40F23A9648C007DD6AE /* Main.storyboard */; };
 		6EA5B41323A96490007DD6AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EA5B41223A96490007DD6AE /* Assets.xcassets */; };
 		6EA5B41623A96490007DD6AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EA5B41423A96490007DD6AE /* LaunchScreen.storyboard */; };
@@ -47,7 +46,6 @@
 		6EA5B40623A9648C007DD6AE /* Artco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Artco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EA5B40923A9648C007DD6AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6EA5B40B23A9648C007DD6AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6EA5B40D23A9648C007DD6AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6EA5B41023A9648C007DD6AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6EA5B41223A96490007DD6AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6EA5B41523A96490007DD6AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -113,7 +111,6 @@
 				1CF651B18516D9A5E15D98E9 /* Pods-ArtcoTests.debug.xcconfig */,
 				6ACA54E5847B65BFC3B72AAF /* Pods-ArtcoTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -144,7 +141,6 @@
 			children = (
 				6EA5B40923A9648C007DD6AE /* AppDelegate.swift */,
 				6EA5B40B23A9648C007DD6AE /* SceneDelegate.swift */,
-				6EA5B40D23A9648C007DD6AE /* ViewController.swift */,
 				6EA5B40F23A9648C007DD6AE /* Main.storyboard */,
 				6EA5B41223A96490007DD6AE /* Assets.xcassets */,
 				6EA5B41423A96490007DD6AE /* LaunchScreen.storyboard */,
@@ -448,7 +444,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EA5B40E23A9648C007DD6AE /* ViewController.swift in Sources */,
 				6EA5B40A23A9648C007DD6AE /* AppDelegate.swift in Sources */,
 				6EA5B40C23A9648C007DD6AE /* SceneDelegate.swift in Sources */,
 			);
