@@ -141,14 +141,13 @@
 		6EA5B40823A9648C007DD6AE /* Artco */ = {
 			isa = PBXGroup;
 			children = (
-				6EA5B40923A9648C007DD6AE /* AppDelegate.swift */,
-				6EA5B40B23A9648C007DD6AE /* SceneDelegate.swift */,
-				6EA5B40F23A9648C007DD6AE /* Main.storyboard */,
-				6EA5B43B23A977F1007DD6AE /* SchoolLoginViewController.swift */,
-				6EA5B41223A96490007DD6AE /* Assets.xcassets */,
-				6EA5B41423A96490007DD6AE /* LaunchScreen.storyboard */,
-				6EA5B41723A96490007DD6AE /* Info.plist */,
-				6EA5B43923A9664F007DD6AE /* GoogleService-Info.plist */,
+				6EA5B44223A9872F007DD6AE /* Model */,
+				6EA5B44123A98726007DD6AE /* Model Controller */,
+				6EA5B44023A9871F007DD6AE /* Views */,
+				6EA5B43D23A986F9007DD6AE /* View Controllers */,
+				6EA5B43E23A98704007DD6AE /* Storyboards */,
+				6EA5B44323A98738007DD6AE /* Helpers */,
+				6EA5B43F23A98716007DD6AE /* Resources */,
 			);
 			path = Artco;
 			sourceTree = "<group>";
@@ -169,6 +168,63 @@
 				6EA5B42D23A96490007DD6AE /* Info.plist */,
 			);
 			path = ArtcoUITests;
+			sourceTree = "<group>";
+		};
+		6EA5B43D23A986F9007DD6AE /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6EA5B43B23A977F1007DD6AE /* SchoolLoginViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		6EA5B43E23A98704007DD6AE /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				6EA5B40F23A9648C007DD6AE /* Main.storyboard */,
+				6EA5B41423A96490007DD6AE /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		6EA5B43F23A98716007DD6AE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6EA5B41223A96490007DD6AE /* Assets.xcassets */,
+				6EA5B40923A9648C007DD6AE /* AppDelegate.swift */,
+				6EA5B40B23A9648C007DD6AE /* SceneDelegate.swift */,
+				6EA5B41723A96490007DD6AE /* Info.plist */,
+				6EA5B43923A9664F007DD6AE /* GoogleService-Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6EA5B44023A9871F007DD6AE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6EA5B44123A98726007DD6AE /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Model Controller";
+			sourceTree = "<group>";
+		};
+		6EA5B44223A9872F007DD6AE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6EA5B44323A98738007DD6AE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -625,11 +681,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K3F959XXFV;
-				INFOPLIST_FILE = Artco/Info.plist;
+				INFOPLIST_FILE = Artco/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lambdalabs.Artco;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -644,11 +701,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K3F959XXFV;
-				INFOPLIST_FILE = Artco/Info.plist;
+				INFOPLIST_FILE = Artco/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lambdalabs.Artco;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
