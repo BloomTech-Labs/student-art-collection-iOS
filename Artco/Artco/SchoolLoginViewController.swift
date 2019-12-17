@@ -10,7 +10,7 @@ import UIKit
 import FirebaseUI
 
 class SchoolLoginViewController: UIViewController {
-
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -18,6 +18,8 @@ class SchoolLoginViewController: UIViewController {
         super.viewDidLoad()
         
     }
+    
+    // TODO: - Redirect to separate view controller for creating account
     
     @IBAction func createAccountButtonPressed(_ sender: Any) {
         guard let email = emailTextField.text,
@@ -32,7 +34,13 @@ class SchoolLoginViewController: UIViewController {
                 NSLog("\(error)")
                 return
             }
-            print(result)
+            DispatchQueue.main.async {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let schoolTabBarController = storyboard.instantiateViewController(withIdentifier: "SchoolTabBarController")
+                schoolTabBarController.modalPresentationStyle = .fullScreen
+                self.present(schoolTabBarController, animated: true, completion: nil)
+                
+            }
         }
     }
     
@@ -45,22 +53,18 @@ class SchoolLoginViewController: UIViewController {
                 return
         }
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-          if let error = error {
-                  NSLog("\(error)")
-                  return
-              }
-              print(authResult)
-          }
+            if let error = error {
+                // TODO: - Improve error handling
+                NSLog("\(error)")
+                return
+            }
+            DispatchQueue.main.async {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let schoolTabBarController = storyboard.instantiateViewController(withIdentifier: "SchoolTabBarController")
+                schoolTabBarController.modalPresentationStyle = .fullScreen
+                self?.present(schoolTabBarController, animated: true, completion: nil)
+            }
+        }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
