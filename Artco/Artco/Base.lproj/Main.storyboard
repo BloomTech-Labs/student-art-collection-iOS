@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--LoginViewController-->
+        <!--SchoolLoginViewController-->
         <scene sceneID="iZU-Fc-Qet">
             <objects>
-                <viewController title="LoginViewController" id="6Ru-dw-O54" sceneMemberID="viewController">
+                <viewController title="SchoolLoginViewController" id="6Ru-dw-O54" customClass="SchoolLoginViewController" customModule="Artco" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hwb-9Q-yg5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -64,6 +64,9 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="6Ru-dw-O54" eventType="touchUpInside" id="k9j-Ow-4Q8"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="vQV-0g-Tck">
                                 <rect key="frame" x="192" y="720.5" width="30" height="77"/>
@@ -154,6 +157,9 @@
                                         <state key="normal" title="here">
                                             <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="createAccountButtonPressed:" destination="6Ru-dw-O54" eventType="touchUpInside" id="Dtm-Ze-DSx"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -196,6 +202,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EBA-oS-NqC"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="zpm-7E-r77" id="Kma-eX-soH"/>
+                        <outlet property="passwordTextField" destination="oww-Jg-CJI" id="OIZ-Qr-oc8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p84-ak-nNk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
