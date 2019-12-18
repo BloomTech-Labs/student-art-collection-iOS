@@ -21,42 +21,39 @@ class SchoolLoginViewController: UIViewController {
     
     // TODO: - Redirect to separate view controller for creating account
     
-    @IBAction func createAccountButtonPressed(_ sender: Any) {
-        guard let email = emailTextField.text,
-            !email.isEmpty,
-            let password = passwordTextField.text,
-            !password.isEmpty else {
-                // TODO : - Configure nofitication to inform user of email/password criteria
-                return
-        }
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if let error = error {
-                NSLog("\(error)")
-                return
-            }
-            DispatchQueue.main.async {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let schoolTabBarController = storyboard.instantiateViewController(withIdentifier: "SchoolTabBarController")
-                schoolTabBarController.modalPresentationStyle = .fullScreen
-                self.present(schoolTabBarController, animated: true, completion: nil)
-                
-            }
-        }
-    }
-    
     @IBAction func loginButtonPressed(_ sender: Any) {
         guard let email = emailTextField.text,
             !email.isEmpty,
             let password = passwordTextField.text,
             !password.isEmpty else {
-                // TODO : - Configure nofitication to inform user of email/password criteria
                 return
         }
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             if let error = error {
-                // TODO: - Improve error handling
-                NSLog("\(error)")
-                return
+                if let errCode = AuthErrorCode(rawValue: error._code) {
+                    if errCode == .wrongPassword {
+                        let wrongPasswordAlert = UIAlertController(title: "Error", message:
+                                "\(errCode.errorMessage)", preferredStyle: .alert)
+                        wrongPasswordAlert.addAction(UIAlertAction(title: "Forgot password", style: .default, handler: { (action) in
+                            Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+                                if let error = error {
+                                    NSLog("\(error)")
+                                    return
+                                }
+                                let passwordResetAlert = UIAlertController(title: "Success", message:
+                                "An email to reset your password has been sent to your inbox", preferredStyle: .alert)
+                                passwordResetAlert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                                self?.present(passwordResetAlert, animated: true, completion: nil)
+                            }
+                        }))
+                            wrongPasswordAlert.addAction(UIAlertAction(title: "Dismiss", style: .default))
+                            self?.present(wrongPasswordAlert, animated: true, completion: nil)
+                    }
+                    let errorAlert = UIAlertController(title: "Error", message:
+                        "\(errCode.errorMessage)", preferredStyle: .alert)
+                    errorAlert.addAction(UIAlertAction(title: "Dismiss", style: .default))
+                    self?.present(errorAlert, animated: true, completion: nil)
+                }
             }
             DispatchQueue.main.async {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
