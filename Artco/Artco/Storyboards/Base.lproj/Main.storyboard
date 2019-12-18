@@ -478,7 +478,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fzv-sM-MlK">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fzv-sM-MlK">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="381"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5f-Dx-YEc">
@@ -581,11 +581,12 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="z2b-Wg-Txl" firstAttribute="leading" secondItem="Fzv-sM-MlK" secondAttribute="leading" constant="40" id="0Ud-Ao-GtR"/>
+                                    <constraint firstItem="n5f-Dx-YEc" firstAttribute="centerX" secondItem="Fzv-sM-MlK" secondAttribute="centerX" id="7EP-zb-O9z"/>
                                     <constraint firstItem="q0P-Vs-qx0" firstAttribute="top" secondItem="Fzv-sM-MlK" secondAttribute="top" constant="76" id="Kgd-ED-F99"/>
                                     <constraint firstItem="z2b-Wg-Txl" firstAttribute="top" secondItem="q0P-Vs-qx0" secondAttribute="bottom" constant="28.5" id="L0S-5w-Kdg"/>
                                     <constraint firstItem="q0P-Vs-qx0" firstAttribute="leading" secondItem="Fzv-sM-MlK" secondAttribute="leading" constant="40" id="LN0-uI-1ci"/>
-                                    <constraint firstItem="n5f-Dx-YEc" firstAttribute="leading" secondItem="Fzv-sM-MlK" secondAttribute="leading" constant="40" id="NIX-oa-bvn"/>
-                                    <constraint firstAttribute="trailing" secondItem="n5f-Dx-YEc" secondAttribute="trailing" constant="40" id="bao-4X-TLT"/>
+                                    <constraint firstItem="n5f-Dx-YEc" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Fzv-sM-MlK" secondAttribute="leading" constant="40" id="NIX-oa-bvn"/>
+                                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="n5f-Dx-YEc" secondAttribute="trailing" constant="40" id="bao-4X-TLT"/>
                                     <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="q0P-Vs-qx0" secondAttribute="trailing" constant="274" id="uP1-8h-Jne"/>
                                     <constraint firstItem="n5f-Dx-YEc" firstAttribute="top" secondItem="z2b-Wg-Txl" secondAttribute="bottom" constant="30" id="vMd-NL-iR0"/>
                                     <constraint firstAttribute="trailing" secondItem="z2b-Wg-Txl" secondAttribute="trailing" constant="40" id="yGa-rv-i5m"/>
@@ -599,7 +600,7 @@
                             <constraint firstItem="Fzv-sM-MlK" firstAttribute="leading" secondItem="XAc-wc-ALo" secondAttribute="leading" id="SUM-w3-9CP"/>
                             <constraint firstItem="Fzv-sM-MlK" firstAttribute="leading" secondItem="XAc-wc-ALo" secondAttribute="leading" id="Wj2-qV-68N"/>
                             <constraint firstItem="Fzv-sM-MlK" firstAttribute="top" secondItem="NgN-sX-OKY" secondAttribute="top" id="cLN-Ui-HUL"/>
-                            <constraint firstItem="XAc-wc-ALo" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="Fzv-sM-MlK" secondAttribute="bottom" constant="481" id="mGM-f3-e12"/>
+                            <constraint firstItem="XAc-wc-ALo" firstAttribute="bottom" secondItem="Fzv-sM-MlK" secondAttribute="bottom" constant="481" id="mGM-f3-e12"/>
                             <constraint firstItem="Fzv-sM-MlK" firstAttribute="top" secondItem="NgN-sX-OKY" secondAttribute="top" id="zgS-TF-8J2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XAc-wc-ALo"/>
