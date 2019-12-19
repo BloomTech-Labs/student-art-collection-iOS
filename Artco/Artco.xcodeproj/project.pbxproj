@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38A9927C23AB0413003E5105 /* SchoolLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38A9927B23AB0413003E5105 /* SchoolLogin.storyboard */; };
+		38A9928023AB16FA003E5105 /* BuyerLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38A9927F23AB16FA003E5105 /* BuyerLogin.storyboard */; };
+		38A9928223AB1706003E5105 /* BuyerFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38A9928123AB1706003E5105 /* BuyerFlow.storyboard */; };
 		6EA5B40A23A9648C007DD6AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA5B40923A9648C007DD6AE /* AppDelegate.swift */; };
 		6EA5B40C23A9648C007DD6AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA5B40B23A9648C007DD6AE /* SceneDelegate.swift */; };
 		6EA5B41123A9648C007DD6AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EA5B40F23A9648C007DD6AE /* Main.storyboard */; };
@@ -44,6 +47,9 @@
 		077209EEC2C0C4B15CACC952 /* Pods_Artco.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Artco.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CF651B18516D9A5E15D98E9 /* Pods-ArtcoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtcoTests.debug.xcconfig"; path = "Target Support Files/Pods-ArtcoTests/Pods-ArtcoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		273F717A0227D61BDE43F2E5 /* Pods_Artco_ArtcoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Artco_ArtcoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		38A9927B23AB0413003E5105 /* SchoolLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SchoolLogin.storyboard; sourceTree = "<group>"; };
+		38A9927F23AB16FA003E5105 /* BuyerLogin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BuyerLogin.storyboard; sourceTree = "<group>"; };
+		38A9928123AB1706003E5105 /* BuyerFlow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BuyerFlow.storyboard; sourceTree = "<group>"; };
 		55DAF4B749D270B94C786533 /* Pods-Artco-ArtcoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Artco-ArtcoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Artco-ArtcoUITests/Pods-Artco-ArtcoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6ACA54E5847B65BFC3B72AAF /* Pods-ArtcoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtcoTests.release.xcconfig"; path = "Target Support Files/Pods-ArtcoTests/Pods-ArtcoTests.release.xcconfig"; sourceTree = "<group>"; };
 		6EA5B40623A9648C007DD6AE /* Artco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Artco.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,8 +192,11 @@
 		6EA5B43E23A98704007DD6AE /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				38A9927B23AB0413003E5105 /* SchoolLogin.storyboard */,
 				6EA5B40F23A9648C007DD6AE /* Main.storyboard */,
 				6EA5B41423A96490007DD6AE /* LaunchScreen.storyboard */,
+				38A9927F23AB16FA003E5105 /* BuyerLogin.storyboard */,
+				38A9928123AB1706003E5105 /* BuyerFlow.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -344,9 +353,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38A9928023AB16FA003E5105 /* BuyerLogin.storyboard in Resources */,
+				38A9927C23AB0413003E5105 /* SchoolLogin.storyboard in Resources */,
 				6EA5B41623A96490007DD6AE /* LaunchScreen.storyboard in Resources */,
 				6EA5B43A23A9664F007DD6AE /* GoogleService-Info.plist in Resources */,
 				6EA5B41323A96490007DD6AE /* Assets.xcassets in Resources */,
+				38A9928223AB1706003E5105 /* BuyerFlow.storyboard in Resources */,
 				6EA5B41123A9648C007DD6AE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
