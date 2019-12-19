@@ -130,6 +130,21 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		6E0A331C23AC14EB0073FA2F /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				6E0A331723AC0FE60073FA2F /* Listing.xcdatamodeld */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		6E0A331D23AC14F90073FA2F /* Model Representations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Model Representations";
+			sourceTree = "<group>";
+		};
 		6EA5B3FD23A9648C007DD6AE = {
 			isa = PBXGroup;
 			children = (
@@ -234,7 +249,8 @@
 		6EA5B44223A9872F007DD6AE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6E0A331723AC0FE60073FA2F /* Listing.xcdatamodeld */,
+				6E0A331D23AC14F90073FA2F /* Model Representations */,
+				6E0A331C23AC14EB0073FA2F /* Core Data */,
 			);
 			path = Model;
 			sourceTree = "<group>";
