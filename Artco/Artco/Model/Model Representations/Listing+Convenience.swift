@@ -13,11 +13,11 @@ extension Listing {
     
     @discardableResult convenience init (title: String,
                                          sold: Bool = false,
-                                         schoolId: Float,
-                                         price: Float = 25.00,
+                                         schoolId: Float = 1,
+                                         price: Float,
                                          category: ListingCategory,
-                                         artistName: String = "Anonymous",
-                                         artDescription: String = "No description provided",
+                                         artistName: String,
+                                         artDescription: String,
                                          images: [String],
                                          context: NSManagedObjectContext = NSManagedObjectContext.mainContext) {
         self.init(context: context)
