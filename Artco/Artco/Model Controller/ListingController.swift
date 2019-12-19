@@ -10,7 +10,9 @@ import Foundation
 
 class ListingController {
     
-    func createListing(title: String, price: Float, category: ListingCategory, artistName: String, artDescription: String, images: [String]) -> Listing {
+    static let shared = ListingController()
+    
+    @discardableResult func createListing(title: String, price: Float, category: ListingCategory, artistName: String, artDescription: String, images: [String]) -> Listing {
         let listing = Listing(title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: images)
         print(listing)
         CoreDataStack.shared.save()

@@ -6,4 +6,17 @@
 //  Copyright © 2019 Mitchell Budge. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import AVFoundation
+
+class CameraPreviewView: UIView {
+    
+    override class var layerClass: AnyClass {
+        return AVCaptureVideoPreviewLayer.self
+    }
+    
+    var videoPreviewLayer: AVCaptureVideoPreviewLayer {
+        return layer as! AVCaptureVideoPreviewLayer
+    }
+    
+}
