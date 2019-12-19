@@ -5,6 +5,7 @@
         <attribute name="artDescription" optional="YES" attributeType="String"/>
         <attribute name="artistName" optional="YES" attributeType="String"/>
         <attribute name="category" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="images" optional="YES" attributeType="Transformable" customClassName="[String]"/>
         <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="schoolId" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="sold" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -13,7 +14,7 @@
     <entity name="School" representedClassName="School" syncable="YES" codeGenerationType="class"/>
     <entity name="Student" representedClassName="Student" syncable="YES" codeGenerationType="class"/>
     <elements>
-        <element name="Listing" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="Listing" positionX="-63" positionY="-18" width="128" height="163"/>
         <element name="School" positionX="-54" positionY="45" width="128" height="43"/>
         <element name="Student" positionX="-36" positionY="54" width="128" height="43"/>
         <element name="Buyer" positionX="-18" positionY="63" width="128" height="43"/>

@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+class ListingController {
+    
+    func createListing() {
+        
+    }
+    
+    
+    
+}
