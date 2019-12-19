@@ -14,8 +14,22 @@ class SchoolLoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "SchoolFlow", bundle: nil)
+            let schoolTabBarController = storyboard.instantiateViewController(withIdentifier: "SchoolTabBarController")
+            schoolTabBarController.modalPresentationStyle = .fullScreen
+            self.present(schoolTabBarController, animated: true, completion: nil)
+            
+        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
     }
     
@@ -33,7 +47,7 @@ class SchoolLoginViewController: UIViewController {
                 if let errCode = AuthErrorCode(rawValue: error._code) {
                     if errCode == .wrongPassword {
                         let wrongPasswordAlert = UIAlertController(title: "Error", message:
-                                "\(errCode.errorMessage)", preferredStyle: .alert)
+                            "\(errCode.errorMessage)", preferredStyle: .alert)
                         wrongPasswordAlert.addAction(UIAlertAction(title: "Forgot password", style: .default, handler: { (action) in
                             Auth.auth().sendPasswordReset(withEmail: email) { (error) in
                                 if let error = error {
@@ -41,13 +55,13 @@ class SchoolLoginViewController: UIViewController {
                                     return
                                 }
                                 let passwordResetAlert = UIAlertController(title: "Success", message:
-                                "An email to reset your password has been sent to your inbox", preferredStyle: .alert)
+                                    "An email to reset your password has been sent to your inbox", preferredStyle: .alert)
                                 passwordResetAlert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
                                 self?.present(passwordResetAlert, animated: true, completion: nil)
                             }
                         }))
-                            wrongPasswordAlert.addAction(UIAlertAction(title: "Dismiss", style: .default))
-                            self?.present(wrongPasswordAlert, animated: true, completion: nil)
+                        wrongPasswordAlert.addAction(UIAlertAction(title: "Dismiss", style: .default))
+                        self?.present(wrongPasswordAlert, animated: true, completion: nil)
                     }
                     let errorAlert = UIAlertController(title: "Error", message:
                         "\(errCode.errorMessage)", preferredStyle: .alert)
@@ -56,7 +70,7 @@ class SchoolLoginViewController: UIViewController {
                 }
             }
             DispatchQueue.main.async {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let storyboard = UIStoryboard(name: "SchoolFlow", bundle: nil)
                 let schoolTabBarController = storyboard.instantiateViewController(withIdentifier: "SchoolTabBarController")
                 schoolTabBarController.modalPresentationStyle = .fullScreen
                 self?.present(schoolTabBarController, animated: true, completion: nil)
