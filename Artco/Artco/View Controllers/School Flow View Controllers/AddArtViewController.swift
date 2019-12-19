@@ -123,6 +123,10 @@ extension AddArtViewController: UIImagePickerControllerDelegate, UINavigationCon
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
+        guard let image = info[.originalImage] as? UIImage else { return }
+        DispatchQueue.main.async {
+            self.topLeftImageView.image = image
+            picker.dismiss(animated: true, completion: nil)
+        }
     }
 }
