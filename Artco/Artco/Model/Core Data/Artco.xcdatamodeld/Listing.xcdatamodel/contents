@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Entity" representedClassName="Entity" syncable="YES" codeGenerationType="class">
+    <entity name="Buyer" representedClassName="Buyer" syncable="YES" codeGenerationType="class"/>
+    <entity name="Listing" representedClassName="Listing" syncable="YES" codeGenerationType="class">
         <attribute name="artDescription" optional="YES" attributeType="String"/>
         <attribute name="artistName" optional="YES" attributeType="String"/>
         <attribute name="category" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -9,7 +10,12 @@
         <attribute name="sold" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="School" representedClassName="School" syncable="YES" codeGenerationType="class"/>
+    <entity name="Student" representedClassName="Student" syncable="YES" codeGenerationType="class"/>
     <elements>
-        <element name="Entity" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="Listing" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="School" positionX="-54" positionY="45" width="128" height="43"/>
+        <element name="Student" positionX="-36" positionY="54" width="128" height="43"/>
+        <element name="Buyer" positionX="-18" positionY="63" width="128" height="43"/>
     </elements>
 </model>

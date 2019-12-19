@@ -10,8 +10,9 @@
 		38A9927C23AB0413003E5105 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38A9927B23AB0413003E5105 /* Main.storyboard */; };
 		38A9928023AB16FA003E5105 /* BuyerLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38A9927F23AB16FA003E5105 /* BuyerLogin.storyboard */; };
 		38A9928223AB1706003E5105 /* BuyerFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38A9928123AB1706003E5105 /* BuyerFlow.storyboard */; };
-		6E0A331923AC0FE60073FA2F /* Listing.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6E0A331723AC0FE60073FA2F /* Listing.xcdatamodeld */; };
+		6E0A331923AC0FE60073FA2F /* Artco.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6E0A331723AC0FE60073FA2F /* Artco.xcdatamodeld */; };
 		6E0A331B23AC11690073FA2F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0A331A23AC11690073FA2F /* Category.swift */; };
+		6E0A331F23AC151E0073FA2F /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0A331E23AC151E0073FA2F /* CoreDataStack.swift */; };
 		6EA5B40A23A9648C007DD6AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA5B40923A9648C007DD6AE /* AppDelegate.swift */; };
 		6EA5B40C23A9648C007DD6AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA5B40B23A9648C007DD6AE /* SceneDelegate.swift */; };
 		6EA5B41123A9648C007DD6AE /* SchoolFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EA5B40F23A9648C007DD6AE /* SchoolFlow.storyboard */; };
@@ -56,6 +57,7 @@
 		6ACA54E5847B65BFC3B72AAF /* Pods-ArtcoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtcoTests.release.xcconfig"; path = "Target Support Files/Pods-ArtcoTests/Pods-ArtcoTests.release.xcconfig"; sourceTree = "<group>"; };
 		6E0A331823AC0FE60073FA2F /* Listing.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Listing.xcdatamodel; sourceTree = "<group>"; };
 		6E0A331A23AC11690073FA2F /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		6E0A331E23AC151E0073FA2F /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		6EA5B40623A9648C007DD6AE /* Artco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Artco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EA5B40923A9648C007DD6AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6EA5B40B23A9648C007DD6AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,7 +135,8 @@
 		6E0A331C23AC14EB0073FA2F /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				6E0A331723AC0FE60073FA2F /* Listing.xcdatamodeld */,
+				6E0A331723AC0FE60073FA2F /* Artco.xcdatamodeld */,
+				6E0A331E23AC151E0073FA2F /* CoreDataStack.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -547,9 +550,10 @@
 				6EA5B43C23A977F1007DD6AE /* SchoolLoginViewController.swift in Sources */,
 				6EA5B40A23A9648C007DD6AE /* AppDelegate.swift in Sources */,
 				6EA5B44523A98B83007DD6AE /* SchoolSignUp1ViewController.swift in Sources */,
-				6E0A331923AC0FE60073FA2F /* Listing.xcdatamodeld in Sources */,
+				6E0A331923AC0FE60073FA2F /* Artco.xcdatamodeld in Sources */,
 				6EA5B40C23A9648C007DD6AE /* SceneDelegate.swift in Sources */,
 				6E0A331B23AC11690073FA2F /* Category.swift in Sources */,
+				6E0A331F23AC151E0073FA2F /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -890,13 +894,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		6E0A331723AC0FE60073FA2F /* Listing.xcdatamodeld */ = {
+		6E0A331723AC0FE60073FA2F /* Artco.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				6E0A331823AC0FE60073FA2F /* Listing.xcdatamodel */,
 			);
 			currentVersion = 6E0A331823AC0FE60073FA2F /* Listing.xcdatamodel */;
-			path = Listing.xcdatamodeld;
+			path = Artco.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
