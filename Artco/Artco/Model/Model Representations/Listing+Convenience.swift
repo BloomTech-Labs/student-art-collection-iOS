@@ -18,7 +18,7 @@ extension Listing {
                                          category: ListingCategory,
                                          artistName: String,
                                          artDescription: String,
-                                         images: [String],
+                                         images: Data,
                                          context: NSManagedObjectContext = NSManagedObjectContext.mainContext) {
         self.init(context: context)
         self.title = title

@@ -12,7 +12,7 @@ class ListingController {
     
     static let shared = ListingController()
     
-    @discardableResult func createListing(title: String, price: Float, category: ListingCategory, artistName: String, artDescription: String, images: [String]) -> Listing {
+    @discardableResult func createListing(title: String, price: Float, category: ListingCategory, artistName: String, artDescription: String, images: Data) -> Listing {
         let listing = Listing(title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: images)
         CoreDataStack.shared.save()
         return listing
