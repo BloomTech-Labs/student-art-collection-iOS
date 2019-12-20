@@ -1126,7 +1126,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="LxG-U3-XsV" kind="show" identifier="EditArtListingSegue" id="Nlr-5O-hPm"/>
+                                    <segue destination="LxG-U3-XsV" kind="presentation" identifier="EditArtListingSegue" modalPresentationStyle="fullScreen" id="Nlr-5O-hPm"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1170,7 +1170,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="Mr4-Pe-rNQ">
-                                <rect key="frame" x="55" y="607" width="304" height="167.5"/>
+                                <rect key="frame" x="55" y="563" width="304" height="167.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8P-Vy-yas">
                                         <rect key="frame" x="0.0" y="0.0" width="82.5" height="20.5"/>
@@ -1196,7 +1196,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="hyk-BI-pZH">
-                                <rect key="frame" x="55" y="444" width="304" height="138"/>
+                                <rect key="frame" x="55" y="400" width="304" height="138"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Imk-Df-Zjz">
                                         <rect key="frame" x="0.0" y="0.0" width="146" height="138"/>
@@ -1275,7 +1275,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGd-vP-q0g">
-                                <rect key="frame" x="55" y="754" width="304" height="40"/>
+                                <rect key="frame" x="55" y="803" width="304" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="VGv-zF-nUQ"/>
@@ -1286,10 +1286,11 @@
                                 </state>
                                 <connections>
                                     <action selector="saveButtonTapped:" destination="LxG-U3-XsV" eventType="touchUpInside" id="Uki-Tp-yel"/>
+                                    <segue destination="5KU-mA-TYO" kind="unwind" unwindAction="unwindToInfo:" id="z5C-Vm-f83"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="HMy-u8-DfQ">
-                                <rect key="frame" x="55" y="148" width="304" height="236"/>
+                                <rect key="frame" x="55" y="104" width="304" height="236"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="JSX-uT-gOa">
                                         <rect key="frame" x="0.0" y="0.0" width="304" height="107"/>
@@ -1352,6 +1353,9 @@
                                     <constraint firstAttribute="height" constant="236" id="cuw-Qn-aop"/>
                                     <constraint firstItem="OAj-FW-ipK" firstAttribute="top" secondItem="HMy-u8-DfQ" secondAttribute="top" constant="129" id="tCl-Ac-i4d"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="xgX-fS-wpA" appends="YES" id="uiU-z7-hEJ"/>
+                                </connections>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1375,10 +1379,21 @@
                     </view>
                     <navigationItem key="navigationItem" id="3sH-by-CS5"/>
                     <connections>
+                        <outlet property="artDescriptionTextView" destination="Q5T-0M-Ri2" id="m71-2c-zDB"/>
                         <outlet property="artistNameTextField" destination="AXf-dk-ojY" id="2eL-Ja-jTK"/>
+                        <outlet property="categoryTextField" destination="hxN-UY-GHH" id="brz-DX-ykp"/>
+                        <outlet property="priceTextField" destination="1XY-nJ-7wk" id="qOv-0u-DLK"/>
+                        <outlet property="titleTextField" destination="gqT-8D-8rC" id="1mH-NB-x9I"/>
+                        <outlet property="topLeftImageView" destination="whC-R3-KjV" id="7DK-JN-9qm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RAC-R9-2On" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="5KU-mA-TYO" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="xgX-fS-wpA">
+                    <connections>
+                        <action selector="addImages:" destination="LxG-U3-XsV" id="w0Q-a9-3CK"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3897" y="-660"/>
         </scene>

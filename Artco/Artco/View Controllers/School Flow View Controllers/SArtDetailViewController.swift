@@ -20,17 +20,6 @@ class SArtDetailViewController: UIViewController, NSFetchedResultsControllerDele
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     
-    lazy var fetchedResultsController: NSFetchedResultsController<Listing> = {
-        let fetchRequest: NSFetchRequest<Listing> = Listing.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "artistName", ascending: true)]
-        let moc = CoreDataStack.shared.mainContext
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
-        frc.delegate = self
-        try! frc.performFetch()
-        return frc
-    }()
-    
-    var indexPath: IndexPath?
     
     var listing: Listing? {
         didSet {
@@ -47,18 +36,13 @@ class SArtDetailViewController: UIViewController, NSFetchedResultsControllerDele
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        do {
-            try? fetchedResultsController.performFetch()
-        } catch {
-            NSLog("this ihit doesn't work")
-        }
-        
-        setNewListingObject(indexPath)
+        self.viewDidLoad()
         updateViews()
     }
     
     // MARK: Methods and functions
     
+
     public func convertDataToImage(_ data: Data) -> UIImage {
         guard let image = UIImage(data: data) else { return UIImage() }
         return image
@@ -74,12 +58,6 @@ class SArtDetailViewController: UIViewController, NSFetchedResultsControllerDele
         priceLabel.text = listing.price.currencyOutputFormatting()
         categoryLabel.text = "\(listing.category)"
         descriptionTextView.text = listing.artDescription
-    }
-    
-    @discardableResult private func setNewListingObject(_ with: IndexPath?) -> Listing? {
-        guard let indexPath = indexPath else { return nil }
-        listing = fetchedResultsController.object(at: indexPath)
-        return listing
     }
     
     // MARK: Segues
