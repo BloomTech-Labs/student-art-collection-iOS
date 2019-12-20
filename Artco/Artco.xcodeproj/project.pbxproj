@@ -19,6 +19,8 @@
 		6E0A332A23AC18BE0073FA2F /* Listing+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0A332923AC18BE0073FA2F /* Listing+Convenience.swift */; };
 		6E0A332C23AC22670073FA2F /* AddArtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0A332B23AC22670073FA2F /* AddArtViewController.swift */; };
 		6E0A332E23AC32020073FA2F /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0A332D23AC32020073FA2F /* CameraPreviewView.swift */; };
+		6E0A333023AC40870073FA2F /* UIImage+URLConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0A332F23AC40870073FA2F /* UIImage+URLConversion.swift */; };
+		6E0A333223AC58DC0073FA2F /* String+CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0A333123AC58DC0073FA2F /* String+CurrencyFormatter.swift */; };
 		6EA5B40A23A9648C007DD6AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA5B40923A9648C007DD6AE /* AppDelegate.swift */; };
 		6EA5B40C23A9648C007DD6AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA5B40B23A9648C007DD6AE /* SceneDelegate.swift */; };
 		6EA5B41123A9648C007DD6AE /* SchoolFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EA5B40F23A9648C007DD6AE /* SchoolFlow.storyboard */; };
@@ -70,6 +72,8 @@
 		6E0A332923AC18BE0073FA2F /* Listing+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Listing+Convenience.swift"; sourceTree = "<group>"; };
 		6E0A332B23AC22670073FA2F /* AddArtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddArtViewController.swift; sourceTree = "<group>"; };
 		6E0A332D23AC32020073FA2F /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+		6E0A332F23AC40870073FA2F /* UIImage+URLConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+URLConversion.swift"; sourceTree = "<group>"; };
+		6E0A333123AC58DC0073FA2F /* String+CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CurrencyFormatter.swift"; sourceTree = "<group>"; };
 		6EA5B40623A9648C007DD6AE /* Artco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Artco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EA5B40923A9648C007DD6AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6EA5B40B23A9648C007DD6AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -305,6 +309,8 @@
 				6EA5B44623A98F2C007DD6AE /* AuthErrorCodes.swift */,
 				6E0A332D23AC32020073FA2F /* CameraPreviewView.swift */,
 				6E0A331A23AC11690073FA2F /* Category.swift */,
+				6E0A332F23AC40870073FA2F /* UIImage+URLConversion.swift */,
+				6E0A333123AC58DC0073FA2F /* String+CurrencyFormatter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -592,11 +598,13 @@
 				6EA5B43C23A977F1007DD6AE /* SchoolLoginViewController.swift in Sources */,
 				6EA5B40A23A9648C007DD6AE /* AppDelegate.swift in Sources */,
 				6E0A332C23AC22670073FA2F /* AddArtViewController.swift in Sources */,
+				6E0A333023AC40870073FA2F /* UIImage+URLConversion.swift in Sources */,
 				6EA5B44523A98B83007DD6AE /* SchoolSignUp1ViewController.swift in Sources */,
 				6E0A332823AC186B0073FA2F /* ListingController.swift in Sources */,
 				6E0A331923AC0FE60073FA2F /* Artco.xcdatamodeld in Sources */,
 				6E0A332123AC178D0073FA2F /* SchoolGalleryTableViewController.swift in Sources */,
 				6E0A332523AC18320073FA2F /* SchoolGalleryTableViewCell.swift in Sources */,
+				6E0A333223AC58DC0073FA2F /* String+CurrencyFormatter.swift in Sources */,
 				6EA5B40C23A9648C007DD6AE /* SceneDelegate.swift in Sources */,
 				6E0A332E23AC32020073FA2F /* CameraPreviewView.swift in Sources */,
 				6E0A331B23AC11690073FA2F /* Category.swift in Sources */,

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Buyer" representedClassName="Buyer" syncable="YES" codeGenerationType="class"/>
+    <entity name="Images" representedClassName="Images" syncable="YES" codeGenerationType="class"/>
     <entity name="Listing" representedClassName="Listing" syncable="YES" codeGenerationType="class">
         <attribute name="artDescription" optional="YES" attributeType="String"/>
         <attribute name="artistName" optional="YES" attributeType="String"/>
@@ -18,5 +19,6 @@
         <element name="School" positionX="-54" positionY="45" width="128" height="43"/>
         <element name="Student" positionX="-36" positionY="54" width="128" height="43"/>
         <element name="Buyer" positionX="-18" positionY="63" width="128" height="43"/>
+        <element name="Images" positionX="0" positionY="81" width="128" height="43"/>
     </elements>
 </model>
