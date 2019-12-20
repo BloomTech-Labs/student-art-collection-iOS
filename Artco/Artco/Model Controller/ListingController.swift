@@ -21,15 +21,3 @@ class ListingController {
     
     
 }
-
-/*
-title: String,
-sold: Bool = false,
-schoolId: Float,
-price: Float = 25.00,
-category: ListingCategory,
-artistName: String = "Anonymous",
-artDescription: String = "No description provided",
-images: [String],
-context: NSManagedObjectContext = NSManagedObjectContext.mainContext
-*/

@@ -71,9 +71,9 @@ class SAddArtViewController: UIViewController {
         
         tabBarController?.selectedIndex = 0
         
+        resetViews()
+        
     }
-    
-    
     
     private func presentAlert() {
         let missingValueAlert = UIAlertController(title: "Hold up!", message: "All fields must be filled out before a new art listing can be added.", preferredStyle: .alert)
@@ -85,6 +85,15 @@ class SAddArtViewController: UIViewController {
     private func convertImageToData(_ image: UIImage) -> Data {
         guard let data = image.pngData() else { fatalError() }
         return data
+    }
+    
+    private func resetViews() {
+        topLeftImageView.image = nil
+        titleTextField.text = ""
+        studentNameTextField.text = ""
+        categoryTextField.text = ""
+        suggestedDonationTextField.text = "$0.00"
+        descriptionTextView.text = "Please add a short description here"
     }
     
 }
@@ -136,7 +145,9 @@ extension SAddArtViewController: UIImagePickerControllerDelegate, UINavigationCo
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -148,7 +159,6 @@ extension SAddArtViewController: UIImagePickerControllerDelegate, UINavigationCo
             picker.dismiss(animated: true, completion: nil)
         }
     }
-    
     
 }
 
