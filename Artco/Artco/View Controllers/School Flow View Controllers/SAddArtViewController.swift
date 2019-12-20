@@ -10,7 +10,7 @@ import UIKit
 import Photos
 import AVFoundation
 
-class AddArtViewController: UIViewController {
+class SAddArtViewController: UIViewController {
     
     // MARK: - Outlets and properties
     
@@ -86,7 +86,7 @@ class AddArtViewController: UIViewController {
     
 }
 
-extension AddArtViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension SAddArtViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // TODO: - Implement alerts for different authorization statuses
     // TODO: - Allow camera access via permission check and transition to separate view controller
@@ -149,7 +149,7 @@ extension AddArtViewController: UIImagePickerControllerDelegate, UINavigationCon
     
 }
 
-extension AddArtViewController: UITextFieldDelegate, UITextViewDelegate {
+extension SAddArtViewController: UITextFieldDelegate, UITextViewDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = "$0.00"
