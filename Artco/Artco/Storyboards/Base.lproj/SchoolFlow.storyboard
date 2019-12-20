@@ -1125,6 +1125,9 @@
                                 <state key="normal" title="Add to Cart">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="addToCartButtonTapped:" destination="Hha-2X-Am3" eventType="touchUpInside" id="lZn-37-Tzx"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1144,6 +1147,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vCm-HF-LLt"/>
                     </view>
+                    <connections>
+                        <outlet property="artImageView" destination="adF-kr-4Pt" id="cwd-c8-H6k"/>
+                        <outlet property="artistNameLabel" destination="P5T-aP-UyE" id="Ta7-W1-PyY"/>
+                        <outlet property="categoryLabel" destination="eKd-TW-8J6" id="gFY-hd-Y1n"/>
+                        <outlet property="descriptionTextView" destination="THv-u0-e3p" id="efc-Fz-fdb"/>
+                        <outlet property="priceLabel" destination="xPV-LZ-huU" id="Bi3-ww-eWD"/>
+                        <outlet property="titleLabel" destination="NOp-yh-ELN" id="9Jj-H6-DVI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QFg-TH-0ho" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
