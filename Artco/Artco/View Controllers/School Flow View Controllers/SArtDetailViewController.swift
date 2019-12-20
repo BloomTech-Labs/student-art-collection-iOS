@@ -48,7 +48,7 @@ class SArtDetailViewController: UIViewController {
         titleLabel.text = listing.title
         priceLabel.text = listing.price.currencyOutputFormatting()
         categoryLabel.text = "\(listing.category)"
-        descriptionTextView.text = listing.description
+        descriptionTextView.text = listing.artDescription
     }
     
     @IBAction func addToCartButtonTapped(_ sender: Any) {

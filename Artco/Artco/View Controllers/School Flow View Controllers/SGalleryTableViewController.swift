@@ -86,7 +86,12 @@ class SGalleryTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        guard let listingDetailVC = segue.destination as? SArtDetailViewController else { return }
+        if segue.identifier == "ArtDetailSegue" {
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let listing = fetchedResultsController.object(at: indexPath)
+            listingDetailVC.listing = listing
+        }
     }
 
 }
