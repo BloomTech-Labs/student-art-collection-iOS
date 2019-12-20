@@ -31,6 +31,7 @@ class SAddArtViewController: UIViewController {
     // MARK: - View lifecycle methods
     
     override func viewDidLoad() {
+        keyboardDismiss()
         suggestedDonationTextField.addTarget(self, action: #selector (textFieldDidChangeSelection(_:)), for: .editingDidBegin)
         suggestedDonationTextField.delegate = self
         descriptionTextView.delegate = self
@@ -73,6 +74,12 @@ class SAddArtViewController: UIViewController {
         
         resetViews()
         
+    }
+    
+    private func keyboardDismiss() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
     
     private func presentAlert() {
@@ -164,17 +171,23 @@ extension SAddArtViewController: UIImagePickerControllerDelegate, UINavigationCo
 
 extension SAddArtViewController: UITextFieldDelegate, UITextViewDelegate {
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.text = "$0.00"
-    }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        if let priceString = textField.text?.currencyInputFormatting() {
-            textField.text = priceString
+        if textField == suggestedDonationTextField {
+            if let priceString = textField.text?.currencyInputFormatting() {
+                textField.text = priceString
+            }
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         textView.text = ""
     }
+    
+    
 }

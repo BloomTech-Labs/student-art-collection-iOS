@@ -18,6 +18,22 @@ class ListingController {
         return listing
     }
     
+    func updateListing(listing: Listing, title: String, price: Float, category: ListingCategory, artistName: String, artDescription: String, images: Data) -> Listing {
+        listing.title = title
+        listing.price = price
+        listing.category = category.rawValue
+        listing.artistName = artistName
+        listing.artDescription = artDescription
+        listing.images = images
+        CoreDataStack.shared.save()
+        return listing
+    }
+    
+    func deleteListing(listing: Listing) {
+        CoreDataStack.shared.mainContext.delete(listing)
+        CoreDataStack.shared.save()
+    }
+    
     
     
 }

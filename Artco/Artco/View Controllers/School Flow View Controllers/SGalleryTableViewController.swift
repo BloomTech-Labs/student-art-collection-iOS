@@ -61,7 +61,8 @@ class SGalleryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let listing = fetchedResultsController.object(at: indexPath)
+            ListingController.shared.deleteListing(listing: listing)
         } else if editingStyle == .insert {
         }    
     }
@@ -85,7 +86,12 @@ class SGalleryTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        guard let listingDetailVC = segue.destination as? SArtDetailViewController else { return }
+        if segue.identifier == "ArtDetailSegue" {
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let listing = fetchedResultsController.object(at: indexPath)
+            listingDetailVC.listing = listing
+        }
     }
 
 }
