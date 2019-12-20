@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
-class SArtDetailViewController: UIViewController {
-
+class SArtDetailViewController: UIViewController, NSFetchedResultsControllerDelegate {
+    
     // MARK: - Properties and outlets
     
     @IBOutlet weak var artImageView: UIImageView!
@@ -18,6 +19,18 @@ class SArtDetailViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
+    
+    lazy var fetchedResultsController: NSFetchedResultsController<Listing> = {
+        let fetchRequest: NSFetchRequest<Listing> = Listing.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "artistName", ascending: true)]
+        let moc = CoreDataStack.shared.mainContext
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
+        frc.delegate = self
+        try! frc.performFetch()
+        return frc
+    }()
+    
+    var indexPath: IndexPath?
     
     var listing: Listing? {
         didSet {
@@ -29,6 +42,18 @@ class SArtDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        do {
+            try? fetchedResultsController.performFetch()
+        } catch {
+            NSLog("this ihit doesn't work")
+        }
+        
+        setNewListingObject(indexPath)
         updateViews()
     }
     
@@ -51,5 +76,23 @@ class SArtDetailViewController: UIViewController {
         descriptionTextView.text = listing.artDescription
     }
     
+    @discardableResult private func setNewListingObject(_ with: IndexPath?) -> Listing? {
+        guard let indexPath = indexPath else { return nil }
+        listing = fetchedResultsController.object(at: indexPath)
+        return listing
+    }
+    
+    // MARK: Segues
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let editListingVC = segue.destination as? SEditArtViewController else { return }
+        if segue.identifier == "EditArtListingSegue" {
+            guard let listing = listing else { return }
+            editListingVC.listing = listing
+        }
+    }
+    
     
 }
+
+

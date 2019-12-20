@@ -91,6 +91,7 @@ class SGalleryTableViewController: UITableViewController {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             let listing = fetchedResultsController.object(at: indexPath)
             listingDetailVC.listing = listing
+            listingDetailVC.indexPath = indexPath
         }
     }
 

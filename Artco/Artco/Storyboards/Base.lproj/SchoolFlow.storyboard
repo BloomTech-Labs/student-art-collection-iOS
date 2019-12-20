@@ -1126,7 +1126,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="LxG-U3-XsV" kind="presentation" id="Nlr-5O-hPm"/>
+                                    <segue destination="LxG-U3-XsV" kind="show" identifier="EditArtListingSegue" id="Nlr-5O-hPm"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1166,11 +1166,11 @@
             <objects>
                 <viewController id="LxG-U3-XsV" customClass="SEditArtViewController" customModule="Artco" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KwN-iT-27c">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="Mr4-Pe-rNQ">
-                                <rect key="frame" x="55" y="519" width="304" height="167.5"/>
+                                <rect key="frame" x="55" y="607" width="304" height="167.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8P-Vy-yas">
                                         <rect key="frame" x="0.0" y="0.0" width="82.5" height="20.5"/>
@@ -1196,7 +1196,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="hyk-BI-pZH">
-                                <rect key="frame" x="55" y="356" width="304" height="138"/>
+                                <rect key="frame" x="55" y="444" width="304" height="138"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Imk-Df-Zjz">
                                         <rect key="frame" x="0.0" y="0.0" width="146" height="138"/>
@@ -1275,7 +1275,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGd-vP-q0g">
-                                <rect key="frame" x="55" y="749" width="304" height="40"/>
+                                <rect key="frame" x="55" y="754" width="304" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="VGv-zF-nUQ"/>
@@ -1289,7 +1289,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="HMy-u8-DfQ">
-                                <rect key="frame" x="55" y="60" width="304" height="236"/>
+                                <rect key="frame" x="55" y="148" width="304" height="236"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="JSX-uT-gOa">
                                         <rect key="frame" x="0.0" y="0.0" width="304" height="107"/>
@@ -1373,6 +1373,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fZY-Jl-Qnu"/>
                     </view>
+                    <navigationItem key="navigationItem" id="3sH-by-CS5"/>
+                    <connections>
+                        <outlet property="artistNameTextField" destination="AXf-dk-ojY" id="2eL-Ja-jTK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RAC-R9-2On" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
