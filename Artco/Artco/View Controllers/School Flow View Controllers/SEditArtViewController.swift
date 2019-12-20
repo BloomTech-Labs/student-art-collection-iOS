@@ -20,8 +20,8 @@ class SEditArtViewController: UIViewController {
     var listing: Listing?
     
     @IBAction func saveButtonTapped(_ sender: UIButton) {
-        guard let listing = listing else { return }
-        artUpdated(listing)
+        
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -38,10 +38,4 @@ class SEditArtViewController: UIViewController {
 
 }
 
-extension SEditArtViewController: EditArtDelegate {
-    
-    func artUpdated(_ listing: Listing) -> Listing {
-        
-    }
-    
-}
+
