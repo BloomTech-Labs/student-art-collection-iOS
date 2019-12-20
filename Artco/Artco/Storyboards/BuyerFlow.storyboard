@@ -51,10 +51,10 @@
             </objects>
             <point key="canvasLocation" x="8.6956521739130448" y="142.63392857142856"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Gallery Collection View Controller-->
         <scene sceneID="Q52-Dr-xAT">
             <objects>
-                <collectionViewController id="nbm-1j-Hq1" sceneMemberID="viewController">
+                <collectionViewController id="nbm-1j-Hq1" customClass="GalleryCollectionViewController" customModule="Artco" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="o6G-LH-Lh8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -84,10 +84,10 @@
             </objects>
             <point key="canvasLocation" x="1788" y="-236"/>
         </scene>
-        <!--View Controller-->
+        <!--Art Detail View Controller-->
         <scene sceneID="Dbe-JU-0PD">
             <objects>
-                <viewController id="dFJ-6p-6sM" sceneMemberID="viewController">
+                <viewController id="dFJ-6p-6sM" customClass="ArtDetailViewController" customModule="Artco" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WBr-RO-PW0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -272,7 +272,7 @@
         <!--CART-->
         <scene sceneID="5an-rs-JMd">
             <objects>
-                <viewController id="e8C-dK-BPn" sceneMemberID="viewController">
+                <viewController id="e8C-dK-BPn" customClass="CartViewController" customModule="Artco" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vIE-Eu-0w7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -342,7 +342,7 @@
         <!--CHECKOUT-->
         <scene sceneID="A3F-eM-GAP">
             <objects>
-                <viewController id="UJw-ol-LVA" sceneMemberID="viewController">
+                <viewController id="UJw-ol-LVA" customClass="CheckoutViewController" customModule="Artco" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zR7-gA-kfg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -645,7 +645,7 @@
         <!--Settings Screen-->
         <scene sceneID="Pje-32-I0o">
             <objects>
-                <viewController title="Settings Screen" id="TwU-sA-A58" sceneMemberID="viewController">
+                <viewController title="Settings Screen" id="TwU-sA-A58" customClass="NameViewController" customModule="Artco" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tan-4m-S8k">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -722,7 +722,7 @@
         <!--Settings Screen-->
         <scene sceneID="9tE-YN-xR3">
             <objects>
-                <viewController title="Settings Screen" id="Qe8-ay-N10" sceneMemberID="viewController">
+                <viewController title="Settings Screen" id="Qe8-ay-N10" customClass="EmailViewController" customModule="Artco" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u0U-xw-4HP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -799,7 +799,7 @@
         <!--Settings Screen-->
         <scene sceneID="l9H-nT-kY5">
             <objects>
-                <viewController title="Settings Screen" id="eHW-2D-Liq" sceneMemberID="viewController">
+                <viewController title="Settings Screen" id="eHW-2D-Liq" customClass="MessageViewController" customModule="Artco" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="thK-qc-OQN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

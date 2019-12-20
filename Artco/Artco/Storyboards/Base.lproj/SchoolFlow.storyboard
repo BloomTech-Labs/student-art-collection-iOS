@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -46,7 +46,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="95" id="q30-eC-5Y3">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GalleryTableViewCell" rowHeight="95" id="q30-eC-5Y3" customClass="SchoolGalleryTableViewCell" customModule="Artco" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="95"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q30-eC-5Y3" id="CQ3-ma-1ga">
@@ -56,7 +56,8 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M2e-Wz-LXc">
                                             <rect key="frame" x="28" y="17" width="89.5" height="61"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="M2e-Wz-LXc" secondAttribute="height" multiplier="22:15" id="YPH-W1-CRo"/>
+                                                <constraint firstAttribute="height" constant="61" id="ScR-Zr-itw"/>
+                                                <constraint firstAttribute="width" constant="89.5" id="n8u-0a-95Q"/>
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="9cO-C9-2pj">
@@ -101,7 +102,11 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Hha-2X-Am3" kind="presentation" id="JPG-oB-fM4"/>
+                                    <outlet property="dateLabel" destination="2UJ-60-BLm" id="smX-6g-A9S"/>
+                                    <outlet property="galleryImageView" destination="M2e-Wz-LXc" id="iGl-S3-4rF"/>
+                                    <outlet property="priceLabel" destination="dTi-uj-g8z" id="NXw-2Y-WBU"/>
+                                    <outlet property="studentNameLabel" destination="3xc-Vs-Ye9" id="ZSq-SE-0Yl"/>
+                                    <segue destination="Hha-2X-Am3" kind="presentation" identifier="ArtDetailSegue" id="JPG-oB-fM4"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -402,7 +407,7 @@
                                                     <constraint firstAttribute="height" constant="30" id="24G-D5-Jsl"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" smartDashesType="no" textContentType="name"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" textContentType="name"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C6V-sa-91T">
                                                 <rect key="frame" x="0.0" y="38" width="146" height="30"/>
@@ -410,7 +415,7 @@
                                                     <constraint firstAttribute="height" constant="30" id="Q2D-uM-ueo"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="name"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c6C-qG-TWy">
                                                 <rect key="frame" x="0.0" y="76" width="146" height="30"/>
@@ -418,7 +423,7 @@
                                                     <constraint firstAttribute="height" constant="30" id="0pE-rZ-jGI"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="$0.00" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nye-vf-doM">
                                                 <rect key="frame" x="0.0" y="114" width="146" height="30"/>
@@ -426,7 +431,7 @@
                                                     <constraint firstAttribute="height" constant="30" id="UQL-XH-2kY"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -459,7 +464,7 @@
                                         </constraints>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textView>
                                 </subviews>
                                 <constraints>
@@ -1120,6 +1125,9 @@
                                 <state key="normal" title="Add to Cart">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="addToCartButtonTapped:" destination="Hha-2X-Am3" eventType="touchUpInside" id="lZn-37-Tzx"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1139,6 +1147,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vCm-HF-LLt"/>
                     </view>
+                    <connections>
+                        <outlet property="artImageView" destination="adF-kr-4Pt" id="cwd-c8-H6k"/>
+                        <outlet property="artistNameLabel" destination="P5T-aP-UyE" id="Ta7-W1-PyY"/>
+                        <outlet property="categoryLabel" destination="eKd-TW-8J6" id="gFY-hd-Y1n"/>
+                        <outlet property="descriptionTextView" destination="THv-u0-e3p" id="efc-Fz-fdb"/>
+                        <outlet property="priceLabel" destination="xPV-LZ-huU" id="Bi3-ww-eWD"/>
+                        <outlet property="titleLabel" destination="NOp-yh-ELN" id="9Jj-H6-DVI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QFg-TH-0ho" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -12,24 +12,28 @@ class ListingController {
     
     static let shared = ListingController()
     
-    @discardableResult func createListing(title: String, price: Float, category: ListingCategory, artistName: String, artDescription: String, images: [String]) -> Listing {
+    @discardableResult func createListing(title: String, price: Float, category: ListingCategory, artistName: String, artDescription: String, images: Data) -> Listing {
         let listing = Listing(title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: images)
         CoreDataStack.shared.save()
         return listing
     }
     
+    func updateListing(listing: Listing, title: String, price: Float, category: ListingCategory, artistName: String, artDescription: String, images: Data) -> Listing {
+        listing.title = title
+        listing.price = price
+        listing.category = category.rawValue
+        listing.artistName = artistName
+        listing.artDescription = artDescription
+        listing.images = images
+        CoreDataStack.shared.save()
+        return listing
+    }
+    
+    func deleteListing(listing: Listing) {
+        CoreDataStack.shared.mainContext.delete(listing)
+        CoreDataStack.shared.save()
+    }
+    
     
     
 }
-
-/*
-title: String,
-sold: Bool = false,
-schoolId: Float,
-price: Float = 25.00,
-category: ListingCategory,
-artistName: String = "Anonymous",
-artDescription: String = "No description provided",
-images: [String],
-context: NSManagedObjectContext = NSManagedObjectContext.mainContext
-*/

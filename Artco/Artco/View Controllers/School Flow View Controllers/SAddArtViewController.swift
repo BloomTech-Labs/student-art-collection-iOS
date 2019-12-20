@@ -26,11 +26,12 @@ class SAddArtViewController: UIViewController {
     
     let listingController = ListingController.shared
     let imagePickerController = UIImagePickerController()
-    var imageStrings: [String] = []
-    
+    var imageData: Data?
+
     // MARK: - View lifecycle methods
     
     override func viewDidLoad() {
+        keyboardDismiss()
         suggestedDonationTextField.addTarget(self, action: #selector (textFieldDidChangeSelection(_:)), for: .editingDidBegin)
         suggestedDonationTextField.delegate = self
         descriptionTextView.delegate = self
@@ -54,8 +55,7 @@ class SAddArtViewController: UIViewController {
             var suggestedDonation = suggestedDonationTextField.text,
             !suggestedDonation.isEmpty,
             let artDescription = descriptionTextView.text,
-            !artDescription.isEmpty,
-            !imageStrings.isEmpty else {
+            !artDescription.isEmpty else {
                 presentAlert()
                 return
         }
@@ -65,23 +65,42 @@ class SAddArtViewController: UIViewController {
         }
         
         guard let price = Float(suggestedDonation) else { return }
-        let images = imageStrings
-        
-        listingController.createListing(title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: [""])
+        guard let images = imageData else { return }
+        listingController.createListing(title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: images)
         
         // TODO: - Add fun animation when transitioning to gallery
         
         tabBarController?.selectedIndex = 0
         
+        resetViews()
+        
     }
     
-    
+    private func keyboardDismiss() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+    }
     
     private func presentAlert() {
         let missingValueAlert = UIAlertController(title: "Hold up!", message: "All fields must be filled out before a new art listing can be added.", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         missingValueAlert.addAction(cancelAction)
         present(missingValueAlert, animated: true, completion: nil)
+    }
+    
+    private func convertImageToData(_ image: UIImage) -> Data {
+        guard let data = image.pngData() else { fatalError() }
+        return data
+    }
+    
+    private func resetViews() {
+        topLeftImageView.image = nil
+        titleTextField.text = ""
+        studentNameTextField.text = ""
+        categoryTextField.text = ""
+        suggestedDonationTextField.text = "$0.00"
+        descriptionTextView.text = "Please add a short description here"
     }
     
 }
@@ -133,35 +152,42 @@ extension SAddArtViewController: UIImagePickerControllerDelegate, UINavigationCo
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.originalImage] as? UIImage else { return }
-        guard let imageString = image.toString() else { return }
-        imageStrings.append(imageString)
+        guard let data = image.pngData() else { fatalError() }
+        imageData = data
         DispatchQueue.main.async {
             self.topLeftImageView.image = image
             picker.dismiss(animated: true, completion: nil)
         }
     }
     
-    
 }
 
 extension SAddArtViewController: UITextFieldDelegate, UITextViewDelegate {
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.text = "$0.00"
-    }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        if let priceString = textField.text?.currencyInputFormatting() {
-            textField.text = priceString
+        if textField == suggestedDonationTextField {
+            if let priceString = textField.text?.currencyInputFormatting() {
+                textField.text = priceString
+            }
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         textView.text = ""
     }
+    
+    
 }
