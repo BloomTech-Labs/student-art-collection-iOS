@@ -9,7 +9,7 @@
 
 import Foundation
 
-protocol EditArtProtocol {
+protocol EditArtDelegate {
 
     func artUpdated(_ listing: Listing) -> Listing
 }
