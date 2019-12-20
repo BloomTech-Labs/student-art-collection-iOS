@@ -18,6 +18,11 @@ class ListingController {
         return listing
     }
     
+    func deleteListing(listing: Listing) {
+        CoreDataStack.shared.mainContext.delete(listing)
+        CoreDataStack.shared.save()
+    }
+    
     
     
 }

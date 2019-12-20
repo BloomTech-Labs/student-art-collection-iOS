@@ -61,7 +61,8 @@ class SGalleryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let listing = fetchedResultsController.object(at: indexPath)
+            ListingController.shared.deleteListing(listing: listing)
         } else if editingStyle == .insert {
         }    
     }
