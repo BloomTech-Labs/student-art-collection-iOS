@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
-class SArtDetailViewController: UIViewController {
-
+class SArtDetailViewController: UIViewController, NSFetchedResultsControllerDelegate {
+    
     // MARK: - Properties and outlets
     
     @IBOutlet weak var artImageView: UIImageView!
@@ -18,6 +19,7 @@ class SArtDetailViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
+    
     
     var listing: Listing? {
         didSet {
@@ -32,8 +34,15 @@ class SArtDetailViewController: UIViewController {
         updateViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewDidLoad()
+        updateViews()
+    }
+    
     // MARK: Methods and functions
     
+
     public func convertDataToImage(_ data: Data) -> UIImage {
         guard let image = UIImage(data: data) else { return UIImage() }
         return image
@@ -51,8 +60,17 @@ class SArtDetailViewController: UIViewController {
         descriptionTextView.text = listing.artDescription
     }
     
-    @IBAction func addToCartButtonTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    // MARK: Segues
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let editListingVC = segue.destination as? SEditArtViewController else { return }
+        if segue.identifier == "EditArtListingSegue" {
+            guard let listing = listing else { return }
+            editListingVC.listing = listing
+        }
     }
     
+    
 }
+
+
