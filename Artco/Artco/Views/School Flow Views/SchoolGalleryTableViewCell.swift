@@ -10,6 +10,11 @@ import UIKit
 
 class SchoolGalleryTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var galleryImageView: UIImageView!
+    @IBOutlet weak var studentNameLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
