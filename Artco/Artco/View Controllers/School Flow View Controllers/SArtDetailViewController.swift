@@ -10,21 +10,49 @@ import UIKit
 
 class SArtDetailViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    // MARK: - Properties and outlets
+    
+    @IBOutlet weak var artImageView: UIImageView!
+    @IBOutlet weak var artistNameLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    
+    var listing: Listing? {
+        didSet {
+            updateViews()
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - View lifecycle methods
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateViews()
     }
-    */
-
+    
+    // MARK: Methods and functions
+    
+    public func convertDataToImage(_ data: Data) -> UIImage {
+        guard let image = UIImage(data: data) else { return UIImage() }
+        return image
+    }
+    
+    func updateViews() {
+        guard isViewLoaded,
+            let listing = listing else { return }
+        
+        artImageView.image = convertDataToImage(listing.images ?? Data())
+        artistNameLabel.text = listing.artistName
+        titleLabel.text = listing.title
+        priceLabel.text = listing.price.currencyOutputFormatting()
+        categoryLabel.text = "\(listing.category)"
+        descriptionTextView.text = listing.artDescription
+    }
+    
+    @IBAction func addToCartButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
