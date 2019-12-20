@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SchoolGalleryTableViewController: UITableViewController {
+class SGalleryTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
