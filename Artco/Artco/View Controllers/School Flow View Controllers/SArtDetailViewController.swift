@@ -51,8 +51,5 @@ class SArtDetailViewController: UIViewController {
         descriptionTextView.text = listing.artDescription
     }
     
-    @IBAction func addToCartButtonTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
     
 }
