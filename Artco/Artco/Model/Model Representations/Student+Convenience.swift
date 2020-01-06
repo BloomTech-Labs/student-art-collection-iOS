@@ -12,9 +12,9 @@ import CoreData
 
 extension Student {
     
-    @discardableResult convenience init (studentName: String = "Anonymous",
+    @discardableResult convenience init (studentName: String,
                                          bio: String,
-                                         artwork: [Listing],
+                                         artwork: [Listing] = [],
                                          context: NSManagedObjectContext = NSManagedObjectContext.mainContext) {
         self.init(context: context)
         self.studentName = studentName
