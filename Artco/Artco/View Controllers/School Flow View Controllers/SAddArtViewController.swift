@@ -27,6 +27,7 @@ class SAddArtViewController: UIViewController {
     let listingController = ListingController.shared
     let imagePickerController = UIImagePickerController()
     var imageData: Data?
+    var selectedImage: UIImage?
 
     // MARK: - View lifecycle methods
     
@@ -55,8 +56,11 @@ class SAddArtViewController: UIViewController {
             var suggestedDonation = suggestedDonationTextField.text,
             !suggestedDonation.isEmpty,
             let artDescription = descriptionTextView.text,
-            !artDescription.isEmpty else {
-                presentAlert()
+            !artDescription.isEmpty,
+            topLeftImageView.isEqual(selectedImage) else {
+                DispatchQueue.main.async {
+                    self.presentAlert()
+                }
                 return
         }
         
@@ -161,6 +165,7 @@ extension SAddArtViewController: UIImagePickerControllerDelegate, UINavigationCo
         guard let image = info[.originalImage] as? UIImage else { return }
         guard let data = image.pngData() else { fatalError() }
         imageData = data
+        selectedImage = image
         DispatchQueue.main.async {
             self.topLeftImageView.image = image
             picker.dismiss(animated: true, completion: nil)
