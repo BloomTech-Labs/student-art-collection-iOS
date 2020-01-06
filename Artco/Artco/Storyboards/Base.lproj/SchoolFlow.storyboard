@@ -660,9 +660,13 @@
                                                 </constraints>
                                             </stackView>
                                         </subviews>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="pMO-38-DGw" firstAttribute="top" secondItem="RyI-Kb-iSk" secondAttribute="top" constant="129" id="LWY-bd-YBK"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="gUw-li-YEM" appends="YES" id="uFL-Gx-5GW"/>
+                                        </connections>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -702,6 +706,9 @@
                                 <state key="normal" title="Save">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="22m-Jb-SgS" eventType="touchUpInside" id="6wL-vp-P3J"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADD STUDENT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gdx-z7-Y3W">
                                 <rect key="frame" x="55" y="40" width="144" height="25.5"/>
@@ -733,8 +740,17 @@
                         <viewLayoutGuide key="safeArea" id="qZ0-fv-Y6U"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Students" image="person.fill" catalog="system" id="KK2-dh-XaR"/>
+                    <connections>
+                        <outlet property="studentBioTextView" destination="K5t-QZ-1ef" id="7mS-Ak-ldr"/>
+                        <outlet property="studentNameTextField" destination="gTi-uo-cc1" id="Okn-Ws-8g5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ORr-G4-f4J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="gUw-li-YEM">
+                    <connections>
+                        <action selector="addStudentArtworkTapped:" destination="22m-Jb-SgS" id="7SK-r8-LM0"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3377" y="361"/>
         </scene>
@@ -777,10 +793,16 @@
                                 <state key="normal" title="Save">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="bug-gl-Up9" eventType="touchUpInside" id="cXB-fz-May"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2P-Hp-mOp">
                                 <rect key="frame" x="344" y="38" width="20" height="22"/>
                                 <state key="normal" image="trash.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="deleteButtonTapped:" destination="bug-gl-Up9" eventType="touchUpInside" id="ER7-2A-Ya1"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STUDENT NAME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTZ-c2-lnd">
                                 <rect key="frame" x="55" y="40" width="160" height="25.5"/>
@@ -895,6 +917,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Students" image="person.fill" catalog="system" id="3a0-ti-6YL"/>
                     <navigationItem key="navigationItem" id="mrh-HG-j2z"/>
+                    <connections>
+                        <outlet property="studentBioTextView" destination="KQS-83-hha" id="20F-eS-Glw"/>
+                        <outlet property="studentNameLabel" destination="p7E-Uv-hOm" id="Yfq-LX-xxH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oz6-8N-aLD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

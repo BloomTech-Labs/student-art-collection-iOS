@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15400" systemVersion="19A602" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Buyer" representedClassName="Buyer" syncable="YES" codeGenerationType="class"/>
     <entity name="Images" representedClassName="Images" syncable="YES" codeGenerationType="class"/>
     <entity name="Listing" representedClassName="Listing" syncable="YES" codeGenerationType="class">
@@ -14,12 +14,16 @@
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <entity name="School" representedClassName="School" syncable="YES" codeGenerationType="class"/>
-    <entity name="Student" representedClassName="Student" syncable="YES" codeGenerationType="class"/>
+    <entity name="Student" representedClassName="Student" syncable="YES" codeGenerationType="class">
+        <attribute name="artwork" optional="YES" attributeType="Transformable" customClassName="[Listing]"/>
+        <attribute name="bio" optional="YES" attributeType="String"/>
+        <attribute name="studentName" optional="YES" attributeType="String"/>
+    </entity>
     <elements>
         <element name="Buyer" positionX="-18" positionY="63" width="128" height="43"/>
         <element name="Images" positionX="0" positionY="81" width="128" height="43"/>
         <element name="Listing" positionX="-63" positionY="-18" width="128" height="178"/>
         <element name="School" positionX="-54" positionY="45" width="128" height="43"/>
-        <element name="Student" positionX="-36" positionY="54" width="128" height="43"/>
+        <element name="Student" positionX="-36" positionY="54" width="128" height="88"/>
     </elements>
 </model>
