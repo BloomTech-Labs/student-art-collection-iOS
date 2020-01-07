@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3865DE9923C3F11E00B548F6 /* Student+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3865DE9823C3F11E00B548F6 /* Student+Convenience.swift */; };
 		3865DE9B23C3F39200B548F6 /* StudentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3865DE9A23C3F39200B548F6 /* StudentController.swift */; };
+		3875134F23C52DFD0004B31D /* SEditStudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875134E23C52DFD0004B31D /* SEditStudentViewController.swift */; };
 		387DD18923AC70940041BC00 /* SSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387DD18823AC70940041BC00 /* SSettingsViewController.swift */; };
 		387DD18B23AC70EC0041BC00 /* SArtDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387DD18A23AC70EC0041BC00 /* SArtDetailViewController.swift */; };
 		387DD18D23AC710F0041BC00 /* SStudentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387DD18C23AC710F0041BC00 /* SStudentsTableViewController.swift */; };
@@ -78,6 +79,7 @@
 		273F717A0227D61BDE43F2E5 /* Pods_Artco_ArtcoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Artco_ArtcoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3865DE9823C3F11E00B548F6 /* Student+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Student+Convenience.swift"; sourceTree = "<group>"; };
 		3865DE9A23C3F39200B548F6 /* StudentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentController.swift; sourceTree = "<group>"; };
+		3875134E23C52DFD0004B31D /* SEditStudentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEditStudentViewController.swift; sourceTree = "<group>"; };
 		387DD18823AC70940041BC00 /* SSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSettingsViewController.swift; sourceTree = "<group>"; };
 		387DD18A23AC70EC0041BC00 /* SArtDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SArtDetailViewController.swift; sourceTree = "<group>"; };
 		387DD18C23AC710F0041BC00 /* SStudentsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SStudentsTableViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				387DD18C23AC710F0041BC00 /* SStudentsTableViewController.swift */,
 				387DD18E23AC71C10041BC00 /* SStudentDetailViewController.swift */,
 				387DD19023AC71D50041BC00 /* SAddStudentViewController.swift */,
+				3875134E23C52DFD0004B31D /* SEditStudentViewController.swift */,
 			);
 			path = Student;
 			sourceTree = "<group>";
@@ -690,6 +693,7 @@
 				6E0A333023AC40870073FA2F /* UIImage+URLConversion.swift in Sources */,
 				387DD19E23AC78CA0041BC00 /* GalleryCollectionViewController.swift in Sources */,
 				6EA5B44523A98B83007DD6AE /* SchoolSignUp1ViewController.swift in Sources */,
+				3875134F23C52DFD0004B31D /* SEditStudentViewController.swift in Sources */,
 				387DD1A023AC78E50041BC00 /* ArtDetailViewController.swift in Sources */,
 				6E0A332823AC186B0073FA2F /* ListingController.swift in Sources */,
 				6E0A331923AC0FE60073FA2F /* Artco.xcdatamodeld in Sources */,

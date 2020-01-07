@@ -19,7 +19,7 @@ class StudentController {
         return student
     }
     
-    @discardableResult func updateStudent(student: Student, studentName: String, bio: String, artwork: [Listing]) -> Student {
+    @discardableResult func updateStudent(student: Student, studentName: String, bio: String, artwork: [Listing]?) -> Student {
         student.studentName = studentName
         student.bio = bio
         CoreDataStack.shared.save()
