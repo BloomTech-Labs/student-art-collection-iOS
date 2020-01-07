@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -51,6 +51,8 @@
 		6EA5B44723A98F2C007DD6AE /* AuthErrorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA5B44623A98F2C007DD6AE /* AuthErrorCodes.swift */; };
 		6EC75B6523AC85D500BFAF44 /* Date+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC75B6423AC85D500BFAF44 /* Date+DateFormatter.swift */; };
 		6EC75B6723AC8A9400BFAF44 /* Float+CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC75B6623AC8A9400BFAF44 /* Float+CurrencyFormatter.swift */; };
+		6EC75B6D23C5433D00BFAF44 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 6EC75B6C23C5433D00BFAF44 /* Apollo */; };
+		6EC75B6F23C5433D00BFAF44 /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 6EC75B6E23C5433D00BFAF44 /* ApolloWebSocket */; };
 		B4C0D27AFFCADB1578B4B7B3 /* Pods_ArtcoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E02735197BAC1273E709CC70 /* Pods_ArtcoTests.framework */; };
 		BCA3026B3680327F7DAD1EFA /* Pods_Artco.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077209EEC2C0C4B15CACC952 /* Pods_Artco.framework */; };
 		C0C548427BCB2B4D72942A32 /* Pods_Artco_ArtcoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273F717A0227D61BDE43F2E5 /* Pods_Artco_ArtcoUITests.framework */; };
@@ -129,6 +131,7 @@
 		6EA5B44623A98F2C007DD6AE /* AuthErrorCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthErrorCodes.swift; sourceTree = "<group>"; };
 		6EC75B6423AC85D500BFAF44 /* Date+DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+DateFormatter.swift"; sourceTree = "<group>"; };
 		6EC75B6623AC8A9400BFAF44 /* Float+CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+CurrencyFormatter.swift"; sourceTree = "<group>"; };
+		6EC75B7123C544B100BFAF44 /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = schema.json; path = Artco/schema.json; sourceTree = SOURCE_ROOT; };
 		BAC82515F4E14CE9E7FCD865 /* Pods-Artco-ArtcoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Artco-ArtcoUITests.release.xcconfig"; path = "Target Support Files/Pods-Artco-ArtcoUITests/Pods-Artco-ArtcoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E02735197BAC1273E709CC70 /* Pods_ArtcoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtcoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE1FC660EE35C03D4A096F25 /* Pods-Artco.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Artco.debug.xcconfig"; path = "Target Support Files/Pods-Artco/Pods-Artco.debug.xcconfig"; sourceTree = "<group>"; };
@@ -141,6 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCA3026B3680327F7DAD1EFA /* Pods_Artco.framework in Frameworks */,
+				6EC75B6F23C5433D00BFAF44 /* ApolloWebSocket in Frameworks */,
+				6EC75B6D23C5433D00BFAF44 /* Apollo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +359,7 @@
 		6EA5B43F23A98716007DD6AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6EC75B7123C544B100BFAF44 /* schema.json */,
 				6EA5B41223A96490007DD6AE /* Assets.xcassets */,
 				6EA5B40923A9648C007DD6AE /* AppDelegate.swift */,
 				6EA5B40B23A9648C007DD6AE /* SceneDelegate.swift */,
@@ -417,12 +423,17 @@
 				6EA5B40423A9648C007DD6AE /* Resources */,
 				BC83E0FB45A8A70202013E19 /* [CP] Embed Pods Frameworks */,
 				4A7F3A746ABD257CA44FCBC5 /* [CP] Copy Pods Resources */,
+				6EC75B7023C543BE00BFAF44 /* Apollo CLI */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Artco;
+			packageProductDependencies = (
+				6EC75B6C23C5433D00BFAF44 /* Apollo */,
+				6EC75B6E23C5433D00BFAF44 /* ApolloWebSocket */,
+			);
 			productName = Artco;
 			productReference = 6EA5B40623A9648C007DD6AE /* Artco.app */;
 			productType = "com.apple.product-type.application";
@@ -499,6 +510,9 @@
 				Base,
 			);
 			mainGroup = 6EA5B3FD23A9648C007DD6AE;
+			packageReferences = (
+				6EC75B6B23C5433D00BFAF44 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+			);
 			productRefGroup = 6EA5B40723A9648C007DD6AE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -602,6 +616,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		6EC75B7023C543BE00BFAF44 /* Apollo CLI */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Apollo CLI";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://student-artco.herokuapp.com/graphql\"\n\n\n# \"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n";
 		};
 		BB9FC367E53232B04169AF91 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1048,6 +1080,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6EC75B6B23C5433D00BFAF44 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.21.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6EC75B6C23C5433D00BFAF44 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6EC75B6B23C5433D00BFAF44 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+		6EC75B6E23C5433D00BFAF44 /* ApolloWebSocket */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6EC75B6B23C5433D00BFAF44 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloWebSocket;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6EA5B3FE23A9648C007DD6AE /* Project object */;
 }
