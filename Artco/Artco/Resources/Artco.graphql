@@ -1,0 +1,10 @@
+query Artco {
+  allArts {
+    artist_name
+    price
+    date_posted
+    images {
+      image_url
+    }
+  }
+}
