@@ -13,7 +13,7 @@ class StudentController {
     
     static let shared = StudentController()
     
-    @discardableResult func createStudent(studentName: String, bio: String, artwork: [Listing]) -> Student {
+    @discardableResult func createStudent(studentName: String, bio: String) -> Student {
         let student = Student(studentName: studentName, bio: bio)
         CoreDataStack.shared.save()
         return student
@@ -22,7 +22,6 @@ class StudentController {
     @discardableResult func updateStudent(student: Student, studentName: String, bio: String, artwork: [Listing]) -> Student {
         student.studentName = studentName
         student.bio = bio
-        student.artwork = artwork
         CoreDataStack.shared.save()
         return student
     }

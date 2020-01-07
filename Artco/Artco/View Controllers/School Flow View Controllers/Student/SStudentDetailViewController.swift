@@ -13,6 +13,8 @@ class SStudentDetailViewController: UIViewController {
     @IBOutlet weak var studentNameLabel: UILabel!
     @IBOutlet weak var studentBioTextView: UITextView!
     
+    var student: Student?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,7 +22,7 @@ class SStudentDetailViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(_ sender: UIButton) {
-        
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func deleteButtonTapped(_ sender: UIButton) {

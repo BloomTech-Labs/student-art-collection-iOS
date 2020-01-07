@@ -537,15 +537,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="be6-xn-oLs">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentCell" textLabel="tD9-uf-tGc" style="IBUITableViewCellStyleDefault" id="be6-xn-oLs">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="be6-xn-oLs" id="Ff0-FT-jkw">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tD9-uf-tGc">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="bug-gl-Up9" kind="presentation" id="K3v-7Q-jao"/>
+                                    <segue destination="bug-gl-Up9" kind="presentation" identifier="StudentDetailSegue" id="K3v-7Q-jao"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -557,7 +566,7 @@
                     <navigationItem key="navigationItem" title="STUDENTS" id="aZT-m7-U6h">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DTp-yC-7JT">
                             <connections>
-                                <segue destination="22m-Jb-SgS" kind="presentation" id="jez-fy-qex"/>
+                                <segue destination="22m-Jb-SgS" kind="presentation" identifier="AddStudentSegue" id="jez-fy-qex"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
