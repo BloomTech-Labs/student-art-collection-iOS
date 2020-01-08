@@ -19,8 +19,8 @@ class SchoolLoginViewController: UIViewController {
         super.viewDidLoad()
         
         DispatchQueue.main.async {
-            let storyboard = UIStoryboard(name: "SchoolFlow", bundle: nil)
-            let schoolTabBarController = storyboard.instantiateViewController(withIdentifier: "SchoolTabBarController")
+            let storyboard = UIStoryboard(name: "BuyerFlow", bundle: nil)
+            let schoolTabBarController = storyboard.instantiateViewController(withIdentifier: "BuyerTabBarController")
             schoolTabBarController.modalPresentationStyle = .fullScreen
             self.present(schoolTabBarController, animated: true, completion: nil)
             

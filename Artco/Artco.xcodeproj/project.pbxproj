@@ -55,6 +55,7 @@
 		6EC75B6F23C5433D00BFAF44 /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 6EC75B6E23C5433D00BFAF44 /* ApolloWebSocket */; };
 		6EC75B7723C548B100BFAF44 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC75B7623C548AF00BFAF44 /* API.swift */; };
 		6EC75B7A23C5499300BFAF44 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC75B7923C5499300BFAF44 /* Network.swift */; };
+		6EC75B7D23C550AD00BFAF44 /* ListingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC75B7C23C550AD00BFAF44 /* ListingCollectionViewCell.swift */; };
 		B4C0D27AFFCADB1578B4B7B3 /* Pods_ArtcoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E02735197BAC1273E709CC70 /* Pods_ArtcoTests.framework */; };
 		BCA3026B3680327F7DAD1EFA /* Pods_Artco.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077209EEC2C0C4B15CACC952 /* Pods_Artco.framework */; };
 		C0C548427BCB2B4D72942A32 /* Pods_Artco_ArtcoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273F717A0227D61BDE43F2E5 /* Pods_Artco_ArtcoUITests.framework */; };
@@ -137,6 +138,7 @@
 		6EC75B7423C5475A00BFAF44 /* Artco.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Artco.graphql; sourceTree = "<group>"; };
 		6EC75B7623C548AF00BFAF44 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = Artco/API.swift; sourceTree = SOURCE_ROOT; };
 		6EC75B7923C5499300BFAF44 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		6EC75B7C23C550AD00BFAF44 /* ListingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingCollectionViewCell.swift; sourceTree = "<group>"; };
 		BAC82515F4E14CE9E7FCD865 /* Pods-Artco-ArtcoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Artco-ArtcoUITests.release.xcconfig"; path = "Target Support Files/Pods-Artco-ArtcoUITests/Pods-Artco-ArtcoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E02735197BAC1273E709CC70 /* Pods_ArtcoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtcoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE1FC660EE35C03D4A096F25 /* Pods-Artco.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Artco.debug.xcconfig"; path = "Target Support Files/Pods-Artco/Pods-Artco.debug.xcconfig"; sourceTree = "<group>"; };
@@ -310,10 +312,10 @@
 		6EA5B40823A9648C007DD6AE /* Artco */ = {
 			isa = PBXGroup;
 			children = (
+				6EA5B44023A9871F007DD6AE /* Views */,
 				6EC75B7823C5493500BFAF44 /* Networking */,
 				6EA5B44223A9872F007DD6AE /* Model */,
 				6EA5B44123A98726007DD6AE /* Model Controller */,
-				6EA5B44023A9871F007DD6AE /* Views */,
 				6EA5B43D23A986F9007DD6AE /* View Controllers */,
 				6EA5B43E23A98704007DD6AE /* Storyboards */,
 				6EA5B44323A98738007DD6AE /* Helpers */,
@@ -380,6 +382,7 @@
 		6EA5B44023A9871F007DD6AE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6EC75B7B23C5506C00BFAF44 /* Buyer Flow Views */,
 				6E0A332623AC18360073FA2F /* School Flow Views */,
 			);
 			path = Views;
@@ -424,6 +427,14 @@
 				6EC75B7923C5499300BFAF44 /* Network.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		6EC75B7B23C5506C00BFAF44 /* Buyer Flow Views */ = {
+			isa = PBXGroup;
+			children = (
+				6EC75B7C23C550AD00BFAF44 /* ListingCollectionViewCell.swift */,
+			);
+			path = "Buyer Flow Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -766,6 +777,7 @@
 				6E0A331B23AC11690073FA2F /* Category.swift in Sources */,
 				6E0A332A23AC18BE0073FA2F /* Listing+Convenience.swift in Sources */,
 				6EC75B6723AC8A9400BFAF44 /* Float+CurrencyFormatter.swift in Sources */,
+				6EC75B7D23C550AD00BFAF44 /* ListingCollectionViewCell.swift in Sources */,
 				6EC75B7723C548B100BFAF44 /* API.swift in Sources */,
 				6E0A331F23AC151E0073FA2F /* CoreDataStack.swift in Sources */,
 			);
