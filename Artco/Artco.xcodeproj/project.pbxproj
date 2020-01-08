@@ -27,7 +27,6 @@
 		387DD1A223AD37450041BC00 /* SEditArtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387DD1A123AD37450041BC00 /* SEditArtViewController.swift */; };
 		387DD1A423AD3A500041BC00 /* EditArtProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387DD1A323AD3A500041BC00 /* EditArtProtocol.swift */; };
 		38A9927C23AB0413003E5105 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38A9927B23AB0413003E5105 /* Main.storyboard */; };
-		38A9928023AB16FA003E5105 /* BuyerLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38A9927F23AB16FA003E5105 /* BuyerLogin.storyboard */; };
 		38A9928223AB1706003E5105 /* BuyerFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38A9928123AB1706003E5105 /* BuyerFlow.storyboard */; };
 		6E0A331B23AC11690073FA2F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0A331A23AC11690073FA2F /* Category.swift */; };
 		6E0A331F23AC151E0073FA2F /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0A331E23AC151E0073FA2F /* CoreDataStack.swift */; };
@@ -102,7 +101,6 @@
 		387DD1A123AD37450041BC00 /* SEditArtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEditArtViewController.swift; sourceTree = "<group>"; };
 		387DD1A323AD3A500041BC00 /* EditArtProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditArtProtocol.swift; sourceTree = "<group>"; };
 		38A9927B23AB0413003E5105 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		38A9927F23AB16FA003E5105 /* BuyerLogin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BuyerLogin.storyboard; sourceTree = "<group>"; };
 		38A9928123AB1706003E5105 /* BuyerFlow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BuyerFlow.storyboard; sourceTree = "<group>"; };
 		55DAF4B749D270B94C786533 /* Pods-Artco-ArtcoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Artco-ArtcoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Artco-ArtcoUITests/Pods-Artco-ArtcoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6ACA54E5847B65BFC3B72AAF /* Pods-ArtcoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtcoTests.release.xcconfig"; path = "Target Support Files/Pods-ArtcoTests/Pods-ArtcoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -260,13 +258,13 @@
 			path = "Model Representations";
 			sourceTree = "<group>";
 		};
-		6E0A332223AC17940073FA2F /* School Auth View Controllers */ = {
+		6E0A332223AC17940073FA2F /* Auth View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				6EA5B43B23A977F1007DD6AE /* SchoolLoginViewController.swift */,
 				6EA5B44423A98B83007DD6AE /* SchoolSignUp1ViewController.swift */,
 			);
-			path = "School Auth View Controllers";
+			path = "Auth View Controllers";
 			sourceTree = "<group>";
 		};
 		6E0A332323AC17A30073FA2F /* School Flow View Controllers */ = {
@@ -345,7 +343,7 @@
 		6EA5B43D23A986F9007DD6AE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6E0A332223AC17940073FA2F /* School Auth View Controllers */,
+				6E0A332223AC17940073FA2F /* Auth View Controllers */,
 				6E0A332323AC17A30073FA2F /* School Flow View Controllers */,
 				387DD19423AC78520041BC00 /* Buyer Flow View Controllers */,
 			);
@@ -357,9 +355,8 @@
 			children = (
 				38A9927B23AB0413003E5105 /* Main.storyboard */,
 				3875135223C533F00004B31D /* SchoolFlow.storyboard */,
-				6EA5B41423A96490007DD6AE /* LaunchScreen.storyboard */,
-				38A9927F23AB16FA003E5105 /* BuyerLogin.storyboard */,
 				38A9928123AB1706003E5105 /* BuyerFlow.storyboard */,
+				6EA5B41423A96490007DD6AE /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -556,7 +553,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38A9928023AB16FA003E5105 /* BuyerLogin.storyboard in Resources */,
 				38A9927C23AB0413003E5105 /* Main.storyboard in Resources */,
 				6EA5B41623A96490007DD6AE /* LaunchScreen.storyboard in Resources */,
 				6EA5B43A23A9664F007DD6AE /* GoogleService-Info.plist in Resources */,
