@@ -29,10 +29,8 @@ class SchoolSignUp1ViewController: UIViewController {
             !password.isEmpty,
             let passwordConfirmation = passwordConfirmationTextField.text,
             !passwordConfirmation.isEmpty,
-            password == passwordConfirmation else {
-                // TODO : - Configure nofitication to inform user of email/password criteria
-                return
-        }
+            password == passwordConfirmation else { return }
+        
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if let error = error {
                 NSLog("\(error)")
