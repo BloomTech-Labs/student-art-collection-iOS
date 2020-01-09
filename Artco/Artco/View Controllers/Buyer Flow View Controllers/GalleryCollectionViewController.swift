@@ -58,14 +58,6 @@ class GalleryCollectionViewController: UICollectionViewController {
         return cell
     }
     
-    private func showErrorAlert(title: String, message: String) {
-      let alert = UIAlertController(title: title,
-                                    message: message,
-                                    preferredStyle: .alert)
-      alert.addAction(UIAlertAction(title: "OK", style: .default))
-      self.present(alert, animated: true)
-    }
-    
     private func loadLaunches() {
         guard isViewLoaded else { return }
         Network.shared.apollo
@@ -96,6 +88,14 @@ class GalleryCollectionViewController: UICollectionViewController {
                     print("You suck this didn't work you dumb bitch")
                 }
         }
+    }
+    
+    private func showErrorAlert(title: String, message: String) {
+      let alert = UIAlertController(title: title,
+                                    message: message,
+                                    preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "OK", style: .default))
+      self.present(alert, animated: true)
     }
     
     private func convertToUIImage(_ str: String) -> UIImage? {

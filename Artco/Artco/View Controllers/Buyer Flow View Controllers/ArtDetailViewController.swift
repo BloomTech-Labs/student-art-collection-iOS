@@ -11,22 +11,69 @@ import Apollo
 
 class ArtDetailViewController: UIViewController {
 
-    var id: String? {
+    // MARK: Properties & Outlets
+    
+    var id: String?
+    var listing: ArtQuery.Data.Art? {
         didSet {
             updateViews()
         }
     }
     
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
     func updateViews() {
         
     }
 
+    private func loadListing() {
+        guard isViewLoaded,
+        let id = id else { return }
+        Network.shared.apollo
+            .fetch(query: ArtQuery(id: id)) { [weak self] result in
+                
+                guard let self = self else {
+                    return
+                }
+                
+                defer {
+                    self.updateViews()
+                }
+                
+                switch result {
+                case .success(let graphQLResult):
+                    if let downloadedListing = graphQLResult.data?.art {
+                        self.listing = downloadedListing
+                    }
+                            
+                    if let errors = graphQLResult.errors {
+                      let message = errors
+                            .map { $0.localizedDescription }
+                            .joined(separator: "\n")
+                      self.showErrorAlert(title: "GraphQL Error(s)",
+                                          message: message)
+                    }
+                case .failure:
+                    print("You suck this didn't work you dumb bitch")
+                }
+        }
+    }
+    
+    private func showErrorAlert(title: String, message: String) {
+      let alert = UIAlertController(title: title,
+                                    message: message,
+                                    preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "OK", style: .default))
+      self.present(alert, animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 
