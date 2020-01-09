@@ -12,5 +12,6 @@ class ListingCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var listingImageView: UIImageView!
     @IBOutlet weak var artistNameLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     
 }

@@ -50,7 +50,9 @@ class GalleryCollectionViewController: UICollectionViewController {
         switch listSection {
         case .allArts:
             let listing = self.results[indexPath.row]
+            
             cell.artistNameLabel.text = listing.artistName
+            cell.priceLabel.text = "$\(String(describing: listing.price)).00"
         }
         return cell
     }
