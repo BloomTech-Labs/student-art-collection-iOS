@@ -3,13 +3,14 @@
 import Apollo
 import Foundation
 
-public final class ArtcoQuery: GraphQLQuery {
+public final class AllArtQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition =
     """
-    query Artco {
+    query AllArt {
       allArts {
         __typename
+        id
         artist_name
         price
         date_posted
@@ -21,7 +22,7 @@ public final class ArtcoQuery: GraphQLQuery {
     }
     """
 
-  public let operationName = "Artco"
+  public let operationName = "AllArt"
 
   public init() {
   }
@@ -57,6 +58,7 @@ public final class ArtcoQuery: GraphQLQuery {
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("artist_name", type: .scalar(String.self)),
         GraphQLField("price", type: .scalar(Int.self)),
         GraphQLField("date_posted", type: .scalar(String.self)),
@@ -69,8 +71,8 @@ public final class ArtcoQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(artistName: String? = nil, price: Int? = nil, datePosted: String? = nil, images: [Image?]? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Art", "artist_name": artistName, "price": price, "date_posted": datePosted, "images": images.flatMap { (value: [Image?]) -> [ResultMap?] in value.map { (value: Image?) -> ResultMap? in value.flatMap { (value: Image) -> ResultMap in value.resultMap } } }])
+      public init(id: GraphQLID, artistName: String? = nil, price: Int? = nil, datePosted: String? = nil, images: [Image?]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Art", "id": id, "artist_name": artistName, "price": price, "date_posted": datePosted, "images": images.flatMap { (value: [Image?]) -> [ResultMap?] in value.map { (value: Image?) -> ResultMap? in value.flatMap { (value: Image) -> ResultMap in value.resultMap } } }])
       }
 
       public var __typename: String {
@@ -79,6 +81,15 @@ public final class ArtcoQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
         }
       }
 
@@ -106,6 +117,201 @@ public final class ArtcoQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "date_posted")
+        }
+      }
+
+      public var images: [Image?]? {
+        get {
+          return (resultMap["images"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Image?] in value.map { (value: ResultMap?) -> Image? in value.flatMap { (value: ResultMap) -> Image in Image(unsafeResultMap: value) } } }
+        }
+        set {
+          resultMap.updateValue(newValue.flatMap { (value: [Image?]) -> [ResultMap?] in value.map { (value: Image?) -> ResultMap? in value.flatMap { (value: Image) -> ResultMap in value.resultMap } } }, forKey: "images")
+        }
+      }
+
+      public struct Image: GraphQLSelectionSet {
+        public static let possibleTypes = ["Image"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("image_url", type: .scalar(String.self)),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(imageUrl: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Image", "image_url": imageUrl])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var imageUrl: String? {
+          get {
+            return resultMap["image_url"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "image_url")
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class ArtQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition =
+    """
+    query Art($id: ID!) {
+      art(id: $id) {
+        __typename
+        price
+        title
+        artist_name
+        description
+        sold
+        category
+        images {
+          __typename
+          image_url
+        }
+      }
+    }
+    """
+
+  public let operationName = "Art"
+
+  public var id: GraphQLID
+
+  public init(id: GraphQLID) {
+    self.id = id
+  }
+
+  public var variables: GraphQLMap? {
+    return ["id": id]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("art", arguments: ["id": GraphQLVariable("id")], type: .nonNull(.object(Art.selections))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(art: Art) {
+      self.init(unsafeResultMap: ["__typename": "Query", "art": art.resultMap])
+    }
+
+    public var art: Art {
+      get {
+        return Art(unsafeResultMap: resultMap["art"]! as! ResultMap)
+      }
+      set {
+        resultMap.updateValue(newValue.resultMap, forKey: "art")
+      }
+    }
+
+    public struct Art: GraphQLSelectionSet {
+      public static let possibleTypes = ["Art"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("price", type: .scalar(Int.self)),
+        GraphQLField("title", type: .scalar(String.self)),
+        GraphQLField("artist_name", type: .scalar(String.self)),
+        GraphQLField("description", type: .scalar(String.self)),
+        GraphQLField("sold", type: .scalar(Bool.self)),
+        GraphQLField("category", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("images", type: .list(.object(Image.selections))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(price: Int? = nil, title: String? = nil, artistName: String? = nil, description: String? = nil, sold: Bool? = nil, category: GraphQLID, images: [Image?]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Art", "price": price, "title": title, "artist_name": artistName, "description": description, "sold": sold, "category": category, "images": images.flatMap { (value: [Image?]) -> [ResultMap?] in value.map { (value: Image?) -> ResultMap? in value.flatMap { (value: Image) -> ResultMap in value.resultMap } } }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var price: Int? {
+        get {
+          return resultMap["price"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "price")
+        }
+      }
+
+      public var title: String? {
+        get {
+          return resultMap["title"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "title")
+        }
+      }
+
+      public var artistName: String? {
+        get {
+          return resultMap["artist_name"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "artist_name")
+        }
+      }
+
+      public var description: String? {
+        get {
+          return resultMap["description"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "description")
+        }
+      }
+
+      public var sold: Bool? {
+        get {
+          return resultMap["sold"] as? Bool
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "sold")
+        }
+      }
+
+      public var category: GraphQLID {
+        get {
+          return resultMap["category"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "category")
         }
       }
 

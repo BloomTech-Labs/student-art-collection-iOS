@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         
-        Network.shared.apollo.fetch(query: ArtcoQuery()) { result in
+        Network.shared.apollo.fetch(query: AllArtQuery()) { result in
           switch result {
           case .success(let graphQLResult):
             print("Success! Result: \(graphQLResult)")

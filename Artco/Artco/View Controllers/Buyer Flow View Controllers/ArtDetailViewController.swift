@@ -7,15 +7,25 @@
 //
 
 import UIKit
+import Apollo
 
 class ArtDetailViewController: UIViewController {
 
+    var id: String? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
+    func updateViews() {
+        
+    }
 
     /*
     // MARK: - Navigation

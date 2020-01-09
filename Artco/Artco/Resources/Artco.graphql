@@ -1,8 +1,23 @@
-query Artco {
+query AllArt {
   allArts {
+    id
     artist_name
     price
     date_posted
+    images {
+      image_url
+    }
+  }
+}
+
+query Art($id: ID!) {
+  art(id: $id) {
+    price
+    title
+    artist_name
+    description
+    sold
+    category
     images {
       image_url
     }
