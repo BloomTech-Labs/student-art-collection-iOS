@@ -8,11 +8,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Gallery-->
         <scene sceneID="Gj4-DR-AKL">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5fQ-gs-M6z" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" selectedImage="pencil.and.outline" catalog="system" id="xAh-dk-KyK"/>
+                    <tabBarItem key="tabBarItem" title="Gallery" selectedImage="pencil.and.outline" catalog="system" id="xAh-dk-KyK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bjd-Ia-WmT">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -122,6 +122,7 @@
                                     <outlet property="artistNameLabel" destination="lYH-7A-K7T" id="xhl-4c-aOJ"/>
                                     <outlet property="listingImageView" destination="lub-wS-anL" id="W3K-Xi-bhB"/>
                                     <outlet property="priceLabel" destination="Lvs-5e-W7I" id="Bc7-ii-Ap4"/>
+                                    <segue destination="dFJ-6p-6sM" kind="showDetail" identifier="ShowListingDetail" id="UZY-fL-QLE"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -141,11 +142,11 @@
             <objects>
                 <viewController id="dFJ-6p-6sM" customClass="ArtDetailViewController" customModule="Artco" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WBr-RO-PW0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="z6W-8h-cyC">
-                                <rect key="frame" x="55" y="587" width="304" height="167.5"/>
+                                <rect key="frame" x="55" y="543" width="304" height="167.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ud-zf-3ck">
                                         <rect key="frame" x="0.0" y="0.0" width="82.5" height="20.5"/>
@@ -171,7 +172,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vNT-dh-bwg">
-                                <rect key="frame" x="55" y="99" width="304" height="349"/>
+                                <rect key="frame" x="55" y="55" width="304" height="349"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1a2-ou-YPu">
                                         <rect key="frame" x="0.0" y="0.0" width="304" height="304"/>
@@ -193,7 +194,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="LGg-T9-OCB">
-                                <rect key="frame" x="55" y="456" width="304" height="106"/>
+                                <rect key="frame" x="55" y="412" width="304" height="106"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qwU-mO-tqQ">
                                         <rect key="frame" x="0.0" y="0.0" width="146" height="106"/>
@@ -264,7 +265,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0L-09-pEO">
-                                <rect key="frame" x="55" y="803" width="304" height="40"/>
+                                <rect key="frame" x="55" y="749" width="304" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="U37-wR-qCp"/>
@@ -273,6 +274,9 @@
                                 <state key="normal" title="Add to Cart">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="addToCartButtonTapped:" destination="dFJ-6p-6sM" eventType="touchUpInside" id="xgw-8e-Zp0"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -292,16 +296,25 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KhU-1F-LEy"/>
                     </view>
+                    <navigationItem key="navigationItem" id="2L6-90-SB4"/>
+                    <connections>
+                        <outlet property="artistNameLabel" destination="cts-t0-vPl" id="eB5-wp-wNM"/>
+                        <outlet property="categoryLabel" destination="K7g-Ec-Q6P" id="b2w-Hv-7LD"/>
+                        <outlet property="descriptionTextView" destination="eBt-An-cmF" id="ggs-wE-XdU"/>
+                        <outlet property="listingImageView" destination="1a2-ou-YPu" id="5vN-cR-RER"/>
+                        <outlet property="priceLabel" destination="GvA-Sd-ItS" id="pYB-8N-PQK"/>
+                        <outlet property="titleLabel" destination="ObW-Pb-15U" id="cHa-9V-aAb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Xs-eP-ko1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2508.6956521739135" y="-237.05357142857142"/>
         </scene>
-        <!--Item-->
+        <!--Cart-->
         <scene sceneID="wIT-0M-Cfa">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g3c-XS-gBs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" selectedImage="cart" catalog="system" id="nP4-D7-Kr9"/>
+                    <tabBarItem key="tabBarItem" title="Cart" selectedImage="cart" catalog="system" id="nP4-D7-Kr9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="RaF-go-sHT">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -336,15 +349,28 @@
                                     <constraint firstAttribute="height" constant="450" id="h7M-pM-bzU"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Wf6-ON-K02">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CartCell" textLabel="ZVV-0N-IQG" style="IBUITableViewCellStyleDefault" id="Wf6-ON-K02">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wf6-ON-K02" id="nFQ-Ea-ccv">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZVV-0N-IQG">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="e8C-dK-BPn" id="HH7-hb-Wqd"/>
+                                    <outlet property="delegate" destination="e8C-dK-BPn" id="23H-Tk-0kx"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PdW-cX-rCJ">
                                 <rect key="frame" x="55" y="728" width="304" height="40"/>
@@ -386,6 +412,9 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="Mf6-x3-i41"/>
                         <barButtonItem key="leftBarButtonItem" title="Item" image="cart" catalog="system" id="4tz-MS-DsG"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="xg7-Xs-dR0" id="CMJ-Ej-ORc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DN4-cH-Pgj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

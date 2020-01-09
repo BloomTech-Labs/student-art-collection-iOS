@@ -56,6 +56,7 @@
 		6EC75B7A23C5499300BFAF44 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC75B7923C5499300BFAF44 /* Network.swift */; };
 		6EC75B7D23C550AD00BFAF44 /* ListingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC75B7C23C550AD00BFAF44 /* ListingCollectionViewCell.swift */; };
 		6EC75B7F23C6A31E00BFAF44 /* UserRedirectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC75B7E23C6A31E00BFAF44 /* UserRedirectViewController.swift */; };
+		6EC75B8123C7DD0F00BFAF44 /* BuyerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC75B8023C7DD0E00BFAF44 /* BuyerController.swift */; };
 		B4C0D27AFFCADB1578B4B7B3 /* Pods_ArtcoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E02735197BAC1273E709CC70 /* Pods_ArtcoTests.framework */; };
 		BCA3026B3680327F7DAD1EFA /* Pods_Artco.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077209EEC2C0C4B15CACC952 /* Pods_Artco.framework */; };
 		C0C548427BCB2B4D72942A32 /* Pods_Artco_ArtcoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273F717A0227D61BDE43F2E5 /* Pods_Artco_ArtcoUITests.framework */; };
@@ -139,6 +140,7 @@
 		6EC75B7923C5499300BFAF44 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		6EC75B7C23C550AD00BFAF44 /* ListingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingCollectionViewCell.swift; sourceTree = "<group>"; };
 		6EC75B7E23C6A31E00BFAF44 /* UserRedirectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRedirectViewController.swift; sourceTree = "<group>"; };
+		6EC75B8023C7DD0E00BFAF44 /* BuyerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerController.swift; sourceTree = "<group>"; };
 		BAC82515F4E14CE9E7FCD865 /* Pods-Artco-ArtcoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Artco-ArtcoUITests.release.xcconfig"; path = "Target Support Files/Pods-Artco-ArtcoUITests/Pods-Artco-ArtcoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E02735197BAC1273E709CC70 /* Pods_ArtcoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtcoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE1FC660EE35C03D4A096F25 /* Pods-Artco.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Artco.debug.xcconfig"; path = "Target Support Files/Pods-Artco/Pods-Artco.debug.xcconfig"; sourceTree = "<group>"; };
@@ -231,13 +233,8 @@
 		387DD19423AC78520041BC00 /* Buyer Flow View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				387DD19D23AC78CA0041BC00 /* GalleryCollectionViewController.swift */,
-				387DD19F23AC78E50041BC00 /* ArtDetailViewController.swift */,
-				387DD19223AC784D0041BC00 /* CartViewController.swift */,
-				387DD19523AC78760041BC00 /* CheckoutViewController.swift */,
-				387DD19723AC789F0041BC00 /* NameViewController.swift */,
-				387DD19923AC78A90041BC00 /* EmailViewController.swift */,
-				387DD19B23AC78B10041BC00 /* MessageViewController.swift */,
+				6EC75B8223C7DF0000BFAF44 /* Gallery */,
+				6EC75B8323C7DF0C00BFAF44 /* Cart */,
 			);
 			path = "Buyer Flow View Controllers";
 			sourceTree = "<group>";
@@ -393,6 +390,7 @@
 			children = (
 				6E0A332723AC186B0073FA2F /* ListingController.swift */,
 				3865DE9A23C3F39200B548F6 /* StudentController.swift */,
+				6EC75B8023C7DD0E00BFAF44 /* BuyerController.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -435,6 +433,27 @@
 				6EC75B7C23C550AD00BFAF44 /* ListingCollectionViewCell.swift */,
 			);
 			path = "Buyer Flow Views";
+			sourceTree = "<group>";
+		};
+		6EC75B8223C7DF0000BFAF44 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				387DD19D23AC78CA0041BC00 /* GalleryCollectionViewController.swift */,
+				387DD19F23AC78E50041BC00 /* ArtDetailViewController.swift */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		6EC75B8323C7DF0C00BFAF44 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				387DD19223AC784D0041BC00 /* CartViewController.swift */,
+				387DD19523AC78760041BC00 /* CheckoutViewController.swift */,
+				387DD19723AC789F0041BC00 /* NameViewController.swift */,
+				387DD19923AC78A90041BC00 /* EmailViewController.swift */,
+				387DD19B23AC78B10041BC00 /* MessageViewController.swift */,
+			);
+			path = Cart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -744,6 +763,7 @@
 				6EC75B7A23C5499300BFAF44 /* Network.swift in Sources */,
 				6EA5B44723A98F2C007DD6AE /* AuthErrorCodes.swift in Sources */,
 				3865DE9923C3F11E00B548F6 /* Student+Convenience.swift in Sources */,
+				6EC75B8123C7DD0F00BFAF44 /* BuyerController.swift in Sources */,
 				6EA5B43C23A977F1007DD6AE /* SchoolLoginViewController.swift in Sources */,
 				6EA5B40A23A9648C007DD6AE /* AppDelegate.swift in Sources */,
 				387DD18F23AC71C10041BC00 /* SStudentDetailViewController.swift in Sources */,

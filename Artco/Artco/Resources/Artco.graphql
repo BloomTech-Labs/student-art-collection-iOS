@@ -1,5 +1,6 @@
-query Artco {
+query AllArt {
   allArts {
+    id
     artist_name
     price
     date_posted
@@ -8,3 +9,30 @@ query Artco {
     }
   }
 }
+
+query AllCategories {
+  allCategories {
+    id
+    category
+  }
+}
+
+query AllSchools {
+  allSchools {
+    email
+  }
+}
+
+query Art($id: ID!) {
+  art(id: $id) {
+    price
+    title
+    artist_name
+    description
+    sold
+    images {
+      image_url
+    }
+  }
+}
+
