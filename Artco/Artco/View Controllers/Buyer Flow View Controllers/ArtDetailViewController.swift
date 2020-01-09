@@ -102,7 +102,9 @@ class ArtDetailViewController: UIViewController {
     }
     
     @IBAction func addToCartButtonTapped(_ sender: UIButton) {
-        
+        guard let listing = listing else { return }
+        BuyerController.shared.addToCart(listing)
+        dismiss(animated: true, completion: nil)
     }
     
     
