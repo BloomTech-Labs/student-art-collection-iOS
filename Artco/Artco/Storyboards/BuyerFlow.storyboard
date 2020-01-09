@@ -122,7 +122,7 @@
                                     <outlet property="artistNameLabel" destination="lYH-7A-K7T" id="xhl-4c-aOJ"/>
                                     <outlet property="listingImageView" destination="lub-wS-anL" id="W3K-Xi-bhB"/>
                                     <outlet property="priceLabel" destination="Lvs-5e-W7I" id="Bc7-ii-Ap4"/>
-                                    <segue destination="dFJ-6p-6sM" kind="presentation" identifier="ShowListingDetail" id="UZY-fL-QLE"/>
+                                    <segue destination="dFJ-6p-6sM" kind="showDetail" identifier="ShowListingDetail" id="UZY-fL-QLE"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -274,6 +274,9 @@
                                 <state key="normal" title="Add to Cart">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="addToCartButtonTapped:" destination="dFJ-6p-6sM" eventType="touchUpInside" id="xgw-8e-Zp0"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -294,6 +297,14 @@
                         <viewLayoutGuide key="safeArea" id="KhU-1F-LEy"/>
                     </view>
                     <navigationItem key="navigationItem" id="2L6-90-SB4"/>
+                    <connections>
+                        <outlet property="artistNameLabel" destination="cts-t0-vPl" id="eB5-wp-wNM"/>
+                        <outlet property="categoryLabel" destination="K7g-Ec-Q6P" id="b2w-Hv-7LD"/>
+                        <outlet property="descriptionTextView" destination="eBt-An-cmF" id="ggs-wE-XdU"/>
+                        <outlet property="listingImageView" destination="1a2-ou-YPu" id="5vN-cR-RER"/>
+                        <outlet property="priceLabel" destination="GvA-Sd-ItS" id="pYB-8N-PQK"/>
+                        <outlet property="titleLabel" destination="ObW-Pb-15U" id="cHa-9V-aAb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Xs-eP-ko1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,6 +10,19 @@ query AllArt {
   }
 }
 
+query AllCategories {
+  allCategories {
+    id
+    category
+  }
+}
+
+query AllSchools {
+  allSchools {
+    email
+  }
+}
+
 query Art($id: ID!) {
   art(id: $id) {
     price
@@ -17,9 +30,9 @@ query Art($id: ID!) {
     artist_name
     description
     sold
-    category
     images {
       image_url
     }
   }
 }
+
