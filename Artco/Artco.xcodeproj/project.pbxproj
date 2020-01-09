@@ -233,13 +233,8 @@
 		387DD19423AC78520041BC00 /* Buyer Flow View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				387DD19D23AC78CA0041BC00 /* GalleryCollectionViewController.swift */,
-				387DD19F23AC78E50041BC00 /* ArtDetailViewController.swift */,
-				387DD19223AC784D0041BC00 /* CartViewController.swift */,
-				387DD19523AC78760041BC00 /* CheckoutViewController.swift */,
-				387DD19723AC789F0041BC00 /* NameViewController.swift */,
-				387DD19923AC78A90041BC00 /* EmailViewController.swift */,
-				387DD19B23AC78B10041BC00 /* MessageViewController.swift */,
+				6EC75B8223C7DF0000BFAF44 /* Gallery */,
+				6EC75B8323C7DF0C00BFAF44 /* Cart */,
 			);
 			path = "Buyer Flow View Controllers";
 			sourceTree = "<group>";
@@ -438,6 +433,27 @@
 				6EC75B7C23C550AD00BFAF44 /* ListingCollectionViewCell.swift */,
 			);
 			path = "Buyer Flow Views";
+			sourceTree = "<group>";
+		};
+		6EC75B8223C7DF0000BFAF44 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				387DD19D23AC78CA0041BC00 /* GalleryCollectionViewController.swift */,
+				387DD19F23AC78E50041BC00 /* ArtDetailViewController.swift */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		6EC75B8323C7DF0C00BFAF44 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				387DD19223AC784D0041BC00 /* CartViewController.swift */,
+				387DD19523AC78760041BC00 /* CheckoutViewController.swift */,
+				387DD19723AC789F0041BC00 /* NameViewController.swift */,
+				387DD19923AC78A90041BC00 /* EmailViewController.swift */,
+				387DD19B23AC78B10041BC00 /* MessageViewController.swift */,
+			);
+			path = Cart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

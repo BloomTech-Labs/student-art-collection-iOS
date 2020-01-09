@@ -10,8 +10,6 @@ import UIKit
 import CoreData
 
 class SGalleryTableViewController: UITableViewController {
-    
-    
 
     lazy var fetchedResultsController: NSFetchedResultsController<Listing> = {
         let fetchRequest: NSFetchRequest<Listing> = Listing.fetchRequest()
