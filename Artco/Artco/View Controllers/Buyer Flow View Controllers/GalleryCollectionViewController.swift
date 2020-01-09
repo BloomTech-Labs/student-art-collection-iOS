@@ -50,7 +50,7 @@ class GalleryCollectionViewController: UICollectionViewController {
         switch listSection {
         case .allArts:
             let listing = self.results[indexPath.row]
-            
+            cell.listingImageView.image = convertToUIImage((listing.images?[0]?.imageUrl)!)!
             cell.artistNameLabel.text = listing.artistName
             cell.priceLabel.text = "$\(String(describing: listing.price)).00"
         }
@@ -95,6 +95,19 @@ class GalleryCollectionViewController: UICollectionViewController {
                     print("You suck this didn't work you dumb bitch")
                 }
         }
+    }
+    
+    private func convertToUIImage(_ str: String) -> UIImage? {
+        var imageData: Data?
+        guard let url = URL(string: str) else { return UIImage() }
+        do {
+            let data = try? Data(contentsOf: url)
+            imageData = data
+        } catch {
+            fatalError("URL was not compatible.")
+        }
+        
+        return UIImage(data: imageData ?? Data())
     }
     
     // MARK: UICollectionViewDelegate
