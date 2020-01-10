@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -577,41 +577,45 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="118" id="5Mf-oL-L9G"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tpc-8S-kHQ">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tpc-8S-kHQ">
                                     <size key="itemSize" width="97" height="97"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="50" minY="10" maxX="50" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="D31-iq-Aam">
-                                        <rect key="frame" x="50" y="10" width="97" height="97"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CheckoutArtworkCell" id="D31-iq-Aam" customClass="CheckoutArtworkCollectionViewCell" customModule="Artco" customModuleProvider="target">
+                                        <rect key="frame" x="50" y="10.5" width="97" height="97"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6Ap-we-fKg">
                                             <rect key="frame" x="0.0" y="0.0" width="97" height="97"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ycg-SA-l58">
+                                                    <rect key="frame" x="0.0" y="0.0" width="97" height="97"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="97" id="5WX-Mo-x2m"/>
+                                                        <constraint firstAttribute="width" secondItem="ycg-SA-l58" secondAttribute="height" multiplier="1:1" id="MFJ-S7-JVX"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="ycg-SA-l58" secondAttribute="trailing" id="7Dp-PR-TxO"/>
+                                                <constraint firstItem="ycg-SA-l58" firstAttribute="leading" secondItem="6Ap-we-fKg" secondAttribute="leading" id="LSh-8d-r7U"/>
+                                                <constraint firstItem="ycg-SA-l58" firstAttribute="top" secondItem="6Ap-we-fKg" secondAttribute="top" id="OU5-22-Fxv"/>
+                                                <constraint firstAttribute="bottom" secondItem="ycg-SA-l58" secondAttribute="bottom" id="kbh-un-4yE"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="97" height="97"/>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zyf-91-UP4">
-                                        <rect key="frame" x="158.5" y="10" width="97" height="97"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qlh-cd-Qmk">
-                                            <rect key="frame" x="0.0" y="0.0" width="97" height="97"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="97" height="97"/>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Wb5-xi-dIJ">
-                                        <rect key="frame" x="267" y="10" width="97" height="97"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="equ-Os-CQj">
-                                            <rect key="frame" x="0.0" y="0.0" width="97" height="97"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="97" height="97"/>
+                                        <connections>
+                                            <outlet property="checkoutArtworkImageView" destination="ycg-SA-l58" id="nI7-3S-xHf"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="UJw-ol-LVA" id="A33-1I-M0T"/>
+                                    <outlet property="delegate" destination="UJw-ol-LVA" id="QcX-NM-qlg"/>
+                                </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tIS-N6-ZFD">
                                 <rect key="frame" x="55" y="728" width="304" height="40"/>
@@ -623,6 +627,9 @@
                                 <state key="normal" title="Submit Inquiry">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="submitInquiryButtonTapped:" destination="UJw-ol-LVA" eventType="touchUpInside" id="plK-gB-pIW"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gnz-Uo-FP7">
                                 <rect key="frame" x="0.0" y="366.5" width="414" height="144"/>
@@ -670,7 +677,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="subtotalLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6v-eX-eTo">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="totalLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6v-eX-eTo">
                                                         <rect key="frame" x="0.0" y="76" width="171" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
@@ -718,6 +725,18 @@
                         <viewLayoutGuide key="safeArea" id="Rij-uI-d9e"/>
                     </view>
                     <navigationItem key="navigationItem" title="CHECKOUT" id="0CC-cg-EQe"/>
+                    <connections>
+                        <outlet property="additionalDonationTextField" destination="apo-Ym-YNU" id="jiu-is-qbU"/>
+                        <outlet property="artworkCollectionView" destination="fEY-VR-ib0" id="lBu-0e-2IM"/>
+                        <outlet property="emailButton" destination="Lvm-kB-rM6" id="8Jm-HP-cgH"/>
+                        <outlet property="emailLabel" destination="iJ6-tb-RYd" id="KC6-s8-mHI"/>
+                        <outlet property="messageButton" destination="UeN-lU-XM0" id="GqH-iI-KGH"/>
+                        <outlet property="messageLabel" destination="Wxv-Js-fK8" id="AOT-Ez-r6p"/>
+                        <outlet property="nameButton" destination="omZ-88-K0F" id="0Id-7I-Gpi"/>
+                        <outlet property="nameLabel" destination="X0W-uH-xly" id="mig-iy-SFu"/>
+                        <outlet property="subtotalLabel" destination="onf-q0-Af6" id="PDH-KC-Sn9"/>
+                        <outlet property="totalLabel" destination="H6v-eX-eTo" id="vvq-ng-yJY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1MH-CY-pPK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -767,6 +786,9 @@
                                         <state key="normal" title="Done">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="doneButtonTapped:" destination="TwU-sA-A58" eventType="touchUpInside" id="MXb-CF-vsL"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -795,6 +817,9 @@
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="hkr-MH-iYy">
                         <barButtonItem key="backBarButtonItem" title=" " id="5Td-oO-Qur"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameTextField" destination="vyh-GB-d6I" id="bEV-1x-w9x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wDY-fI-Cew" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -844,6 +869,9 @@
                                         <state key="normal" title="Done">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="doneButtonTapped:" destination="Qe8-ay-N10" eventType="touchUpInside" id="eN5-kw-q5D"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -872,6 +900,9 @@
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="Wam-SS-aWU">
                         <barButtonItem key="backBarButtonItem" title=" " id="w75-X9-QKJ"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="emailTextField" destination="4Yu-TY-LYl" id="XuZ-WU-43v"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5g4-xN-Idh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -904,11 +935,10 @@
                                             </stackView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aeM-Qu-DTa">
                                                 <rect key="frame" x="0.0" y="37" width="334" height="128"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" red="0.88231678300000005" green="0.88231678300000005" blue="0.88231678300000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="128" id="jwA-qQ-eAa"/>
                                                 </constraints>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -923,6 +953,9 @@
                                                 <state key="normal" title="Done">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="doneButtonTapped:" destination="eHW-2D-Liq" eventType="touchUpInside" id="eF9-HI-3H3"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -958,6 +991,9 @@
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="IcV-ud-gWM">
                         <barButtonItem key="backBarButtonItem" title=" " id="GPl-pW-QJQ"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="messageTextView" destination="aeM-Qu-DTa" id="e4f-u0-id9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UuU-ch-htd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
