@@ -36,3 +36,14 @@ query Art($id: ID!) {
   }
 }
 
+mutation AddSchool {
+  addSchool(school_id: "ID", school_name: "String", email: "String", address: "String",
+city: "String", zipcode: "String") {
+    school_id
+    school_name
+    email
+    address
+    city
+    zipcode
+    }
+}

@@ -527,3 +527,140 @@ public final class ArtQuery: GraphQLQuery {
     }
   }
 }
+
+public final class AddSchoolMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition =
+    """
+    mutation AddSchool {
+      addSchool(school_id: "ID", school_name: "String", email: "String", address: "String", city: "String", zipcode: "String") {
+        __typename
+        school_id
+        school_name
+        email
+        address
+        city
+        zipcode
+      }
+    }
+    """
+
+  public let operationName = "AddSchool"
+
+  public init() {
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("addSchool", arguments: ["school_id": "ID", "school_name": "String", "email": "String", "address": "String", "city": "String", "zipcode": "String"], type: .nonNull(.object(AddSchool.selections))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(addSchool: AddSchool) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "addSchool": addSchool.resultMap])
+    }
+
+    public var addSchool: AddSchool {
+      get {
+        return AddSchool(unsafeResultMap: resultMap["addSchool"]! as! ResultMap)
+      }
+      set {
+        resultMap.updateValue(newValue.resultMap, forKey: "addSchool")
+      }
+    }
+
+    public struct AddSchool: GraphQLSelectionSet {
+      public static let possibleTypes = ["School"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("school_id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("school_name", type: .nonNull(.scalar(String.self))),
+        GraphQLField("email", type: .nonNull(.scalar(String.self))),
+        GraphQLField("address", type: .nonNull(.scalar(String.self))),
+        GraphQLField("city", type: .nonNull(.scalar(String.self))),
+        GraphQLField("zipcode", type: .nonNull(.scalar(String.self))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(schoolId: GraphQLID, schoolName: String, email: String, address: String, city: String, zipcode: String) {
+        self.init(unsafeResultMap: ["__typename": "School", "school_id": schoolId, "school_name": schoolName, "email": email, "address": address, "city": city, "zipcode": zipcode])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var schoolId: GraphQLID {
+        get {
+          return resultMap["school_id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "school_id")
+        }
+      }
+
+      public var schoolName: String {
+        get {
+          return resultMap["school_name"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "school_name")
+        }
+      }
+
+      public var email: String {
+        get {
+          return resultMap["email"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "email")
+        }
+      }
+
+      public var address: String {
+        get {
+          return resultMap["address"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "address")
+        }
+      }
+
+      public var city: String {
+        get {
+          return resultMap["city"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "city")
+        }
+      }
+
+      public var zipcode: String {
+        get {
+          return resultMap["zipcode"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "zipcode")
+        }
+      }
+    }
+  }
+}
