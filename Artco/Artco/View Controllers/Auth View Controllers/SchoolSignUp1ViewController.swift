@@ -33,8 +33,12 @@ class SchoolSignUp1ViewController: UIViewController {
         
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if let error = error {
-                NSLog("\(error)")
-                return
+                if let errCode = AuthErrorCode(rawValue: error._code) {
+                    let errorAlert = UIAlertController(title: "Error", message:
+                        "\(errCode.errorMessage)", preferredStyle: .alert)
+                    errorAlert.addAction(UIAlertAction(title: "Dismiss", style: .default))
+                    self.present(errorAlert, animated: true, completion: nil)
+                }
             }
             DispatchQueue.main.async {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
