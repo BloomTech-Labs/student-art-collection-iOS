@@ -1,9 +1,12 @@
 PODS:
+  - Alamofire (4.8.2)
   - AppAuth (1.3.0):
     - AppAuth/Core (= 1.3.0)
     - AppAuth/ExternalUserAgent (= 1.3.0)
   - AppAuth/Core (1.3.0)
   - AppAuth/ExternalUserAgent (1.3.0)
+  - Cloudinary (2.8.0):
+    - Alamofire (~> 4.8.2)
   - Firebase/Auth (6.14.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.4.1)
@@ -112,6 +115,7 @@ PODS:
   - nanopb/encode (0.3.9011)
 
 DEPENDENCIES:
+  - Cloudinary (~> 2.0)
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -120,7 +124,9 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - AppAuth
+    - Cloudinary
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -143,7 +149,9 @@ SPEC REPOS:
     - nanopb
 
 SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   AppAuth: 73574f3013a1e65b9601a3ddc8b3158cce68c09d
+  Cloudinary: 57c51232648d18bd242db1774c8fa80476c58795
   Firebase: 0219bb4782eb1406f1b9b0628a2e625484ce910d
   FirebaseAnalytics: f68b9f3f1241385129ae0a83b63627fc420c05e5
   FirebaseAuth: 831577b184ecaba38bc886768c1c22a450cc44e3
@@ -165,6 +173,6 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
 
-PODFILE CHECKSUM: b2072ae25d5e400c508f56b4a5aa383ecd66f31b
+PODFILE CHECKSUM: 9fc74bba6222595e749eb6422a15b5edf51faed3
 
 COCOAPODS: 1.8.4
