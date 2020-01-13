@@ -14,7 +14,14 @@
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="artwork" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Student" inverseName="artwork" inverseEntity="Student"/>
     </entity>
-    <entity name="Placeholder" representedClassName="Placeholder" syncable="YES" codeGenerationType="class"/>
+    <entity name="School" representedClassName="School" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="city" optional="YES" attributeType="String"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="schoolId" optional="YES" attributeType="String"/>
+        <attribute name="schoolName" optional="YES" attributeType="String"/>
+        <attribute name="zipcode" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="Student" representedClassName="Student" syncable="YES" codeGenerationType="class">
         <attribute name="bio" optional="YES" attributeType="String"/>
         <attribute name="studentName" optional="YES" attributeType="String"/>
@@ -24,7 +31,7 @@
         <element name="Buyer" positionX="-18" positionY="63" width="128" height="43"/>
         <element name="Images" positionX="0" positionY="81" width="128" height="43"/>
         <element name="Listing" positionX="-63" positionY="-18" width="128" height="193"/>
-        <element name="Placeholder" positionX="-54" positionY="45" width="128" height="43"/>
+        <element name="School" positionX="-54" positionY="45" width="128" height="133"/>
         <element name="Student" positionX="-36" positionY="54" width="128" height="88"/>
     </elements>
 </model>
