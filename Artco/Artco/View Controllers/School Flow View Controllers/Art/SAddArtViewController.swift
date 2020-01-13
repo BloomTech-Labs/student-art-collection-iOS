@@ -9,6 +9,7 @@
 import UIKit
 import Photos
 import AVFoundation
+import FirebaseAuth
 
 class SAddArtViewController: UIViewController {
     
@@ -57,7 +58,7 @@ class SAddArtViewController: UIViewController {
             !suggestedDonation.isEmpty,
             let artDescription = descriptionTextView.text,
             !artDescription.isEmpty,
-            topLeftImageView.isEqual(selectedImage) else {
+            topLeftImageView.image != nil else {
                 DispatchQueue.main.async {
                     self.presentAlert()
                 }
@@ -71,8 +72,9 @@ class SAddArtViewController: UIViewController {
         guard let price = Float(suggestedDonation) else { return }
         guard let images = imageData else { return }
         listingController.createListing(title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: images)
+        guard let schoolId = Auth.auth().currentUser?.uid else { return }
         
-        
+        Network.shared.apollo.perform(mutation: AddArtMutation(category: "Photography", school_id: schoolId, price: Int(price), sold: false, title: title, artist_name: artistName, description: description, date_posted: "\(Date())"))
         
         tabBarController?.selectedIndex = 0
         

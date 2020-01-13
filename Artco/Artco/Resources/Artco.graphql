@@ -50,10 +50,7 @@ city: $city, zipcode: $zipcode) {
 
 mutation AddArt($category: ID!, $school_id: ID!, $price: Int, $sold: Boolean, $title: String, $artist_name: String, $description: String, $date_posted: String) {
   addArt (category: $category, school_id: $school_id, price: $price, sold: $sold, title: $title, artist_name: $artist_name, description: $description, date_posted: $date_posted) {
-    category {
-      id
-      category
-    }
+    category 
     school_id
     price
     sold
@@ -62,3 +59,5 @@ mutation AddArt($category: ID!, $school_id: ID!, $price: Int, $sold: Boolean, $t
       date_posted
     }
 }
+
+

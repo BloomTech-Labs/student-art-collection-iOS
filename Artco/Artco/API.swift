@@ -681,3 +681,172 @@ public final class AddSchoolMutation: GraphQLMutation {
     }
   }
 }
+
+public final class AddArtMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition =
+    """
+    mutation AddArt($category: ID!, $school_id: ID!, $price: Int, $sold: Boolean, $title: String, $artist_name: String, $description: String, $date_posted: String) {
+      addArt(category: $category, school_id: $school_id, price: $price, sold: $sold, title: $title, artist_name: $artist_name, description: $description, date_posted: $date_posted) {
+        __typename
+        category
+        school_id
+        price
+        sold
+        title
+        description
+        date_posted
+      }
+    }
+    """
+
+  public let operationName = "AddArt"
+
+  public var category: GraphQLID
+  public var school_id: GraphQLID
+  public var price: Int?
+  public var sold: Bool?
+  public var title: String?
+  public var artist_name: String?
+  public var description: String?
+  public var date_posted: String?
+
+  public init(category: GraphQLID, school_id: GraphQLID, price: Int? = nil, sold: Bool? = nil, title: String? = nil, artist_name: String? = nil, description: String? = nil, date_posted: String? = nil) {
+    self.category = category
+    self.school_id = school_id
+    self.price = price
+    self.sold = sold
+    self.title = title
+    self.artist_name = artist_name
+    self.description = description
+    self.date_posted = date_posted
+  }
+
+  public var variables: GraphQLMap? {
+    return ["category": category, "school_id": school_id, "price": price, "sold": sold, "title": title, "artist_name": artist_name, "description": description, "date_posted": date_posted]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("addArt", arguments: ["category": GraphQLVariable("category"), "school_id": GraphQLVariable("school_id"), "price": GraphQLVariable("price"), "sold": GraphQLVariable("sold"), "title": GraphQLVariable("title"), "artist_name": GraphQLVariable("artist_name"), "description": GraphQLVariable("description"), "date_posted": GraphQLVariable("date_posted")], type: .nonNull(.object(AddArt.selections))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(addArt: AddArt) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "addArt": addArt.resultMap])
+    }
+
+    public var addArt: AddArt {
+      get {
+        return AddArt(unsafeResultMap: resultMap["addArt"]! as! ResultMap)
+      }
+      set {
+        resultMap.updateValue(newValue.resultMap, forKey: "addArt")
+      }
+    }
+
+    public struct AddArt: GraphQLSelectionSet {
+      public static let possibleTypes = ["Art"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("category", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("school_id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("price", type: .scalar(Int.self)),
+        GraphQLField("sold", type: .scalar(Bool.self)),
+        GraphQLField("title", type: .scalar(String.self)),
+        GraphQLField("description", type: .scalar(String.self)),
+        GraphQLField("date_posted", type: .scalar(String.self)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(category: GraphQLID, schoolId: GraphQLID, price: Int? = nil, sold: Bool? = nil, title: String? = nil, description: String? = nil, datePosted: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Art", "category": category, "school_id": schoolId, "price": price, "sold": sold, "title": title, "description": description, "date_posted": datePosted])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var category: GraphQLID {
+        get {
+          return resultMap["category"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "category")
+        }
+      }
+
+      public var schoolId: GraphQLID {
+        get {
+          return resultMap["school_id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "school_id")
+        }
+      }
+
+      public var price: Int? {
+        get {
+          return resultMap["price"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "price")
+        }
+      }
+
+      public var sold: Bool? {
+        get {
+          return resultMap["sold"] as? Bool
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "sold")
+        }
+      }
+
+      public var title: String? {
+        get {
+          return resultMap["title"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "title")
+        }
+      }
+
+      public var description: String? {
+        get {
+          return resultMap["description"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "description")
+        }
+      }
+
+      public var datePosted: String? {
+        get {
+          return resultMap["date_posted"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "date_posted")
+        }
+      }
+    }
+  }
+}
