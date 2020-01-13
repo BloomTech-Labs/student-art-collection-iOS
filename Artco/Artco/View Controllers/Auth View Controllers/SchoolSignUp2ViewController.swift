@@ -11,32 +11,21 @@ import Apollo
 
 class SchoolSignUp2ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    @IBOutlet weak var schoolNameTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var cityTextField: UITextField!
+    @IBOutlet weak var zipcodeTextField: UITextField!
+    
+    @IBAction func doneButtonTapped(_ sender: UIButton) {
+        
+        
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "SchoolFlow", bundle: nil)
+            let schoolTabBarController = storyboard.instantiateViewController(withIdentifier: "SchoolTabBarController")
+            schoolTabBarController.modalPresentationStyle = .fullScreen
+            self.present(schoolTabBarController, animated: true, completion: nil)
+            
+        }
     }
     
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
-
-/*
-DispatchQueue.main.async {
-    let storyboard = UIStoryboard(name: "SchoolFlow", bundle: nil)
-    let schoolTabBarController = storyboard.instantiateViewController(withIdentifier: "SchoolTabBarController")
-    schoolTabBarController.modalPresentationStyle = .fullScreen
-    self.present(schoolTabBarController, animated: true, completion: nil)
-    
-}
-*/

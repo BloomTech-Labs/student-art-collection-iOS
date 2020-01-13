@@ -560,6 +560,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="doneButtonTapped:" destination="Zsw-Hf-oW5" eventType="touchUpInside" id="txH-wP-TQs"/>
                                     <action selector="loginButtonPressed:" destination="6Ru-dw-O54" eventType="touchUpInside" id="5bz-Xd-yf5"/>
                                 </connections>
                             </button>
@@ -627,6 +628,12 @@
                         <viewLayoutGuide key="safeArea" id="c0S-EC-ZLd"/>
                     </view>
                     <navigationItem key="navigationItem" id="slu-gW-t74"/>
+                    <connections>
+                        <outlet property="addressTextField" destination="yBT-tB-4SF" id="ZLz-tr-Vbd"/>
+                        <outlet property="cityTextField" destination="l4g-x7-gLK" id="DMC-te-s5i"/>
+                        <outlet property="schoolNameTextField" destination="G94-Jn-5hq" id="1UL-XA-gZz"/>
+                        <outlet property="zipcodeTextField" destination="Ru4-ff-XIu" id="FvC-KZ-Awa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Udz-WR-9ii" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

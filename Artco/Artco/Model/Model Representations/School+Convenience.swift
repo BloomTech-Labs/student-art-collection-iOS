@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 extension School {
+    
     @discardableResult convenience init (schoolId: String,
                                          schoolName: String,
                                          email: String,
