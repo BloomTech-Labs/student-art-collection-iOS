@@ -36,9 +36,9 @@ query Art($id: ID!) {
   }
 }
 
-mutation AddSchool {
-  addSchool(school_id: "ID", school_name: "String", email: "String", address: "String",
-city: "String", zipcode: "String") {
+mutation AddSchool($school_id: ID!, $school_name: String!, $email: String!, $address: String!, $city: String!, $zipcode: String!) {
+  addSchool (school_id: $school_id, school_name: $school_name, email: $email, address: $address,
+city: $city, zipcode: $zipcode) {
     school_id
     school_name
     email

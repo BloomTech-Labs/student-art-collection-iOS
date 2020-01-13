@@ -33,15 +33,18 @@ class SchoolSignUp1ViewController: UIViewController {
         
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if let error = error {
-                NSLog("\(error)")
-                return
+                if let errCode = AuthErrorCode(rawValue: error._code) {
+                    let errorAlert = UIAlertController(title: "Error", message:
+                        "\(errCode.errorMessage)", preferredStyle: .alert)
+                    errorAlert.addAction(UIAlertAction(title: "Dismiss", style: .default))
+                    self.present(errorAlert, animated: true, completion: nil)
+                }
             }
             DispatchQueue.main.async {
-                let storyboard = UIStoryboard(name: "SchoolFlow", bundle: nil)
-                let schoolTabBarController = storyboard.instantiateViewController(withIdentifier: "SchoolTabBarController")
-                schoolTabBarController.modalPresentationStyle = .fullScreen
-                self.present(schoolTabBarController, animated: true, completion: nil)
-                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let schoolDetailsViewController = storyboard.instantiateViewController(withIdentifier: "SchoolDetailsViewController")
+                schoolDetailsViewController.modalPresentationStyle = .fullScreen
+                self.present(schoolDetailsViewController, animated: true, completion: nil)
             }
         }
     }

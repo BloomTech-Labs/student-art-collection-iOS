@@ -532,8 +532,8 @@ public final class AddSchoolMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition =
     """
-    mutation AddSchool {
-      addSchool(school_id: "ID", school_name: "String", email: "String", address: "String", city: "String", zipcode: "String") {
+    mutation AddSchool($school_id: ID!, $school_name: String!, $email: String!, $address: String!, $city: String!, $zipcode: String!) {
+      addSchool(school_id: $school_id, school_name: $school_name, email: $email, address: $address, city: $city, zipcode: $zipcode) {
         __typename
         school_id
         school_name
@@ -547,14 +547,31 @@ public final class AddSchoolMutation: GraphQLMutation {
 
   public let operationName = "AddSchool"
 
-  public init() {
+  public var school_id: GraphQLID
+  public var school_name: String
+  public var email: String
+  public var address: String
+  public var city: String
+  public var zipcode: String
+
+  public init(school_id: GraphQLID, school_name: String, email: String, address: String, city: String, zipcode: String) {
+    self.school_id = school_id
+    self.school_name = school_name
+    self.email = email
+    self.address = address
+    self.city = city
+    self.zipcode = zipcode
+  }
+
+  public var variables: GraphQLMap? {
+    return ["school_id": school_id, "school_name": school_name, "email": email, "address": address, "city": city, "zipcode": zipcode]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Mutation"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("addSchool", arguments: ["school_id": "ID", "school_name": "String", "email": "String", "address": "String", "city": "String", "zipcode": "String"], type: .nonNull(.object(AddSchool.selections))),
+      GraphQLField("addSchool", arguments: ["school_id": GraphQLVariable("school_id"), "school_name": GraphQLVariable("school_name"), "email": GraphQLVariable("email"), "address": GraphQLVariable("address"), "city": GraphQLVariable("city"), "zipcode": GraphQLVariable("zipcode")], type: .nonNull(.object(AddSchool.selections))),
     ]
 
     public private(set) var resultMap: ResultMap

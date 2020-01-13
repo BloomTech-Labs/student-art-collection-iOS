@@ -9,9 +9,7 @@
 import Foundation
 import CoreData
 
-
 extension Student {
-    
     
     @discardableResult convenience init (studentName: String,
                                          bio: String,
