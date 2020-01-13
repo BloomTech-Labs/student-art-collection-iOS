@@ -18,13 +18,13 @@ class SchoolLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        DispatchQueue.main.async {
-            let storyboard = UIStoryboard(name: "SchoolFlow", bundle: nil)
-            let schoolTabBarController = storyboard.instantiateViewController(withIdentifier: "SchoolTabBarController")
-            schoolTabBarController.modalPresentationStyle = .fullScreen
-            self.present(schoolTabBarController, animated: true, completion: nil)
-            
-        }
+//        DispatchQueue.main.async {
+//            let storyboard = UIStoryboard(name: "SchoolFlow", bundle: nil)
+//            let schoolTabBarController = storyboard.instantiateViewController(withIdentifier: "SchoolTabBarController")
+//            schoolTabBarController.modalPresentationStyle = .fullScreen
+//            self.present(schoolTabBarController, animated: true, completion: nil)
+//
+//        }
         
     }
     

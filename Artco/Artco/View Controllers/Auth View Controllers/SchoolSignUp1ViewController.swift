@@ -37,11 +37,10 @@ class SchoolSignUp1ViewController: UIViewController {
                 return
             }
             DispatchQueue.main.async {
-                let storyboard = UIStoryboard(name: "SchoolFlow", bundle: nil)
-                let schoolTabBarController = storyboard.instantiateViewController(withIdentifier: "SchoolTabBarController")
-                schoolTabBarController.modalPresentationStyle = .fullScreen
-                self.present(schoolTabBarController, animated: true, completion: nil)
-                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let schoolDetailsViewController = storyboard.instantiateViewController(withIdentifier: "SchoolDetailsViewController")
+                schoolDetailsViewController.modalPresentationStyle = .fullScreen
+                self.present(schoolDetailsViewController, animated: true, completion: nil)
             }
         }
     }

@@ -28,3 +28,13 @@ class SchoolSignUp2ViewController: UIViewController {
     */
 
 }
+
+/*
+DispatchQueue.main.async {
+    let storyboard = UIStoryboard(name: "SchoolFlow", bundle: nil)
+    let schoolTabBarController = storyboard.instantiateViewController(withIdentifier: "SchoolTabBarController")
+    schoolTabBarController.modalPresentationStyle = .fullScreen
+    self.present(schoolTabBarController, animated: true, completion: nil)
+    
+}
+*/
