@@ -72,7 +72,7 @@ class SAddArtViewController: UIViewController {
         guard let images = imageData else { return }
         listingController.createListing(title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: images)
         
-        // TODO: - Add fun animation when transitioning to gallery
+        
         
         tabBarController?.selectedIndex = 0
         
