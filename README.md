@@ -1,16 +1,14 @@
-# Title of project goes here
+# Artco - Student Art Collection
 
 1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
 
 ## Contributors
 
-|                                       [Alexandra Rhodes](https://github.com/alexnrhodes)                                        |                                       [Mitchell Budge](https://github.com/mitchellgbudge)                                        |                                                                               |                                                                               |                                                                               |
-| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
+|                                       [Alexandra Rhodes](https://github.com/alexnrhodes)                                        |                                       [Mitchell Budge](https://github.com/mitchellgbudge)                                        |
+| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
 |                      [<img src="https://avatars0.githubusercontent.com/u/52641879?s=400&v=4" width = "200" />](https://github.com/alexnrhodes)                       |                      [<img src="https://avatars1.githubusercontent.com/u/46467169?s=400&v=4" width = "200" />](https://github.com/mitchellgbudge)                       |                      
-|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/alexnrhodes)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/mitchellgbudge)             |                       |                     |                         |
-| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/alexandra-rhodes-370525169/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/mitchellbudge) |  |  |  |
-
-🚫 Optional examples of using badges with links for your tech stack, make sure to change these to fit your project
+|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/alexnrhodes)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/mitchellgbudge)             |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/alexandra-rhodes-370525169/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/mitchellbudge) |
 
 [![Swift Version][swift-image]][swift-url]
 [![Build Status][travis-image]][travis-url]
@@ -26,11 +24,11 @@
 
 1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
 
-1️⃣ [Trello Board](🚫add link to trello board here)
+1️⃣ [Trello Board](https://trello.com/b/mOvtOPY4/labs-19-student-art-collection)
 
-1️⃣ [Product Canvas](🚫add link to product canvas here)
+1️⃣ [Product Canvas](https://www.notion.so/dd6ac194eead45b29117e379272f9f86?v=1c84e67089544bd68f9a06a4ad184bda)
 
-1️⃣ [UX Design files](🚫add link to design files here) - 🚫 delete if not applicable
+1️⃣ [UX Design files](https://www.notion.so/Mockups-12401aaa1da8472fa060c45e5d068bf0)
 
 🚫 One to two paragraph statement about your product and what it does.
 
