@@ -30,6 +30,7 @@ class SAddArtViewController: UIViewController {
     let cloudinary = Cloudinary.shared
     let imagePickerController = UIImagePickerController()
     var imageData: Data?
+    var imageURLs: [String] = []
     
     // MARK: - View lifecycle methods
     
@@ -192,6 +193,7 @@ extension SAddArtViewController: UIImagePickerControllerDelegate, UINavigationCo
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.originalImage] as? UIImage else { return }
+
         guard let data = image.jpegData(compressionQuality: 1) else { fatalError() }
         imageData = data
         
@@ -199,6 +201,8 @@ extension SAddArtViewController: UIImagePickerControllerDelegate, UINavigationCo
             if let error = error {
                 print(error)
             }
+            guard let imageURL = result?.url else { return }
+            self.imageURLs.append(imageURL)            
         }
         DispatchQueue.main.async {
             self.topLeftImageView.image = image
