@@ -344,6 +344,95 @@ public final class AllSchoolsQuery: GraphQLQuery {
   }
 }
 
+public final class SchoolByFirebaseIdQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition =
+    """
+    query SchoolByFirebaseID($school_id: ID!) {
+      schoolBySchoolId(school_id: $school_id) {
+        __typename
+        id
+      }
+    }
+    """
+
+  public let operationName = "SchoolByFirebaseID"
+
+  public var school_id: GraphQLID
+
+  public init(school_id: GraphQLID) {
+    self.school_id = school_id
+  }
+
+  public var variables: GraphQLMap? {
+    return ["school_id": school_id]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("schoolBySchoolId", arguments: ["school_id": GraphQLVariable("school_id")], type: .nonNull(.object(SchoolBySchoolId.selections))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(schoolBySchoolId: SchoolBySchoolId) {
+      self.init(unsafeResultMap: ["__typename": "Query", "schoolBySchoolId": schoolBySchoolId.resultMap])
+    }
+
+    public var schoolBySchoolId: SchoolBySchoolId {
+      get {
+        return SchoolBySchoolId(unsafeResultMap: resultMap["schoolBySchoolId"]! as! ResultMap)
+      }
+      set {
+        resultMap.updateValue(newValue.resultMap, forKey: "schoolBySchoolId")
+      }
+    }
+
+    public struct SchoolBySchoolId: GraphQLSelectionSet {
+      public static let possibleTypes = ["School"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: GraphQLID) {
+        self.init(unsafeResultMap: ["__typename": "School", "id": id])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+    }
+  }
+}
+
 public final class ArtQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition =

@@ -23,6 +23,12 @@ query AllSchools {
   }
 }
 
+query SchoolByFirebaseID ($school_id:ID!) {
+  schoolBySchoolId (school_id: $school_id) {
+    id
+  }
+}
+
 query Art($id: ID!) {
   art(id: $id) {
     price
@@ -56,7 +62,7 @@ mutation AddArt($category: ID!, $school_id: ID!, $price: Int, $sold: Boolean, $t
     sold
     title
     description
-      date_posted
+    date_posted
     }
 }
 

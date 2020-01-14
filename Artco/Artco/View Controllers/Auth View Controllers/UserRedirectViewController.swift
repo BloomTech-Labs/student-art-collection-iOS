@@ -7,8 +7,15 @@
 //
 
 import UIKit
+import Apollo
 
 class UserRedirectViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        Network.shared.apollo.perform(mutation: AddArtMutation(category: "5", school_id: "27"))
+    }
     
     @IBAction func buyerRedirectButtonTapped(_ sender: UIButton) {
         DispatchQueue.main.async {

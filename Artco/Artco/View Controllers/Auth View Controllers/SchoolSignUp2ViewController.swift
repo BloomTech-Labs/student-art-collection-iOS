@@ -11,7 +11,7 @@ import FirebaseAuth
 import Apollo
 
 class SchoolSignUp2ViewController: UIViewController {
-
+    
     @IBOutlet weak var schoolNameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!
@@ -36,12 +36,50 @@ class SchoolSignUp2ViewController: UIViewController {
         
         Network.shared.apollo.perform(mutation: AddSchoolMutation(school_id: schoolId, school_name: schoolName, email: email, address: address, city: city, zipcode: zipcode))
         
+        setServerId()
+        
         DispatchQueue.main.async {
             let storyboard = UIStoryboard(name: "SchoolFlow", bundle: nil)
             let schoolTabBarController = storyboard.instantiateViewController(withIdentifier: "SchoolTabBarController")
             schoolTabBarController.modalPresentationStyle = .fullScreen
             self.present(schoolTabBarController, animated: true, completion: nil)
         }
+    }
+    
+    private func setServerId() {
+        Network.shared.apollo
+            .fetch(query: SchoolByFirebaseIdQuery(school_id: Auth.auth().currentUser!.uid)) { [weak self] result in
+                
+                guard let self = self else {
+                    return
+                }
+                
+                switch result {
+                case .success(let graphQLResult):
+                    if let serverId = graphQLResult.data?.schoolBySchoolId.id {
+                        SchoolServerID.shared.serverId = serverId
+                        print(serverId)
+                    }
+                    
+                    if let errors = graphQLResult.errors {
+                        let message = errors
+                            .map { $0.localizedDescription }
+                            .joined(separator: "\n")
+                        self.showErrorAlert(title: "GraphQL Error(s)",
+                                            message: message)
+                    }
+                case .failure:
+                    print("You suck this didn't work you dumb bitch")
+                }
+        }
+    }
+    
+    private func showErrorAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true)
     }
     
 }
