@@ -118,7 +118,7 @@
                     <navigationItem key="navigationItem" title="GALLERY" id="Dac-w7-sGM">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="line.horizontal.3.decrease.circle.fill" catalog="system" id="hBV-S1-UO9">
                             <connections>
-                                <segue destination="01n-ah-t3R" kind="presentation" modalPresentationStyle="overFullScreen" id="zGi-Sb-1lh"/>
+                                <segue destination="01n-ah-t3R" kind="presentation" modalPresentationStyle="fullScreen" id="zGi-Sb-1lh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -145,9 +145,12 @@
                                             <constraint firstAttribute="height" constant="40" id="ZLz-p1-hT9"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Add Art">
+                                        <state key="normal" title="Done">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="doneButtonTapped:" destination="01n-ah-t3R" eventType="touchUpInside" id="tsV-pF-hwL"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SETTINGS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0P-Vs-qx0">
                                         <rect key="frame" x="40" y="76" width="100" height="25.5"/>
@@ -250,7 +253,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Fzv-sM-MlK" firstAttribute="trailing" secondItem="XAc-wc-ALo" secondAttribute="trailing" id="1DU-KQ-Ea5"/>
                             <constraint firstItem="Fzv-sM-MlK" firstAttribute="trailing" secondItem="XAc-wc-ALo" secondAttribute="trailing" id="Hva-3V-BF6"/>
@@ -265,6 +268,12 @@
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="rh1-HV-vnV">
                         <barButtonItem key="backBarButtonItem" title=" " id="Bel-ia-GuN"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="emailTextField" destination="yfc-Gp-K8q" id="Iyf-yB-sbD"/>
+                        <outlet property="passwordTextField" destination="GD9-O6-em2" id="Ft4-wz-tcN"/>
+                        <outlet property="schoolNameTextfield" destination="ttv-vZ-ke2" id="RMD-RN-ZpR"/>
+                        <outlet property="zipCodeTextField" destination="VnV-fy-L43" id="clG-7D-lbD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4MX-6t-oPH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -281,6 +290,11 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <offsetWrapper key="textShadowOffset" horizontal="-200" vertical="0.0"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -763,6 +777,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
+                            <offsetWrapper key="textShadowOffset" horizontal="-200" vertical="0.0"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

@@ -54,24 +54,7 @@ city: $city, zipcode: $zipcode) {
     }
 }
 
-mutation AddArt($input: Art) {
-  addArt (newArt: $input) {
-    category {
-      id
-      category
-    }
-    id
-    school_id
-    price
-    sold
-    title
-    description
-      date_posted
-    images {
-      image_url
-    }
-    }
-}
+
 
 mutation AddImage($image_url: String, $art_id: Int) {
   addImage(image_url: $image_url, art_id: $art_id) {
