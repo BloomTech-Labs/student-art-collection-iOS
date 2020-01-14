@@ -20,18 +20,30 @@ class CheckoutViewController: UIViewController {
     @IBOutlet weak var subtotalLabel: UILabel!
     @IBOutlet weak var additionalDonationTextField: UITextField!
     @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var submitInquiryButton: UIButton!
     
     let name = Notification.Name(rawValue: String.nameNotificationKey)
     let email = Notification.Name(rawValue: String.emailNotificationKey)
     let message = Notification.Name(rawValue: String.messageNotificationKey)
+    let ui = UIController.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         createObservers()
+        setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         updateTotal()
     }
     
     // MARK: Methods
+    
+    private func setupUI() {
+         ui.configureButton(submitInquiryButton)
+     }
+     
     
     private func updateTotal() {
         

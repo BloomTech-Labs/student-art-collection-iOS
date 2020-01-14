@@ -23,7 +23,9 @@ class ArtDetailViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
-
+    @IBOutlet weak var addToCartButton: UIButton!
+    
+    let ui = UIController.shared
     var id: GraphQLID?
     var listing: ArtQuery.Data.Art? {
         didSet {
@@ -37,13 +39,20 @@ class ArtDetailViewController: UIViewController {
         updateViews()
     }
     
+    private func setupUI() {
+        ui.configureButton(addToCartButton)
+    }
+    
     func updateViews() {
+        setupUI()
         guard isViewLoaded,
             let listing = listing else { return }
         listingImageView.image = convertToUIImage((listing.images?[0]?.imageUrl)!)!
         artistNameLabel.text = listing.artistName
         titleLabel.text = listing.title
+        priceLabel.text = "$\(String(describing: listing.price!)).00"
         descriptionTextView.text = listing.description
+        categoryLabel.text = "Painting"
     }
 
     private func loadListing() {
