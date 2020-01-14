@@ -9,6 +9,8 @@
 import UIKit
 import Photos
 import AVFoundation
+import FirebaseAuth
+import Cloudinary
 
 class SAddArtViewController: UIViewController {
     
@@ -25,10 +27,12 @@ class SAddArtViewController: UIViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
     
     let listingController = ListingController.shared
+    let cloudinary = Cloudinary.shared
     let imagePickerController = UIImagePickerController()
     var imageData: Data?
-    var selectedImage: UIImage?
-
+    var imageURL: String?
+    var artID: Int?
+    
     // MARK: - View lifecycle methods
     
     override func viewDidLoad() {
@@ -57,7 +61,7 @@ class SAddArtViewController: UIViewController {
             !suggestedDonation.isEmpty,
             let artDescription = descriptionTextView.text,
             !artDescription.isEmpty,
-            topLeftImageView.isEqual(selectedImage) else {
+            topLeftImageView.image != nil else {
                 DispatchQueue.main.async {
                     self.presentAlert()
                 }
@@ -71,13 +75,32 @@ class SAddArtViewController: UIViewController {
         guard let price = Float(suggestedDonation) else { return }
         guard let images = imageData else { return }
         listingController.createListing(title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: images)
+        guard let serverId = SchoolServerID.shared.serverId else { return }
+        let date = Date().fullDate
         
-        
+//        Network.shared.apollo.perform(mutation: AddArtMutation(category: categoryText, school_id: serverId, price: Int(price), sold: false, title: title, artist_name: artistName, description: artDescription, date_posted: date), context: nil, queue: DispatchQueue.main) { [weak self] result in
+//            
+//            guard let self = self else {
+//                return
+//            }
+//            
+//            switch result {
+//            case .success(let graphQLResult):
+//                if let errors = graphQLResult.errors {
+//                    let message = errors
+//                        .map { $0.localizedDescription }
+//                        .joined(separator: "\n")
+//                    self.showErrorAlert(title: "GraphQL Error(s)",
+//                                        message: message)
+//                }
+//            case .failure(let graphQLError):
+//                print(graphQLError)
+//            }
+//        }
         
         tabBarController?.selectedIndex = 0
         
         resetViews()
-        
     }
     
     private func keyboardDismiss() {
@@ -96,6 +119,14 @@ class SAddArtViewController: UIViewController {
     private func convertImageToData(_ image: UIImage) -> Data {
         guard let data = image.pngData() else { fatalError() }
         return data
+    }
+    
+    private func showErrorAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true)
     }
     
     private func resetViews() {
@@ -163,9 +194,41 @@ extension SAddArtViewController: UIImagePickerControllerDelegate, UINavigationCo
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.originalImage] as? UIImage else { return }
-        guard let data = image.pngData() else { fatalError() }
+
+        guard let data = image.jpegData(compressionQuality: 1) else { fatalError() }
         imageData = data
-        selectedImage = image
+        
+        cloudinary.cloudinary.createUploader().upload(data: data, uploadPreset: "smasd6kx", params: nil, progress: nil) { (result, error) in
+            if let error = error {
+                print(error)
+            }
+            guard let photoURL = result?.url,
+                let photoID = Int(result?.publicId ?? "") else { return }
+            
+            self.imageURL = photoURL
+            self.artID = photoID
+            
+//            Network.shared.apollo.perform(mutation: AddImageMutation(image_url: imageURL, art_id: Int(artID)), context: nil, queue: DispatchQueue.main) { [weak self] result in
+//
+//                guard let self = self else {
+//                    return
+//                }
+//
+//                switch result {
+//                case .success(let graphQLResult):
+//                    if let errors = graphQLResult.errors {
+//                        let message = errors
+//                            .map { $0.localizedDescription }
+//                            .joined(separator: "\n")
+//                        self.showErrorAlert(title: "GraphQL Error(s)",
+//                                            message: message)
+//                    }
+//                case .failure(let graphQLError):
+//                    print(graphQLError)
+//                }
+//            }
+//
+        }
         DispatchQueue.main.async {
             self.topLeftImageView.image = image
             picker.dismiss(animated: true, completion: nil)

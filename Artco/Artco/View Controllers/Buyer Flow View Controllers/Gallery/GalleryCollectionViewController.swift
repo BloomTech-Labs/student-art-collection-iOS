@@ -9,7 +9,7 @@
 import UIKit
 
 enum ListSection: Int, CaseIterable {
-  case allArts
+    case allArts
     
 }
 
@@ -19,7 +19,7 @@ class GalleryCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadLaunches()
+        loadListings()
     }
     
     // MARK: UICollectionViewDataSource
@@ -30,10 +30,10 @@ class GalleryCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let listSection = ListSection(rawValue: section) else {
-          assertionFailure("Invalid section")
-          return 0
+            assertionFailure("Invalid section")
+            return 0
         }
-              
+        
         switch listSection {
         case .allArts:
             return self.results.count
@@ -44,10 +44,10 @@ class GalleryCollectionViewController: UICollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListingCell", for: indexPath) as? ListingCollectionViewCell else { return UICollectionViewCell() }
         
         guard let listSection = ListSection(rawValue: indexPath.section) else {
-          assertionFailure("Invalid section")
-          return cell
+            assertionFailure("Invalid section")
+            return cell
         }
-          
+        
         switch listSection {
         case .allArts:
             let listing = self.results[indexPath.row]
@@ -58,7 +58,7 @@ class GalleryCollectionViewController: UICollectionViewController {
         return cell
     }
     
-    private func loadLaunches() {
+    private func loadListings() {
         guard isViewLoaded else { return }
         Network.shared.apollo
             .fetch(query: AllArtQuery()) { [weak self] result in
@@ -76,13 +76,13 @@ class GalleryCollectionViewController: UICollectionViewController {
                     if let listings = graphQLResult.data?.allArts {
                         self.results.append(contentsOf: listings.compactMap { $0 })
                     }
-                            
+                    
                     if let errors = graphQLResult.errors {
-                      let message = errors
+                        let message = errors
                             .map { $0.localizedDescription }
                             .joined(separator: "\n")
-                      self.showErrorAlert(title: "GraphQL Error(s)",
-                                          message: message)
+                        self.showErrorAlert(title: "GraphQL Error(s)",
+                                            message: message)
                     }
                 case .failure:
                     print("You suck this didn't work you dumb bitch")
@@ -91,11 +91,11 @@ class GalleryCollectionViewController: UICollectionViewController {
     }
     
     private func showErrorAlert(title: String, message: String) {
-      let alert = UIAlertController(title: title,
-                                    message: message,
-                                    preferredStyle: .alert)
-      alert.addAction(UIAlertAction(title: "OK", style: .default))
-      self.present(alert, animated: true)
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true)
     }
     
     private func convertToUIImage(_ str: String) -> UIImage? {

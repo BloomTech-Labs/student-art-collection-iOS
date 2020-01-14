@@ -344,6 +344,95 @@ public final class AllSchoolsQuery: GraphQLQuery {
   }
 }
 
+public final class SchoolByFirebaseIdQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition =
+    """
+    query SchoolByFirebaseID($school_id: ID!) {
+      schoolBySchoolId(school_id: $school_id) {
+        __typename
+        id
+      }
+    }
+    """
+
+  public let operationName = "SchoolByFirebaseID"
+
+  public var school_id: GraphQLID
+
+  public init(school_id: GraphQLID) {
+    self.school_id = school_id
+  }
+
+  public var variables: GraphQLMap? {
+    return ["school_id": school_id]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("schoolBySchoolId", arguments: ["school_id": GraphQLVariable("school_id")], type: .nonNull(.object(SchoolBySchoolId.selections))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(schoolBySchoolId: SchoolBySchoolId) {
+      self.init(unsafeResultMap: ["__typename": "Query", "schoolBySchoolId": schoolBySchoolId.resultMap])
+    }
+
+    public var schoolBySchoolId: SchoolBySchoolId {
+      get {
+        return SchoolBySchoolId(unsafeResultMap: resultMap["schoolBySchoolId"]! as! ResultMap)
+      }
+      set {
+        resultMap.updateValue(newValue.resultMap, forKey: "schoolBySchoolId")
+      }
+    }
+
+    public struct SchoolBySchoolId: GraphQLSelectionSet {
+      public static let possibleTypes = ["School"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: GraphQLID) {
+        self.init(unsafeResultMap: ["__typename": "School", "id": id])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+    }
+  }
+}
+
 public final class ArtQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition =
@@ -676,6 +765,119 @@ public final class AddSchoolMutation: GraphQLMutation {
         }
         set {
           resultMap.updateValue(newValue, forKey: "zipcode")
+        }
+      }
+    }
+  }
+}
+
+public final class AddImageMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition =
+    """
+    mutation AddImage($image_url: String, $art_id: Int) {
+      addImage(image_url: $image_url, art_id: $art_id) {
+        __typename
+        id
+        image_url
+        art_id
+      }
+    }
+    """
+
+  public let operationName = "AddImage"
+
+  public var image_url: String?
+  public var art_id: Int?
+
+  public init(image_url: String? = nil, art_id: Int? = nil) {
+    self.image_url = image_url
+    self.art_id = art_id
+  }
+
+  public var variables: GraphQLMap? {
+    return ["image_url": image_url, "art_id": art_id]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("addImage", arguments: ["image_url": GraphQLVariable("image_url"), "art_id": GraphQLVariable("art_id")], type: .nonNull(.object(AddImage.selections))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(addImage: AddImage) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "addImage": addImage.resultMap])
+    }
+
+    public var addImage: AddImage {
+      get {
+        return AddImage(unsafeResultMap: resultMap["addImage"]! as! ResultMap)
+      }
+      set {
+        resultMap.updateValue(newValue.resultMap, forKey: "addImage")
+      }
+    }
+
+    public struct AddImage: GraphQLSelectionSet {
+      public static let possibleTypes = ["Image"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("image_url", type: .scalar(String.self)),
+        GraphQLField("art_id", type: .scalar(Int.self)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: GraphQLID, imageUrl: String? = nil, artId: Int? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Image", "id": id, "image_url": imageUrl, "art_id": artId])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var imageUrl: String? {
+        get {
+          return resultMap["image_url"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "image_url")
+        }
+      }
+
+      public var artId: Int? {
+        get {
+          return resultMap["art_id"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "art_id")
         }
       }
     }

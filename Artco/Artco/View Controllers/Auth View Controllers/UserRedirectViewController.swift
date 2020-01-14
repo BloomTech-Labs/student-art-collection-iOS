@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import Apollo
 
 class UserRedirectViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
     @IBAction func buyerRedirectButtonTapped(_ sender: UIButton) {
         DispatchQueue.main.async {

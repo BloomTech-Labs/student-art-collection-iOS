@@ -40,6 +40,9 @@ class SchoolSignUp1ViewController: UIViewController {
                     self.present(errorAlert, animated: true, completion: nil)
                 }
             }
+            
+            SchoolServerID.shared.serverId = Auth.auth().currentUser?.uid
+            
             DispatchQueue.main.async {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let schoolDetailsViewController = storyboard.instantiateViewController(withIdentifier: "SchoolDetailsViewController")
