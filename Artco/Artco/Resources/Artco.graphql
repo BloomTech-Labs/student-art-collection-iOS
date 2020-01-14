@@ -54,16 +54,29 @@ city: $city, zipcode: $zipcode) {
     }
 }
 
-mutation AddArt($category: ID!, $school_id: ID!, $price: Int, $sold: Boolean, $title: String, $artist_name: String, $description: String, $date_posted: String) {
-  addArt (category: $category, school_id: $school_id, price: $price, sold: $sold, title: $title, artist_name: $artist_name, description: $description, date_posted: $date_posted) {
-    category 
+mutation AddArt($input: Art) {
+  addArt (newArt: $input) {
+    category {
+      id
+      category
+    }
+    id
     school_id
     price
     sold
     title
     description
-    date_posted
+      date_posted
+    images {
+      image_url
+    }
     }
 }
 
-
+mutation AddImage($image_url: String, $art_id: Int) {
+  addImage(image_url: $image_url, art_id: $art_id) {
+    id
+    image_url
+    art_id
+  }
+}

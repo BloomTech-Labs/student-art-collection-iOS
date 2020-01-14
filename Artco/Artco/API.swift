@@ -771,55 +771,39 @@ public final class AddSchoolMutation: GraphQLMutation {
   }
 }
 
-public final class AddArtMutation: GraphQLMutation {
+public final class AddImageMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition =
     """
-    mutation AddArt($category: ID!, $school_id: ID!, $price: Int, $sold: Boolean, $title: String, $artist_name: String, $description: String, $date_posted: String) {
-      addArt(category: $category, school_id: $school_id, price: $price, sold: $sold, title: $title, artist_name: $artist_name, description: $description, date_posted: $date_posted) {
+    mutation AddImage($image_url: String, $art_id: Int) {
+      addImage(image_url: $image_url, art_id: $art_id) {
         __typename
-        category
-        school_id
-        price
-        sold
-        title
-        description
-        date_posted
+        id
+        image_url
+        art_id
       }
     }
     """
 
-  public let operationName = "AddArt"
+  public let operationName = "AddImage"
 
-  public var category: GraphQLID
-  public var school_id: GraphQLID
-  public var price: Int?
-  public var sold: Bool?
-  public var title: String?
-  public var artist_name: String?
-  public var description: String?
-  public var date_posted: String?
+  public var image_url: String?
+  public var art_id: Int?
 
-  public init(category: GraphQLID, school_id: GraphQLID, price: Int? = nil, sold: Bool? = nil, title: String? = nil, artist_name: String? = nil, description: String? = nil, date_posted: String? = nil) {
-    self.category = category
-    self.school_id = school_id
-    self.price = price
-    self.sold = sold
-    self.title = title
-    self.artist_name = artist_name
-    self.description = description
-    self.date_posted = date_posted
+  public init(image_url: String? = nil, art_id: Int? = nil) {
+    self.image_url = image_url
+    self.art_id = art_id
   }
 
   public var variables: GraphQLMap? {
-    return ["category": category, "school_id": school_id, "price": price, "sold": sold, "title": title, "artist_name": artist_name, "description": description, "date_posted": date_posted]
+    return ["image_url": image_url, "art_id": art_id]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Mutation"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("addArt", arguments: ["category": GraphQLVariable("category"), "school_id": GraphQLVariable("school_id"), "price": GraphQLVariable("price"), "sold": GraphQLVariable("sold"), "title": GraphQLVariable("title"), "artist_name": GraphQLVariable("artist_name"), "description": GraphQLVariable("description"), "date_posted": GraphQLVariable("date_posted")], type: .nonNull(.object(AddArt.selections))),
+      GraphQLField("addImage", arguments: ["image_url": GraphQLVariable("image_url"), "art_id": GraphQLVariable("art_id")], type: .nonNull(.object(AddImage.selections))),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -828,31 +812,27 @@ public final class AddArtMutation: GraphQLMutation {
       self.resultMap = unsafeResultMap
     }
 
-    public init(addArt: AddArt) {
-      self.init(unsafeResultMap: ["__typename": "Mutation", "addArt": addArt.resultMap])
+    public init(addImage: AddImage) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "addImage": addImage.resultMap])
     }
 
-    public var addArt: AddArt {
+    public var addImage: AddImage {
       get {
-        return AddArt(unsafeResultMap: resultMap["addArt"]! as! ResultMap)
+        return AddImage(unsafeResultMap: resultMap["addImage"]! as! ResultMap)
       }
       set {
-        resultMap.updateValue(newValue.resultMap, forKey: "addArt")
+        resultMap.updateValue(newValue.resultMap, forKey: "addImage")
       }
     }
 
-    public struct AddArt: GraphQLSelectionSet {
-      public static let possibleTypes = ["Art"]
+    public struct AddImage: GraphQLSelectionSet {
+      public static let possibleTypes = ["Image"]
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("category", type: .nonNull(.scalar(GraphQLID.self))),
-        GraphQLField("school_id", type: .nonNull(.scalar(GraphQLID.self))),
-        GraphQLField("price", type: .scalar(Int.self)),
-        GraphQLField("sold", type: .scalar(Bool.self)),
-        GraphQLField("title", type: .scalar(String.self)),
-        GraphQLField("description", type: .scalar(String.self)),
-        GraphQLField("date_posted", type: .scalar(String.self)),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("image_url", type: .scalar(String.self)),
+        GraphQLField("art_id", type: .scalar(Int.self)),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -861,8 +841,8 @@ public final class AddArtMutation: GraphQLMutation {
         self.resultMap = unsafeResultMap
       }
 
-      public init(category: GraphQLID, schoolId: GraphQLID, price: Int? = nil, sold: Bool? = nil, title: String? = nil, description: String? = nil, datePosted: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Art", "category": category, "school_id": schoolId, "price": price, "sold": sold, "title": title, "description": description, "date_posted": datePosted])
+      public init(id: GraphQLID, imageUrl: String? = nil, artId: Int? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Image", "id": id, "image_url": imageUrl, "art_id": artId])
       }
 
       public var __typename: String {
@@ -874,66 +854,30 @@ public final class AddArtMutation: GraphQLMutation {
         }
       }
 
-      public var category: GraphQLID {
+      public var id: GraphQLID {
         get {
-          return resultMap["category"]! as! GraphQLID
+          return resultMap["id"]! as! GraphQLID
         }
         set {
-          resultMap.updateValue(newValue, forKey: "category")
+          resultMap.updateValue(newValue, forKey: "id")
         }
       }
 
-      public var schoolId: GraphQLID {
+      public var imageUrl: String? {
         get {
-          return resultMap["school_id"]! as! GraphQLID
+          return resultMap["image_url"] as? String
         }
         set {
-          resultMap.updateValue(newValue, forKey: "school_id")
+          resultMap.updateValue(newValue, forKey: "image_url")
         }
       }
 
-      public var price: Int? {
+      public var artId: Int? {
         get {
-          return resultMap["price"] as? Int
+          return resultMap["art_id"] as? Int
         }
         set {
-          resultMap.updateValue(newValue, forKey: "price")
-        }
-      }
-
-      public var sold: Bool? {
-        get {
-          return resultMap["sold"] as? Bool
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "sold")
-        }
-      }
-
-      public var title: String? {
-        get {
-          return resultMap["title"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "title")
-        }
-      }
-
-      public var description: String? {
-        get {
-          return resultMap["description"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "description")
-        }
-      }
-
-      public var datePosted: String? {
-        get {
-          return resultMap["date_posted"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "date_posted")
+          resultMap.updateValue(newValue, forKey: "art_id")
         }
       }
     }
