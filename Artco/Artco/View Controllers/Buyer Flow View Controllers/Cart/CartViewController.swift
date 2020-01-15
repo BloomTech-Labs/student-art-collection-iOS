@@ -21,6 +21,7 @@ class CartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        monitorTextField()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,22 +31,45 @@ class CartViewController: UIViewController {
     }
     
     private func setupUI() {
-         ui.configureButton(checkoutButton)
-     }
-     
+        ui.configureButton(checkoutButton)
+    }
+    
+    private func monitorTextField() {
+        additionalDonationTextField.addTarget(self, action: #selector(calculateAdditionalDonation), for: .editingChanged)
+    }
+    
+    @objc func calculateAdditionalDonation() {
+        if let donation = additionalDonationTextField.text  {
+            var subTotal = 0
+            
+            BuyerController.shared.cart.map {
+                guard let price = $0.price else { return }
+                subTotal += price
+            }
+            
+            guard let additionalDonation = Int(donation) else {return}
+            
+            let total = subTotal + additionalDonation
+            
+            subtotalLabel.text = "$\(subTotal).00"
+            totalLabel.text = "$\(total).00"
+        }
+    }
+    
     private func updateTotal() {
-           
-           var subTotal = 0
-           
-          BuyerController.shared.cart.map {
-               guard let price = $0.price else { return }
-               subTotal += price
-           }
-           
-           subtotalLabel.text = "$\(subTotal).00"
-           totalLabel.text = "$\(subTotal).00"
-           
-       }
+        
+        var subTotal = 0
+        
+        BuyerController.shared.cart.map {
+            guard let price = $0.price else { return }
+            subTotal += price
+        }
+        
+        
+        subtotalLabel.text = "$\(subTotal).00"
+        totalLabel.text = "$\(subTotal).00"
+        
+    }
     
     private func convertToUIImage(_ str: String) -> UIImage? {
         var imageData: Data?
@@ -79,13 +103,19 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CartCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CartCell", for: indexPath) as? CartTableViewCell else { return UITableViewCell() }
         let listing = BuyerController.shared.cart[indexPath.row]
-        cell.imageView?.image = convertToUIImage((listing.images?[0]?.imageUrl)!)!
-        cell.textLabel?.text = listing.artistName
-        cell.detailTextLabel?.text = "$\(listing.price).00"
+        cell.artImageView.image = convertToUIImage((listing.images?[0]?.imageUrl)!)!
+        cell.artistNameLabel.text = listing.artistName
+        cell.priceTextField.text = "$\(listing.price!).00"
+        cell.categoryLabel.text = "Painting"
         return cell
     }
+    
+    
+}
+
+extension CartViewController: UITextFieldDelegate {
     
     
 }

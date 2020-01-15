@@ -41,15 +41,15 @@ class CheckoutViewController: UIViewController {
     // MARK: Methods
     
     private func setupUI() {
-         ui.configureButton(submitInquiryButton)
-     }
-     
+        ui.configureButton(submitInquiryButton)
+    }
+    
     
     private func updateTotal() {
         
         var subTotal = 0
         
-       BuyerController.shared.cart.map {
+        BuyerController.shared.cart.map {
             guard let price = $0.price else { return }
             subTotal += price
         }
@@ -64,15 +64,20 @@ class CheckoutViewController: UIViewController {
         NotificationCenter.default.addObserver(forName: Notification.Name(String.nameNotificationKey), object: nil, queue: OperationQueue.main) { (notification) in
             guard let userInfo = notification.userInfo else {return}
             self.nameLabel.text = "\(userInfo["name"] ?? "Name")"
+            self.nameButton.setBackgroundImage(#imageLiteral(resourceName: "checkmark"), for: .normal)
+            
         }
         
         NotificationCenter.default.addObserver(forName: Notification.Name(String.emailNotificationKey), object: nil, queue: OperationQueue.main) { (notification) in
             guard let userInfo = notification.userInfo else {return}
             self.emailLabel.text = "\(userInfo["email"] ?? "Email")"
+            self.emailButton.setBackgroundImage(#imageLiteral(resourceName: "checkmark"), for: .normal)
         }
         
         NotificationCenter.default.addObserver(forName: Notification.Name(String.messageNotificationKey), object: nil, queue: OperationQueue.main) { (notification) in
             self.messageLabel.text = "Message sucessfully added!"
+            
+            self.messageButton.setBackgroundImage(#imageLiteral(resourceName: "checkmark"), for: .normal)
         }
         
     }
