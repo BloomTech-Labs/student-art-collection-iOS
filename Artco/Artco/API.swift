@@ -775,8 +775,8 @@ public final class AddArtMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition =
     """
-    mutation AddArt($category: ID!, $school_id: ID!, $price: Int, $sold: Boolean, $title: String, $artist_name: String, $description: String) {
-      addArt(category: $category, school_id: $school_id, price: $price, sold: $sold, title: $title, artist_name: $artist_name, description: $description) {
+    mutation AddArt($category: ID!, $school_id: ID!, $price: Int, $title: String, $artist_name: String, $description: String) {
+      addArt(category: $category, school_id: $school_id, price: $price, title: $title, artist_name: $artist_name, description: $description) {
         __typename
         id
         school_id
@@ -795,30 +795,28 @@ public final class AddArtMutation: GraphQLMutation {
   public var category: GraphQLID
   public var school_id: GraphQLID
   public var price: Int?
-  public var sold: Bool?
   public var title: String?
   public var artist_name: String?
   public var description: String?
 
-  public init(category: GraphQLID, school_id: GraphQLID, price: Int? = nil, sold: Bool? = nil, title: String? = nil, artist_name: String? = nil, description: String? = nil) {
+  public init(category: GraphQLID, school_id: GraphQLID, price: Int? = nil, title: String? = nil, artist_name: String? = nil, description: String? = nil) {
     self.category = category
     self.school_id = school_id
     self.price = price
-    self.sold = sold
     self.title = title
     self.artist_name = artist_name
     self.description = description
   }
 
   public var variables: GraphQLMap? {
-    return ["category": category, "school_id": school_id, "price": price, "sold": sold, "title": title, "artist_name": artist_name, "description": description]
+    return ["category": category, "school_id": school_id, "price": price, "title": title, "artist_name": artist_name, "description": description]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Mutation"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("addArt", arguments: ["category": GraphQLVariable("category"), "school_id": GraphQLVariable("school_id"), "price": GraphQLVariable("price"), "sold": GraphQLVariable("sold"), "title": GraphQLVariable("title"), "artist_name": GraphQLVariable("artist_name"), "description": GraphQLVariable("description")], type: .nonNull(.object(AddArt.selections))),
+      GraphQLField("addArt", arguments: ["category": GraphQLVariable("category"), "school_id": GraphQLVariable("school_id"), "price": GraphQLVariable("price"), "title": GraphQLVariable("title"), "artist_name": GraphQLVariable("artist_name"), "description": GraphQLVariable("description")], type: .nonNull(.object(AddArt.selections))),
     ]
 
     public private(set) var resultMap: ResultMap
