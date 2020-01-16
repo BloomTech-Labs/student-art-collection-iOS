@@ -102,8 +102,9 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zpm-7E-r77">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zpm-7E-r77" userLabel="EmailTextField">
                                         <rect key="frame" x="0.0" y="28.5" width="314" height="34"/>
+                                        <accessibility key="accessibilityConfiguration" label="EmailTextField"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="Z0u-hA-BNd"/>
                                         </constraints>
@@ -158,8 +159,9 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oww-Jg-CJI">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oww-Jg-CJI" userLabel="PasswordTextField">
                                         <rect key="frame" x="0.0" y="28.5" width="314" height="34"/>
+                                        <accessibility key="accessibilityConfiguration" label="PasswordTextField"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="pFt-xm-n24"/>
                                         </constraints>

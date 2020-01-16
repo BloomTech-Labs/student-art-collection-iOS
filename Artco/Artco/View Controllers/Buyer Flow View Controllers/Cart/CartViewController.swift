@@ -22,6 +22,7 @@ class CartViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         monitorTextField()
+        additionalDonationTextField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +41,11 @@ class CartViewController: UIViewController {
     
     @objc func calculateAdditionalDonation() {
         if let donation = additionalDonationTextField.text  {
+            var additionalDontation = donation
+            
+            if additionalDontation.contains("$") {
+                additionalDontation.removeAll { $0 == "$" }
+            }
             var subTotal = 0
             
             BuyerController.shared.cart.map {
@@ -47,7 +53,7 @@ class CartViewController: UIViewController {
                 subTotal += price
             }
             
-            guard let additionalDonation = Int(donation) else {return}
+            guard let additionalDonation = Int(additionalDontation) else {return}
             
             let total = subTotal + additionalDonation
             
@@ -117,5 +123,12 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension CartViewController: UITextFieldDelegate {
     
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if textField == additionalDonationTextField {
+            if let additonalDonation = textField.text?.currencyInputFormatting() {
+                textField.text = additonalDonation
+            }
+        }
+    }
     
 }

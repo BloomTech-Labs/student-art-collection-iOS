@@ -52,7 +52,7 @@ class SArtDetailViewController: UIViewController, NSFetchedResultsControllerDele
         guard isViewLoaded,
             let listing = listing else { return }
         
-        artImageView.image = convertDataToImage(listing.images ?? Data())
+       // artImageView.image = convertDataToImage(listing.images ?? Data())
         artistNameLabel.text = listing.artistName
         titleLabel.text = listing.title
         priceLabel.text = listing.price.currencyOutputFormatting()

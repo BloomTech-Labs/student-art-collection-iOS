@@ -12,6 +12,7 @@ pod 'Firebase/Database'
 pod 'FirebaseUI/Google'
 pod 'Firebase/Storage'
 pod 'Cloudinary', '~> 2.0'
+pod 'DropDown'
 
 
   target 'ArtcoTests' do
