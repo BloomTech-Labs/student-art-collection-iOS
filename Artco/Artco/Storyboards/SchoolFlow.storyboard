@@ -1308,7 +1308,11 @@
                         <viewLayoutGuide key="safeArea" id="fZY-Jl-Qnu"/>
                     </view>
                     <navigationItem key="navigationItem" id="3sH-by-CS5">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="xM2-n5-ce8"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="xM2-n5-ce8">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="LxG-U3-XsV" id="bRd-D2-kY2"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="artDescriptionTextView" destination="Q5T-0M-Ri2" id="m71-2c-zDB"/>

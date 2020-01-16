@@ -36,7 +36,7 @@ class SEditArtViewController: UIViewController {
         }
     }
     
-    @IBAction func saveButtonTapped(_ sender: UIButton) {
+    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         guard let listing = listing,
             let title = titleTextField.text, !title.isEmpty,
             let categoryText = categoryTextField.text, !categoryText.isEmpty,
@@ -50,10 +50,11 @@ class SEditArtViewController: UIViewController {
         }
         
         guard let price = Float(priceText),
-        let images = imageData else { return }
-        ListingController.shared.updateListing(listing: listing, title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: images)
+            let currentListingImages = listing.images else { return }
         
-        dismiss(animated: true, completion: nil)
+        ListingController.shared.updateListing(listing: listing, title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: imageData ?? currentListingImages)
+        
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func addImages(_ sender: UITapGestureRecognizer) {
