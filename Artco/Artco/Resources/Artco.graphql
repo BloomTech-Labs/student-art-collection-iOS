@@ -54,22 +54,6 @@ city: $city, zipcode: $zipcode) {
     }
 }
 
-
-mutation AddArt($school_id: ID!, $price: Int!, $sold: Boolean!, $title: String!,$artist_name: String!, $description: String!, $date_posted: String!, $category: ID!, $image_url: String!) {
-   addArt (school_id: $school_id, price: $price, sold: $sold, title: $title,artist_name: $artist_name, description: $description, date_posted: $date_posted, category: $category, image_url: $image_url) {
-    school_id
-    price
-    sold
-    title
-    artist_name
-    description
-    date_posted
-    category
-  }
-}
-
-
-
 mutation AddImage($image_url: String, $art_id: Int) {
   addImage(image_url: $image_url, art_id: $art_id) {
     id

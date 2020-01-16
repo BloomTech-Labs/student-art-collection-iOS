@@ -85,8 +85,9 @@ class SAddArtViewController: UIViewController {
         guard let price = Float(suggestedDonation) else { return }
         guard let images = imageData else { return }
         listingController.createListing(title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: images)
-        guard let serverId = SchoolServerID.shared.serverId else { return }
-        let date = Date().fullDate
+//        guard let serverId = SchoolServerID.shared.serverId else { return }
+//        let date = Date().fullDate
+        // Utilize serverId for attributing listings to schools, check to see if date is defaulted in the server before using
         
 //        Network.shared.apollo.perform(mutation: AddArtMutation(school_id: serverId, price: Int(price), sold: false, title: title, artist_name: artistName, description: description, date_posted: date, category: "\(category)"), context: nil, queue: DispatchQueue.main) { [weak self] result in
 //            
