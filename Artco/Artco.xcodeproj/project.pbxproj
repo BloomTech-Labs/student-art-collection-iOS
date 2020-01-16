@@ -42,6 +42,7 @@
 		6E0A332E23AC32020073FA2F /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0A332D23AC32020073FA2F /* CameraPreviewView.swift */; };
 		6E0A333023AC40870073FA2F /* UIImage+URLConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0A332F23AC40870073FA2F /* UIImage+URLConversion.swift */; };
 		6E0A333223AC58DC0073FA2F /* String+CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0A333123AC58DC0073FA2F /* String+CurrencyFormatter.swift */; };
+		6E370AC023D001E500B939BE /* Art-Palette.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E370ABF23D001E500B939BE /* Art-Palette.png */; };
 		6EA5B40A23A9648C007DD6AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA5B40923A9648C007DD6AE /* AppDelegate.swift */; };
 		6EA5B40C23A9648C007DD6AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA5B40B23A9648C007DD6AE /* SceneDelegate.swift */; };
 		6EA5B41323A96490007DD6AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EA5B41223A96490007DD6AE /* Assets.xcassets */; };
@@ -129,6 +130,7 @@
 		6E0A332D23AC32020073FA2F /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		6E0A332F23AC40870073FA2F /* UIImage+URLConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+URLConversion.swift"; sourceTree = "<group>"; };
 		6E0A333123AC58DC0073FA2F /* String+CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CurrencyFormatter.swift"; sourceTree = "<group>"; };
+		6E370ABF23D001E500B939BE /* Art-Palette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Art-Palette.png"; path = "Artco/Resources/Assets.xcassets/artcoLogo.imageset/Art-Palette.png"; sourceTree = SOURCE_ROOT; };
 		6EA5B40623A9648C007DD6AE /* Artco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Artco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EA5B40923A9648C007DD6AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6EA5B40B23A9648C007DD6AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 				3875135223C533F00004B31D /* SchoolFlow.storyboard */,
 				38A9928123AB1706003E5105 /* BuyerFlow.storyboard */,
 				6EA5B41423A96490007DD6AE /* LaunchScreen.storyboard */,
+				6E370ABF23D001E500B939BE /* Art-Palette.png */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -604,6 +607,7 @@
 			files = (
 				38A9927C23AB0413003E5105 /* Main.storyboard in Resources */,
 				6EA5B41623A96490007DD6AE /* LaunchScreen.storyboard in Resources */,
+				6E370AC023D001E500B939BE /* Art-Palette.png in Resources */,
 				6EA5B43A23A9664F007DD6AE /* GoogleService-Info.plist in Resources */,
 				6EA5B41323A96490007DD6AE /* Assets.xcassets in Resources */,
 				3875135323C533F00004B31D /* SchoolFlow.storyboard in Resources */,

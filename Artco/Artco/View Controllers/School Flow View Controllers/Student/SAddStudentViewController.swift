@@ -45,8 +45,7 @@ class SAddStudentViewController: UIViewController {
         let student = StudentController.shared.createStudent(studentName: studentName, bio: bio)
         self.student = student
     }
-    
-    #warning("pass student through segue when gesture tapped")
+
     /*
      // MARK: - Navigation
      

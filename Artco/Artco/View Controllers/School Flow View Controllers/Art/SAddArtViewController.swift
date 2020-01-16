@@ -10,6 +10,7 @@ import UIKit
 import Photos
 import AVFoundation
 import FirebaseAuth
+import Apollo
 import Cloudinary
 import DropDown
 
@@ -82,32 +83,35 @@ class SAddArtViewController: UIViewController {
             suggestedDonation.removeAll { $0 == "$" }
         }
         
-        guard let price = Float(suggestedDonation) else { return }
-        guard let images = imageData else { return }
-        listingController.createListing(title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: images)
-        guard let serverId = SchoolServerID.shared.serverId else { return }
-        let date = Date().fullDate
+        guard let price = Float(suggestedDonation),
+            let images = imageData else { return }
         
-//        Network.shared.apollo.perform(mutation: AddArtMutation(school_id: serverId, price: Int(price), sold: false, title: title, artist_name: artistName, description: description, date_posted: date, category: "\(category)"), context: nil, queue: DispatchQueue.main) { [weak self] result in
-//            
-//            guard let self = self else {
-//                return
-//            }
-//            
-//            switch result {
-//            case .success(let graphQLResult):
-//                if let errors = graphQLResult.errors {
-//                    let message = errors
-//                        .map { $0.localizedDescription }
-//                        .joined(separator: "\n")
-//                    self.showErrorAlert(title: "GraphQL Error(s)",
-//                                        message: message)
-//                }
-//            case .failure(let graphQLError):
-//                print(graphQLError)
-//            }
-//        }
-//        
+        listingController.createListing(title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: images)
+        
+        guard let serverId = SchoolServerID.shared.serverId else { return }
+        
+        Network.shared.apollo.perform(mutation: AddArtMutation(category: categoryText, school_id: serverId, price: Int(price), title: title, artist_name: artistName, description: artDescription), context: nil, queue: DispatchQueue.main) { result in
+            
+            switch result {
+            case .success(let graphQLResult):
+                if let errors = graphQLResult.errors {
+                    let message = errors
+                        .map { $0.localizedDescription }
+                        .joined(separator: "\n")
+                    self.showErrorAlert(title: "GraphQL Error(s)",
+                                        message: message)
+                }
+                
+                guard let artId = graphQLResult.data?.addArt.id else { return }
+                
+                Network.shared.apollo.perform(mutation: AddImageMutation(image_url: self.imageURL, art_id: Int(artId)))
+                
+            case .failure(let graphQLError):
+                let message = graphQLError.localizedDescription
+                self.showErrorAlert(title: "GraphQL Error", message: message)
+            }
+        }
+        
         tabBarController?.selectedIndex = 0
         
         resetViews()
@@ -204,47 +208,25 @@ extension SAddArtViewController: UIImagePickerControllerDelegate, UINavigationCo
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.originalImage] as? UIImage else { return }
-
+        
         guard let data = image.jpegData(compressionQuality: 1) else { fatalError() }
         imageData = data
         
-        cloudinary.cloudinary.createUploader().upload(data: data, uploadPreset: "smasd6kx", params: nil, progress: nil) { (result, error) in
+        cloudinary.cloudinary.createUploader().upload(data: data, uploadPreset: "smasd6kx", params: nil, progress: nil).response({ (result, error) in
+            print(result!)
+            
             if let error = error {
                 print(error)
             }
-            guard let photoURL = result?.url,
-                let photoID = Int(result?.publicId ?? "") else { return }
             
-            self.imageURL = photoURL
-            self.artID = photoID
+            self.imageURL = result?.url
             
-//            Network.shared.apollo.perform(mutation: AddImageMutation(image_url: imageURL, art_id: Int(artID)), context: nil, queue: DispatchQueue.main) { [weak self] result in
-//
-//                guard let self = self else {
-//                    return
-//                }
-//
-//                switch result {
-//                case .success(let graphQLResult):
-//                    if let errors = graphQLResult.errors {
-//                        let message = errors
-//                            .map { $0.localizedDescription }
-//                            .joined(separator: "\n")
-//                        self.showErrorAlert(title: "GraphQL Error(s)",
-//                                            message: message)
-//                    }
-//                case .failure(let graphQLError):
-//                    print(graphQLError)
-//                }
-//            }
-//
-        }
-        DispatchQueue.main.async {
-            self.topLeftImageView.image = image
-            picker.dismiss(animated: true, completion: nil)
-        }
+            DispatchQueue.main.async {
+                self.topLeftImageView.image = image
+                picker.dismiss(animated: true, completion: nil)
+            }
+        })
     }
-    
 }
 
 extension SAddArtViewController: UITextFieldDelegate, UITextViewDelegate {

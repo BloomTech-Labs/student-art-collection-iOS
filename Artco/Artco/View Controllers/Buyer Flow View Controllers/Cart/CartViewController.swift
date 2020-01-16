@@ -48,7 +48,7 @@ class CartViewController: UIViewController {
             }
             var subTotal = 0
             
-            BuyerController.shared.cart.map {
+           _ = BuyerController.shared.cart.map {
                 guard let price = $0.price else { return }
                 subTotal += price
             }
@@ -66,7 +66,7 @@ class CartViewController: UIViewController {
         
         var subTotal = 0
         
-        BuyerController.shared.cart.map {
+        _ = BuyerController.shared.cart.map {
             guard let price = $0.price else { return }
             subTotal += price
         }
@@ -83,9 +83,7 @@ class CartViewController: UIViewController {
         do {
             let data = try? Data(contentsOf: url)
             imageData = data
-        } catch {
-            fatalError("URL was not compatible.")
-        }
+        } 
         
         return UIImage(data: imageData ?? Data())
     }
