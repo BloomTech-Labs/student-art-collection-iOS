@@ -51,7 +51,8 @@ class GalleryCollectionViewController: UICollectionViewController {
         switch listSection {
         case .allArts:
             let listing = self.results[indexPath.row]
-          cell.listingImageView.image = convertToUIImage((listing.images?[0]?.imageUrl)!)!
+            guard let image = listing.images?[0]?.imageUrl else {return UICollectionViewCell()}
+          cell.listingImageView.image = convertToUIImage(image)
             cell.artistNameLabel.text = listing.artistName
             cell.priceLabel.text = "$\(String(describing: listing.price!)).00"
         }
