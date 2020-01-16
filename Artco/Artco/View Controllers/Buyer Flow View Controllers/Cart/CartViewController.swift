@@ -9,16 +9,72 @@
 import UIKit
 
 class CartViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var checkoutButton: UIButton!
+    @IBOutlet weak var subtotalLabel: UILabel!
+    @IBOutlet weak var additionalDonationTextField: UITextField!
+    @IBOutlet weak var totalLabel: UILabel!
+    
+    let ui = UIController.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        monitorTextField()
+        additionalDonationTextField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
+        updateTotal()
+    }
+    
+    private func setupUI() {
+        ui.configureButton(checkoutButton)
+    }
+    
+    private func monitorTextField() {
+        additionalDonationTextField.addTarget(self, action: #selector(calculateAdditionalDonation), for: .editingChanged)
+    }
+    
+    @objc func calculateAdditionalDonation() {
+        if let donation = additionalDonationTextField.text  {
+            var additionalDontation = donation
+            
+            if additionalDontation.contains("$") {
+                additionalDontation.removeAll { $0 == "$" }
+            }
+            var subTotal = 0
+            
+            BuyerController.shared.cart.map {
+                guard let price = $0.price else { return }
+                subTotal += price
+            }
+            
+            guard let additionalDonation = Int(additionalDontation) else {return}
+            
+            let total = subTotal + additionalDonation
+            
+            subtotalLabel.text = "$\(subTotal).00"
+            totalLabel.text = "$\(total).00"
+        }
+    }
+    
+    private func updateTotal() {
+        
+        var subTotal = 0
+        
+        BuyerController.shared.cart.map {
+            guard let price = $0.price else { return }
+            subTotal += price
+        }
+        
+        
+        subtotalLabel.text = "$\(subTotal).00"
+        totalLabel.text = "$\(subTotal).00"
+        
     }
     
     private func convertToUIImage(_ str: String) -> UIImage? {
@@ -33,17 +89,17 @@ class CartViewController: UIViewController {
         
         return UIImage(data: imageData ?? Data())
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension CartViewController: UITableViewDelegate, UITableViewDataSource {
@@ -53,13 +109,26 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CartCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CartCell", for: indexPath) as? CartTableViewCell else { return UITableViewCell() }
         let listing = BuyerController.shared.cart[indexPath.row]
-        cell.imageView?.image = convertToUIImage((listing.images?[0]?.imageUrl)!)!
-        cell.textLabel?.text = listing.artistName
-        cell.detailTextLabel?.text = "$\(listing.price).00"
+        cell.artImageView.image = convertToUIImage((listing.images?[0]?.imageUrl)!)!
+        cell.artistNameLabel.text = listing.artistName
+        cell.priceTextField.text = "$\(listing.price!).00"
+        cell.categoryLabel.text = "Painting"
         return cell
     }
     
+    
+}
+
+extension CartViewController: UITextFieldDelegate {
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if textField == additionalDonationTextField {
+            if let additonalDonation = textField.text?.currencyInputFormatting() {
+                textField.text = additonalDonation
+            }
+        }
+    }
     
 }

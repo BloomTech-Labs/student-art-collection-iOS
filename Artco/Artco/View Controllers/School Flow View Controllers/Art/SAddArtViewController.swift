@@ -11,6 +11,7 @@ import Photos
 import AVFoundation
 import FirebaseAuth
 import Cloudinary
+import DropDown
 
 class SAddArtViewController: UIViewController {
     
@@ -32,6 +33,7 @@ class SAddArtViewController: UIViewController {
     var imageData: Data?
     var imageURL: String?
     var artID: Int?
+    let studentDropDown = DropDown()
     
     // MARK: - View lifecycle methods
     
@@ -40,9 +42,17 @@ class SAddArtViewController: UIViewController {
         suggestedDonationTextField.addTarget(self, action: #selector (textFieldDidChangeSelection(_:)), for: .editingDidBegin)
         suggestedDonationTextField.delegate = self
         descriptionTextView.delegate = self
+        studentDropDown.anchorView = studentNameTextField.rightView
+        studentNameTextField.rightViewMode = .always
+        studentDropDown.dataSource = ["car", "bus", "plane"]
+        studentNameTextField.addTarget(self, action:#selector(dropDown), for: .editingChanged)
     }
     
     // MARK: - Actions and methods
+    
+    @objc func dropDown() {
+        studentDropDown.show()
+    }
     
     @IBAction func addImages(_ sender: UITapGestureRecognizer) {
         checkPhotoPermission()
@@ -78,7 +88,7 @@ class SAddArtViewController: UIViewController {
         guard let serverId = SchoolServerID.shared.serverId else { return }
         let date = Date().fullDate
         
-//        Network.shared.apollo.perform(mutation: AddArtMutation(category: categoryText, school_id: serverId, price: Int(price), sold: false, title: title, artist_name: artistName, description: artDescription, date_posted: date), context: nil, queue: DispatchQueue.main) { [weak self] result in
+//        Network.shared.apollo.perform(mutation: AddArtMutation(school_id: serverId, price: Int(price), sold: false, title: title, artist_name: artistName, description: description, date_posted: date, category: "\(category)"), context: nil, queue: DispatchQueue.main) { [weak self] result in
 //            
 //            guard let self = self else {
 //                return
@@ -97,7 +107,7 @@ class SAddArtViewController: UIViewController {
 //                print(graphQLError)
 //            }
 //        }
-        
+//        
         tabBarController?.selectedIndex = 0
         
         resetViews()

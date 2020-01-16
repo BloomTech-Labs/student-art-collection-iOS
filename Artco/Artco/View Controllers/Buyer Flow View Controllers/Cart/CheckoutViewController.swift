@@ -20,24 +20,36 @@ class CheckoutViewController: UIViewController {
     @IBOutlet weak var subtotalLabel: UILabel!
     @IBOutlet weak var additionalDonationTextField: UITextField!
     @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var submitInquiryButton: UIButton!
     
     let name = Notification.Name(rawValue: String.nameNotificationKey)
     let email = Notification.Name(rawValue: String.emailNotificationKey)
     let message = Notification.Name(rawValue: String.messageNotificationKey)
+    let ui = UIController.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         createObservers()
+        setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         updateTotal()
     }
     
     // MARK: Methods
     
+    private func setupUI() {
+        ui.configureButton(submitInquiryButton)
+    }
+    
+    
     private func updateTotal() {
         
         var subTotal = 0
         
-       BuyerController.shared.cart.map {
+        BuyerController.shared.cart.map {
             guard let price = $0.price else { return }
             subTotal += price
         }
@@ -52,15 +64,20 @@ class CheckoutViewController: UIViewController {
         NotificationCenter.default.addObserver(forName: Notification.Name(String.nameNotificationKey), object: nil, queue: OperationQueue.main) { (notification) in
             guard let userInfo = notification.userInfo else {return}
             self.nameLabel.text = "\(userInfo["name"] ?? "Name")"
+            self.nameButton.setBackgroundImage(#imageLiteral(resourceName: "checkmark"), for: .normal)
+            
         }
         
         NotificationCenter.default.addObserver(forName: Notification.Name(String.emailNotificationKey), object: nil, queue: OperationQueue.main) { (notification) in
             guard let userInfo = notification.userInfo else {return}
             self.emailLabel.text = "\(userInfo["email"] ?? "Email")"
+            self.emailButton.setBackgroundImage(#imageLiteral(resourceName: "checkmark"), for: .normal)
         }
         
         NotificationCenter.default.addObserver(forName: Notification.Name(String.messageNotificationKey), object: nil, queue: OperationQueue.main) { (notification) in
             self.messageLabel.text = "Message sucessfully added!"
+            
+            self.messageButton.setBackgroundImage(#imageLiteral(resourceName: "checkmark"), for: .normal)
         }
         
     }

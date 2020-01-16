@@ -9,13 +9,15 @@
 import UIKit
 import Firebase
 import Apollo
+import DropDown
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-        
+        DropDown.startListeningToKeyboard()
+        Network.shared.apollo
         return true
     }
 
