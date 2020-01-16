@@ -13,6 +13,6 @@ class Network {
     
   static let shared = Network()
     
-  private(set) lazy var apollo = ApolloClient(url: URL(string: "https://student-artco-staging.herokuapp.com/graphql")!)
+  private(set) lazy var apollo = ApolloClient(url: URL(string: "https://student-artco.herokuapp.com/graphql")!)
     
 }

@@ -105,10 +105,7 @@ class GalleryCollectionViewController: UICollectionViewController {
         do {
             let data = try? Data(contentsOf: url)
             imageData = data
-        } catch {
-            fatalError("URL was not compatible.")
         }
-        
         return UIImage(data: imageData ?? Data())
     }
     

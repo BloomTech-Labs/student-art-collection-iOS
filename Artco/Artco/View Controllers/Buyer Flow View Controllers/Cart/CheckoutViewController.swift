@@ -35,7 +35,7 @@ class CheckoutViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateTotal()
+        _ = updateTotal()
     }
     
     // MARK: Methods
@@ -49,7 +49,7 @@ class CheckoutViewController: UIViewController {
         
         var subTotal = 0
         
-        BuyerController.shared.cart.map {
+       _ = BuyerController.shared.cart.map {
             guard let price = $0.price else { return }
             subTotal += price
         }
@@ -86,7 +86,7 @@ class CheckoutViewController: UIViewController {
     
     @IBAction func submitInquiryButtonTapped(_ sender: UIButton) {
         
-        let alert = UIAlertController(title: "Success", message: "You will recieve an email confirming your order! Thank you!", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Success", message: "You will receive an email confirming your order! Thank you!", preferredStyle: .alert)
         
         let alertAction = UIAlertAction(title: "OK", style: .default) { (_) in
             BuyerController.shared.cart = []
@@ -120,10 +120,7 @@ extension CheckoutViewController: UICollectionViewDelegate, UICollectionViewData
         do {
             let data = try? Data(contentsOf: url)
             imageData = data
-        } catch {
-            fatalError("URL was not compatible.")
         }
-        
         return UIImage(data: imageData ?? Data())
     }
 }
