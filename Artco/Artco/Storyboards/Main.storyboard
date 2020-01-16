@@ -102,7 +102,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zpm-7E-r77" userLabel="EmailTextField">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="example@example.edu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zpm-7E-r77" userLabel="EmailTextField">
                                         <rect key="frame" x="0.0" y="28.5" width="314" height="34"/>
                                         <accessibility key="accessibilityConfiguration" label="EmailTextField"/>
                                         <constraints>
@@ -159,7 +159,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oww-Jg-CJI" userLabel="PasswordTextField">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="••••••••••" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oww-Jg-CJI" userLabel="PasswordTextField">
                                         <rect key="frame" x="0.0" y="28.5" width="314" height="34"/>
                                         <accessibility key="accessibilityConfiguration" label="PasswordTextField"/>
                                         <constraints>
