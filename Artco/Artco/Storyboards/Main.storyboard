@@ -109,7 +109,7 @@
                                             <constraint firstAttribute="height" constant="34" id="Z0u-hA-BNd"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="username"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hzK-af-txP">
                                         <rect key="frame" x="0.0" y="70.5" width="314" height="1"/>
@@ -166,7 +166,7 @@
                                             <constraint firstAttribute="height" constant="34" id="pFt-xm-n24"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0wc-0F-6GQ">
                                         <rect key="frame" x="0.0" y="70.5" width="314" height="1"/>
