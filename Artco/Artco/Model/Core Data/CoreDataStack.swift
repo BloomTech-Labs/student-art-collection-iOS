@@ -37,8 +37,12 @@ class CoreDataStack {
     }()
     
     var mainContext: NSManagedObjectContext { return container.viewContext }
+    
+    var backgroundContext: NSManagedObjectContext { return container.newBackgroundContext() }
 }
 
 extension NSManagedObjectContext {
     static let mainContext = CoreDataStack.shared.mainContext
+    
+    static let backgroundContext = CoreDataStack.shared.backgroundContext
 }

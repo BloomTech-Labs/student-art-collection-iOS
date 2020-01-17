@@ -51,7 +51,6 @@ class SArtDetailViewController: UIViewController, NSFetchedResultsControllerDele
     func updateViews() {
         guard isViewLoaded,
             let listing = listing else { return }
-        
        // artImageView.image = convertDataToImage(listing.images ?? Data())
         artistNameLabel.text = listing.artistName
         titleLabel.text = listing.title

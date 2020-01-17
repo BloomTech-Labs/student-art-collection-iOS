@@ -35,6 +35,7 @@ class SAddArtViewController: UIViewController {
     var imageURL: String?
     var artID: Int?
     let studentDropDown = DropDown()
+    var newListing: Listing?
     
     // MARK: - View lifecycle methods
     
@@ -86,11 +87,13 @@ class SAddArtViewController: UIViewController {
         guard let price = Float(suggestedDonation),
             let images = imageData else { return }
         
-        listingController.createListing(title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: images)
+        let listing = listingController.createListing(title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: images)
         
-        guard let serverId = SchoolServerID.shared.serverId else { return }
+        self.newListing = listing
         
-        Network.shared.apollo.perform(mutation: AddArtMutation(category: categoryText, school_id: serverId, price: Int(price), title: title, artist_name: artistName, description: artDescription), context: nil, queue: DispatchQueue.main) { result in
+        guard let schoolId = UserDefaults.standard.string(forKey: "schoolID") else { return }
+        
+        Network.shared.apollo.perform(mutation: AddArtMutation(category: categoryText, school_id: schoolId, price: Int(price), title: title, artist_name: artistName, description: artDescription), context: nil, queue: DispatchQueue.main) { result in
             
             switch result {
             case .success(let graphQLResult):
@@ -103,8 +106,15 @@ class SAddArtViewController: UIViewController {
                 }
                 
                 guard let artId = graphQLResult.data?.addArt.id else { return }
-                
                 Network.shared.apollo.perform(mutation: AddImageMutation(image_url: self.imageURL, art_id: Int(artId)))
+                
+                if let listing = self.newListing,
+                    let id = Float(artId) {
+                    
+                    self.listingController.updateListing(id: id, listing: listing, title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: images)
+                }
+                
+                
                 
             case .failure(let graphQLError):
                 let message = graphQLError.localizedDescription

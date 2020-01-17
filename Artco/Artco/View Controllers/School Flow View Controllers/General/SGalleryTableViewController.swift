@@ -21,22 +21,26 @@ class SGalleryTableViewController: UITableViewController {
         return frc
     }()
     
+    let listingController = ListingController()
+    
+    static var schoolGalleryListings: [Listing] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        listingController.syncCoreData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        listingController.syncCoreData()
+        
     }
+    
+
 
     // MARK: - Table view data source
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//
-//        return 0
-//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.sections?[section].numberOfObjects ?? 0

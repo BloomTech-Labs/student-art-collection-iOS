@@ -34,8 +34,15 @@ class SchoolSignUp2ViewController: UIViewController {
         
         SchoolController.shared.createSchool(schoolId: schoolId, schoolName: schoolName, email: email, address: address, city: city, zipcode: zipcode)
         
-        Network.shared.apollo.perform(mutation: AddSchoolMutation(school_id: schoolId, school_name: schoolName, email: email, address: address, city: city, zipcode: zipcode))
+        Network.shared.apollo.perform(mutation: AddSchoolMutation(school_id: schoolId, school_name: schoolName, email: email, address: address, city: city, zipcode: zipcode)) { result in
+            
+             guard let data = try? result.get().data else { return }
+            print(data.addSchool.id)
+            UserDefaults.standard.set(data.addSchool.id, forKey: "schoolID")
+            
+        }
         
+      
         setServerId()
         
         DispatchQueue.main.async {

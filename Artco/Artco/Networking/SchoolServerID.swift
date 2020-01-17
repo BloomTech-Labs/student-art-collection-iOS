@@ -16,6 +16,10 @@ class SchoolServerID {
     
     var firebaseId: String?
     
-    var serverId: String?
+    var serverId: String? {
+        didSet {
+            print(String(serverId!))
+        }
+    }
     
 }
