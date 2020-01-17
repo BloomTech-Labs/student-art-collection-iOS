@@ -17,14 +17,16 @@ class SchoolLoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailTextField.delegate = self
+        passwordTextField.delegate = self 
         
-//        DispatchQueue.main.async {
-//            let storyboard = UIStoryboard(name: "SchoolFlow", bundle: nil)
-//            let schoolTabBarController = storyboard.instantiateViewController(withIdentifier: "SchoolTabBarController")
-//            schoolTabBarController.modalPresentationStyle = .fullScreen
-//            self.present(schoolTabBarController, animated: true, completion: nil)
-//
-//        }
+        //        DispatchQueue.main.async {
+        //            let storyboard = UIStoryboard(name: "SchoolFlow", bundle: nil)
+        //            let schoolTabBarController = storyboard.instantiateViewController(withIdentifier: "SchoolTabBarController")
+        //            schoolTabBarController.modalPresentationStyle = .fullScreen
+        //            self.present(schoolTabBarController, animated: true, completion: nil)
+        //
+        //        }
         
     }
     
@@ -70,9 +72,7 @@ class SchoolLoginViewController: UIViewController {
                 }
             }
             
-            SchoolServerID.shared.serverId = Auth.auth().currentUser?.uid
-            
-            self!.setServerId()
+            SchoolServerID.shared.firebaseId = Auth.auth().currentUser?.uid
             
             DispatchQueue.main.async {
                 let storyboard = UIStoryboard(name: "SchoolFlow", bundle: nil)
@@ -83,40 +83,12 @@ class SchoolLoginViewController: UIViewController {
         }
     }
     
-    private func setServerId() {
-        Network.shared.apollo
-            .fetch(query: SchoolByFirebaseIdQuery(school_id: Auth.auth().currentUser!.uid)) { [weak self] result in
-                
-                guard let self = self else {
-                    return
-                }
-                
-                switch result {
-                case .success(let graphQLResult):
-                    if let serverId = graphQLResult.data?.schoolBySchoolId.id {
-                        SchoolServerID.shared.serverId = serverId
-                        print(serverId)
-                    }
-                    
-                    if let errors = graphQLResult.errors {
-                        let message = errors
-                            .map { $0.localizedDescription }
-                            .joined(separator: "\n")
-                        self.showErrorAlert(title: "GraphQL Error(s)",
-                                            message: message)
-                    }
-                case .failure:
-                    print("You suck this didn't work you dumb bitch")
-                }
-        }
-    }
+}
+
+extension SchoolLoginViewController: UITextFieldDelegate {
     
-    private func showErrorAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title,
-                                      message: message,
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        self.present(alert, animated: true)
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
-    
 }

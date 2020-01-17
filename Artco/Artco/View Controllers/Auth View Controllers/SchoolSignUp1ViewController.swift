@@ -41,7 +41,7 @@ class SchoolSignUp1ViewController: UIViewController {
                 }
             }
             
-            SchoolServerID.shared.serverId = Auth.auth().currentUser?.uid
+            SchoolServerID.shared.firebaseId = Auth.auth().currentUser?.uid
             
             DispatchQueue.main.async {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)

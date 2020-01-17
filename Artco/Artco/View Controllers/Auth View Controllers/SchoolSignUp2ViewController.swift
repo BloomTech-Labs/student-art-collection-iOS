@@ -47,8 +47,11 @@ class SchoolSignUp2ViewController: UIViewController {
     }
     
     private func setServerId() {
+        
+        guard let schoolId = SchoolServerID.shared.firebaseId else { return }
+        
         Network.shared.apollo
-            .fetch(query: SchoolByFirebaseIdQuery(school_id: Auth.auth().currentUser!.uid)) { [weak self] result in
+            .fetch(query: SchoolByFirebaseIdQuery(school_id: schoolId)) { [weak self] result in
                 
                 guard let self = self else {
                     return
