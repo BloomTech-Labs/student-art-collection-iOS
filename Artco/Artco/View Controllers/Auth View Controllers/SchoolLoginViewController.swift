@@ -72,6 +72,7 @@ class SchoolLoginViewController: UIViewController {
             
             SchoolServerID.shared.serverId = Auth.auth().currentUser?.uid
             
+            UserDefaults.standard.set(Auth.auth().currentUser?.uid, forKey: "loginID")
             self!.setServerId()
             
             DispatchQueue.main.async {

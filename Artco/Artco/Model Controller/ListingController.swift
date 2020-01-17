@@ -27,7 +27,7 @@ class ListingController {
         guard let id = UserDefaults.standard.string(forKey: "schoolID") else { return }
         
         Network.shared.apollo
-            .fetch(query: ArtBySchoolQuery(school_id: "1")) { [weak self] result in
+            .fetch(query: ArtBySchoolQuery(school_id: id)) { [weak self] result in
                 
                 guard let self = self else {return}
                 

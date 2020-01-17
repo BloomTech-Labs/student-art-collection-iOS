@@ -28,6 +28,7 @@ class SGalleryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         listingController.syncCoreData()
+        deleteObjectsIfSchoolAccountChanges("Listing")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,6 +38,27 @@ class SGalleryTableViewController: UITableViewController {
         
     }
     
+    private func deleteObjectsIfSchoolAccountChanges(_ entity: String) {
+        
+        let loggedInSchoolID = UserDefaults.standard.string(forKey: "loginID")
+        
+        let registerSchoolID = UserDefaults.standard.string(forKey: "schoolID")
+        
+        if loggedInSchoolID != registerSchoolID {
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+              fetchRequest.returnsObjectsAsFaults = false
+              do {
+                let results = try CoreDataStack.shared.mainContext.fetch(fetchRequest)
+                  for object in results {
+                      guard let objectData = object as? NSManagedObject else {continue}
+                    CoreDataStack.shared.mainContext.delete(objectData)
+                  }
+              } catch let error {
+                  print("Detele all data in \(entity) error :", error)
+              }
+        }
+        
+    }
 
 
     // MARK: - Table view data source
