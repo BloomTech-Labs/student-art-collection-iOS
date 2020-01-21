@@ -9,22 +9,20 @@ query AllArt {
     }
   }
 }
-
 query AllCategories {
   allCategories {
     id
     category
   }
 }
-
 query AllSchools {
   allSchools {
     email
   }
 }
 
-query SchoolByFirebaseID ($school_id:ID!) {
-  schoolBySchoolId (school_id: $school_id) {
+query SchoolByFirebaseID($school_id: ID!) {
+  schoolBySchoolId(school_id: $school_id) {
     id
   }
 }
@@ -71,8 +69,8 @@ city: $city, zipcode: $zipcode) {
     }
 }
 
-mutation AddArt($category: ID!, $school_id: ID!, $price:Int, $title: String, $artist_name: String, $description: String) {
-  addArt(category: $category, school_id: $school_id, price: $price, title: $title, artist_name: $artist_name, description: $description) {
+mutation AddArt($category: ID!, $school_id: ID!, $price: Int, $title: String, $artist_name: String, $description: String, $image_url: String!) {
+  addArt(category: $category, school_id: $school_id, price: $price, title: $title, artist_name: $artist_name, description: $description, image_url: $image_url) {
     id
     school_id
     price

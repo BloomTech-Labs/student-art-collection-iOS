@@ -14,7 +14,7 @@ enum Category: GraphQLID {
 }
 
 class ArtDetailViewController: UIViewController {
-
+    
     // MARK: Properties & Outlets
     
     @IBOutlet weak var listingImageView: UIImageView!
@@ -54,34 +54,34 @@ class ArtDetailViewController: UIViewController {
         descriptionTextView.text = listing.description
         categoryLabel.text = "Painting"
     }
-
+    
     private func loadListing() {
         guard isViewLoaded,
-        let id = id else { return }
-
+            let id = id else { return }
+        
         Network.shared.apollo
             .fetch(query: ArtQuery(id: id)) { [weak self] result in
-
+                
                 guard let self = self else {
                     return
                 }
-
+                
                 defer {
                     self.updateViews()
                 }
-
+                
                 switch result {
                 case .success(let graphQLResult):
                     if let downloadedListing = graphQLResult.data?.art {
                         self.listing = downloadedListing
                     }
-
+                    
                     if let errors = graphQLResult.errors {
-                      let message = errors
+                        let message = errors
                             .map { $0.localizedDescription }
                             .joined(separator: "\n")
-                      self.showErrorAlert(title: "GraphQL Error(s)",
-                                          message: message)
+                        self.showErrorAlert(title: "GraphQL Error(s)",
+                                            message: message)
                     }
                 case .failure(let error):
                     print("Error: \(error)")
@@ -90,11 +90,11 @@ class ArtDetailViewController: UIViewController {
     }
     
     private func showErrorAlert(title: String, message: String) {
-      let alert = UIAlertController(title: title,
-                                    message: message,
-                                    preferredStyle: .alert)
-      alert.addAction(UIAlertAction(title: "OK", style: .default))
-      self.present(alert, animated: true)
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true)
     }
     
     private func convertToUIImage(_ str: String) -> UIImage? {
@@ -103,7 +103,7 @@ class ArtDetailViewController: UIViewController {
         do {
             let data = try? Data(contentsOf: url)
             imageData = data
-        } 
+        }
         return UIImage(data: imageData ?? Data())
     }
     
@@ -115,13 +115,13 @@ class ArtDetailViewController: UIViewController {
     
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

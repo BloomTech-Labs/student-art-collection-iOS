@@ -1003,8 +1003,8 @@ public final class AddArtMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition =
     """
-    mutation AddArt($category: ID!, $school_id: ID!, $price: Int, $title: String, $artist_name: String, $description: String) {
-      addArt(category: $category, school_id: $school_id, price: $price, title: $title, artist_name: $artist_name, description: $description) {
+    mutation AddArt($category: ID!, $school_id: ID!, $price: Int, $title: String, $artist_name: String, $description: String, $image_url: String!) {
+      addArt(category: $category, school_id: $school_id, price: $price, title: $title, artist_name: $artist_name, description: $description, image_url: $image_url) {
         __typename
         id
         school_id
@@ -1026,25 +1026,27 @@ public final class AddArtMutation: GraphQLMutation {
   public var title: String?
   public var artist_name: String?
   public var description: String?
+  public var image_url: String
 
-  public init(category: GraphQLID, school_id: GraphQLID, price: Int? = nil, title: String? = nil, artist_name: String? = nil, description: String? = nil) {
+  public init(category: GraphQLID, school_id: GraphQLID, price: Int? = nil, title: String? = nil, artist_name: String? = nil, description: String? = nil, image_url: String) {
     self.category = category
     self.school_id = school_id
     self.price = price
     self.title = title
     self.artist_name = artist_name
     self.description = description
+    self.image_url = image_url
   }
 
   public var variables: GraphQLMap? {
-    return ["category": category, "school_id": school_id, "price": price, "title": title, "artist_name": artist_name, "description": description]
+    return ["category": category, "school_id": school_id, "price": price, "title": title, "artist_name": artist_name, "description": description, "image_url": image_url]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Mutation"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("addArt", arguments: ["category": GraphQLVariable("category"), "school_id": GraphQLVariable("school_id"), "price": GraphQLVariable("price"), "title": GraphQLVariable("title"), "artist_name": GraphQLVariable("artist_name"), "description": GraphQLVariable("description")], type: .nonNull(.object(AddArt.selections))),
+      GraphQLField("addArt", arguments: ["category": GraphQLVariable("category"), "school_id": GraphQLVariable("school_id"), "price": GraphQLVariable("price"), "title": GraphQLVariable("title"), "artist_name": GraphQLVariable("artist_name"), "description": GraphQLVariable("description"), "image_url": GraphQLVariable("image_url")], type: .object(AddArt.selections)),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -1053,16 +1055,16 @@ public final class AddArtMutation: GraphQLMutation {
       self.resultMap = unsafeResultMap
     }
 
-    public init(addArt: AddArt) {
-      self.init(unsafeResultMap: ["__typename": "Mutation", "addArt": addArt.resultMap])
+    public init(addArt: AddArt? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "addArt": addArt.flatMap { (value: AddArt) -> ResultMap in value.resultMap }])
     }
 
-    public var addArt: AddArt {
+    public var addArt: AddArt? {
       get {
-        return AddArt(unsafeResultMap: resultMap["addArt"]! as! ResultMap)
+        return (resultMap["addArt"] as? ResultMap).flatMap { AddArt(unsafeResultMap: $0) }
       }
       set {
-        resultMap.updateValue(newValue.resultMap, forKey: "addArt")
+        resultMap.updateValue(newValue?.resultMap, forKey: "addArt")
       }
     }
 

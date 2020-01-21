@@ -33,7 +33,6 @@ class SAddArtViewController: UIViewController {
     let imagePickerController = UIImagePickerController()
     var imageData: Data?
     var imageURL: String?
-    var artID: Int?
     let studentDropDown = DropDown()
     var newListing: Listing?
     
@@ -42,11 +41,14 @@ class SAddArtViewController: UIViewController {
     override func viewDidLoad() {
         keyboardDismiss()
         suggestedDonationTextField.addTarget(self, action: #selector (textFieldDidChangeSelection(_:)), for: .editingDidBegin)
+        titleTextField.delegate = self
+        studentNameTextField.delegate = self
+        categoryTextField.delegate = self
         suggestedDonationTextField.delegate = self
         descriptionTextView.delegate = self
         studentDropDown.anchorView = studentNameTextField.rightView
         studentNameTextField.rightViewMode = .always
-        studentDropDown.dataSource = ["car", "bus", "plane"]
+        studentDropDown.dataSource = []
         studentNameTextField.addTarget(self, action:#selector(dropDown), for: .editingChanged)
     }
     
@@ -89,11 +91,10 @@ class SAddArtViewController: UIViewController {
         
         let listing = listingController.createListing(title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: images)
         
-        self.newListing = listing
+        guard let serverId = SchoolServerID.shared.serverId,
+        let imageURL = imageURL else { return }
         
-        guard let schoolId = UserDefaults.standard.string(forKey: "schoolID") else { return }
-        
-        Network.shared.apollo.perform(mutation: AddArtMutation(category: categoryText, school_id: schoolId, price: Int(price), title: title, artist_name: artistName, description: artDescription), context: nil, queue: DispatchQueue.main) { result in
+        Network.shared.apollo.perform(mutation: AddArtMutation(category: categoryText, school_id: serverId, price: Int(price), title: title, artist_name: artistName, description: artDescription, image_url: imageURL), context: nil, queue: DispatchQueue.main) { result in
             
             switch result {
             case .success(let graphQLResult):
@@ -104,17 +105,6 @@ class SAddArtViewController: UIViewController {
                     self.showErrorAlert(title: "GraphQL Error(s)",
                                         message: message)
                 }
-                
-                guard let artId = graphQLResult.data?.addArt.id else { return }
-                Network.shared.apollo.perform(mutation: AddImageMutation(image_url: self.imageURL, art_id: Int(artId)))
-                
-                if let listing = self.newListing,
-                    let id = Float(artId) {
-                    
-                    self.listingController.updateListing(id: id, listing: listing, title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: images)
-                }
-                
-                
                 
             case .failure(let graphQLError):
                 let message = graphQLError.localizedDescription

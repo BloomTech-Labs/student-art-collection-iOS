@@ -29,6 +29,7 @@ class SGalleryTableViewController: UITableViewController {
         super.viewDidLoad()
         listingController.syncCoreData()
         deleteObjectsIfSchoolAccountChanges("Listing")
+        setServerId()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -171,4 +172,46 @@ extension SGalleryTableViewController: NSFetchedResultsControllerDelegate {
         }
     }
     
+}
+
+extension SGalleryTableViewController {
+    
+    private func setServerId() {
+        
+        guard let schoolId = SchoolServerID.shared.firebaseId else { return }
+        
+        Network.shared.apollo
+            .fetch(query: SchoolByFirebaseIdQuery(school_id: schoolId)) { [weak self] result in
+                
+                guard let self = self else {
+                    return
+                }
+                
+                switch result {
+                case .success(let graphQLResult):
+                    if let serverId = graphQLResult.data?.schoolBySchoolId.id {
+                        SchoolServerID.shared.serverId = serverId
+                        print(serverId)
+                    }
+                    
+                    if let errors = graphQLResult.errors {
+                        let message = errors
+                            .map { $0.localizedDescription }
+                            .joined(separator: "\n")
+                        self.showErrorAlert(title: "GraphQL Error(s)",
+                                            message: message)
+                    }
+                case .failure:
+                    print("You suck this didn't work you dumb bitch")
+                }
+        }
+    }
+    
+    func showErrorAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true)
+    }
 }
