@@ -24,7 +24,7 @@ class ListingController {
     //[AllArtQuery.Data.AllArt]()
     func syncCoreData() {
         
-        guard let id = UserDefaults.standard.string(forKey: "schoolID") else { return }
+        guard let id = SchoolServerID.shared.serverId else { return }
         
         Network.shared.apollo
             .fetch(query: ArtBySchoolQuery(school_id: id)) { [weak self] result in
@@ -50,6 +50,7 @@ class ListingController {
                     print("You suck this didn't work you dumb bitch")
                 }
         }
+        performCoreDataFetch()
     }
     
     private func performCoreDataFetch() {
