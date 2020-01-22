@@ -21,23 +21,52 @@ class SGalleryTableViewController: UITableViewController {
         return frc
     }()
     
+
+    
+    static var schoolGalleryListings: [Listing] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setServerId()
+         deleteObjectsIfSchoolAccountChanges("Listing")
+        
+        sleep(1)
+        ListingController.shared.syncCoreData()
+       
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        ListingController.shared.syncCoreData()
+
     }
+    
+    private func deleteObjectsIfSchoolAccountChanges(_ entity: String) {
+        
+        let loggedInSchoolID = UserDefaults.standard.string(forKey: "loginID")
+        
+        let registerSchoolID = UserDefaults.standard.string(forKey: "schoolID")
+        
+        if loggedInSchoolID != registerSchoolID {
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+              fetchRequest.returnsObjectsAsFaults = false
+              do {
+                let results = try CoreDataStack.shared.mainContext.fetch(fetchRequest)
+                  for object in results {
+                      guard let objectData = object as? NSManagedObject else {continue}
+                    CoreDataStack.shared.mainContext.delete(objectData)
+                  }
+              } catch let error {
+                  print("Detele all data in \(entity) error :", error)
+              }
+        }
+        
+    }
+
 
     // MARK: - Table view data source
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//
-//        return 0
-//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.sections?[section].numberOfObjects ?? 0
@@ -148,44 +177,3 @@ extension SGalleryTableViewController: NSFetchedResultsControllerDelegate {
     
 }
 
-extension SGalleryTableViewController {
-    
-    private func setServerId() {
-        
-        guard let schoolId = SchoolServerID.shared.firebaseId else { return }
-        
-        Network.shared.apollo
-            .fetch(query: SchoolByFirebaseIdQuery(school_id: schoolId)) { [weak self] result in
-                
-                guard let self = self else {
-                    return
-                }
-                
-                switch result {
-                case .success(let graphQLResult):
-                    if let serverId = graphQLResult.data?.schoolBySchoolId.id {
-                        SchoolServerID.shared.serverId = serverId
-                        print(serverId)
-                    }
-                    
-                    if let errors = graphQLResult.errors {
-                        let message = errors
-                            .map { $0.localizedDescription }
-                            .joined(separator: "\n")
-                        self.showErrorAlert(title: "GraphQL Error(s)",
-                                            message: message)
-                    }
-                case .failure:
-                    print("You suck this didn't work you dumb bitch")
-                }
-        }
-    }
-    
-    func showErrorAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title,
-                                      message: message,
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        self.present(alert, animated: true)
-    }
-}

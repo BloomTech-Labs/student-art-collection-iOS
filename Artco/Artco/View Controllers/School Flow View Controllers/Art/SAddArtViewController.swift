@@ -34,6 +34,7 @@ class SAddArtViewController: UIViewController {
     var imageData: Data?
     var imageURL: String?
     let studentDropDown = DropDown()
+    var newListing: Listing?
     
     // MARK: - View lifecycle methods
     
@@ -88,7 +89,7 @@ class SAddArtViewController: UIViewController {
         guard let price = Float(suggestedDonation),
             let images = imageData else { return }
         
-        listingController.createListing(title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: images)
+        let listing = listingController.createListing(title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: images)
         
         guard let serverId = SchoolServerID.shared.serverId,
         let imageURL = imageURL else { return }

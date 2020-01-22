@@ -16,6 +16,6 @@ class SchoolServerID {
     
     var firebaseId: String?
     
-    var serverId: String?
+    var serverId: String? 
     
 }
