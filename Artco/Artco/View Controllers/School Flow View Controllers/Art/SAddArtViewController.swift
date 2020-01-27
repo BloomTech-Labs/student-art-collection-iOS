@@ -193,6 +193,7 @@ extension SAddArtViewController: UIImagePickerControllerDelegate, UINavigationCo
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { (_) in
                 self.imagePickerController.sourceType = .photoLibrary
+                
                 DispatchQueue.main.async {
                     self.present(self.imagePickerController, animated: true, completion: nil)
                 }
@@ -252,6 +253,3 @@ extension SAddArtViewController: UITextFieldDelegate, UITextViewDelegate {
     
 }
 
-extension SAddArtViewController {
-    
-}
