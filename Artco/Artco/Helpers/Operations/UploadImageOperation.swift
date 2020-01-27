@@ -20,7 +20,7 @@ class UploadImageOperation: ConcurrentOperation {
     
     override func start() {
         state = .isExecuting
-        guard let data = image.jpegData(compressionQuality: 1) else { fatalError() }
+        guard let data = image.jpegData(compressionQuality: 0.01) else { fatalError() }
         
         Cloudinary.shared.cloudinary.createUploader().upload(data: data, uploadPreset: "smasd6kx", params: nil, progress: nil).response({ (result, error) in
             

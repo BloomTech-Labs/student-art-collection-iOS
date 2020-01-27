@@ -28,13 +28,13 @@ class SAddArtViewController: UIViewController {
     @IBOutlet weak var suggestedDonationTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     
-    let listingController = ListingController.shared
     let cloudinary = Cloudinary.shared
     let imagePickerController = UIImagePickerController()
     var imageData: Data?
     var imageURL: String?
     let studentDropDown = DropDown()
     var newListing: Listing?
+    private let imageUploadQueue = OperationQueue()
     
     // MARK: - View lifecycle methods
     
@@ -89,7 +89,7 @@ class SAddArtViewController: UIViewController {
         guard let price = Float(suggestedDonation),
             let images = imageData else { return }
         
-        let listing = listingController.createListing(title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: images)
+        ListingController.shared.createListing(title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: images)
         
         guard let serverId = SchoolServerID.shared.serverId,
         let imageURL = imageURL else { return }
@@ -156,23 +156,17 @@ class SAddArtViewController: UIViewController {
 
 extension SAddArtViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    // TODO: - Implement alerts for different authorization statuses
-    // TODO: - Allow camera access via permission check and transition to separate view controller
-    
     func checkPhotoPermission() {
         let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
         switch photoAuthorizationStatus {
         case .authorized:
             presentImagePicker()
-            print("Access is granted by user")
         case .notDetermined:
             PHPhotoLibrary.requestAuthorization({
                 (newStatus) in
                 print("status is \(newStatus)")
                 if newStatus ==  PHAuthorizationStatus.authorized {
-                    /* do stuff here */
                     self.presentImagePicker()
-                    print("success")
                 }
             })
             print("It is not determined until now")
@@ -184,8 +178,6 @@ extension SAddArtViewController: UIImagePickerControllerDelegate, UINavigationCo
             print("An unknown error occurred.")
         }
     }
-    
-    // TODO: - Move logic from background to serial queue for improved speed?
     
     func presentImagePicker() {
         let alert = UIAlertController(title: "Please select a photo source", message: nil, preferredStyle: .actionSheet)
@@ -209,24 +201,24 @@ extension SAddArtViewController: UIImagePickerControllerDelegate, UINavigationCo
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.originalImage] as? UIImage else { return }
+        imageData = image.pngData()
         
-        guard let data = image.jpegData(compressionQuality: 1) else { fatalError() }
-        imageData = data
+        let uploadImageOp = UploadImageOperation(image: image)
         
-        cloudinary.cloudinary.createUploader().upload(data: data, uploadPreset: "smasd6kx", params: nil, progress: nil).response({ (result, error) in
-            print(result!)
-            
-            if let error = error {
-                print(error)
+        let completionOp = BlockOperation {
+            if let result = uploadImageOp.imageURL {
+                self.imageURL = result
+                print(self.imageURL)
+                DispatchQueue.main.async {
+                    self.topLeftImageView.image = image
+                    self.imagePickerController.dismiss(animated: true, completion: nil)
+                }
             }
-            
-            self.imageURL = result?.url
-            
-            DispatchQueue.main.async {
-                self.topLeftImageView.image = image
-                picker.dismiss(animated: true, completion: nil)
-            }
-        })
+        }
+        
+        completionOp.addDependency(uploadImageOp)
+        imageUploadQueue.addOperation(uploadImageOp)
+        OperationQueue.main.addOperation(completionOp)
     }
 }
 
