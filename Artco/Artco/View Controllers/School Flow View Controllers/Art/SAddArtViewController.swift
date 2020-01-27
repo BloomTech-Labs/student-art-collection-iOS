@@ -251,3 +251,7 @@ extension SAddArtViewController: UITextFieldDelegate, UITextViewDelegate {
     
     
 }
+
+extension SAddArtViewController {
+    
+}
