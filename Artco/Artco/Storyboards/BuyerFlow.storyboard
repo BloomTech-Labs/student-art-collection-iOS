@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -461,7 +462,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PdW-cX-rCJ">
                                 <rect key="frame" x="55" y="728" width="304" height="40"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="b&amp;wbutton"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="NmF-do-tOI"/>
                                 </constraints>
@@ -508,11 +509,12 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="subtotalLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SBR-33-j8G">
                                                         <rect key="frame" x="0.0" y="0.0" width="171" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="$0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uZp-QC-g7Y">
                                                         <rect key="frame" x="0.0" y="38" width="171" height="30"/>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="grZ-he-GcO"/>
                                                         </constraints>
@@ -539,7 +541,7 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.88231678299492389" green="0.88231678299492389" blue="0.88231678299492389" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="FCN-Cp-gw7" firstAttribute="top" secondItem="g9e-5k-5W4" secondAttribute="top" constant="20" id="PUd-ya-05P"/>
                                     <constraint firstAttribute="height" constant="144" id="aDu-2w-fGA"/>
@@ -600,7 +602,7 @@
                                                     <constraint firstAttribute="height" constant="28.5" id="nLP-Bx-rYy"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vxx-5R-m0G">
@@ -617,7 +619,7 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" red="0.83137828110000001" green="0.83136254549999999" blue="0.83137315509999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstItem="omZ-88-K0F" firstAttribute="centerX" secondItem="Vxx-5R-m0G" secondAttribute="centerX" id="PC0-tT-1bF"/>
                                                     <constraint firstAttribute="width" secondItem="Vxx-5R-m0G" secondAttribute="height" multiplier="60:47" id="lrW-CS-dz7"/>
@@ -625,7 +627,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.94161865948045187" green="0.93706977706750283" blue="0.94616754189340091" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.94119381899999999" green="0.93712031839999999" blue="0.94509977099999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Vxx-5R-m0G" secondAttribute="trailing" constant="18" id="0h4-Of-VHt"/>
                                             <constraint firstItem="X0W-uH-xly" firstAttribute="leading" secondItem="qjV-kY-7VK" secondAttribute="leading" constant="28" id="CMS-FL-F2s"/>
@@ -644,7 +646,7 @@
                                                     <constraint firstAttribute="height" constant="28.5" id="60c-3b-rNk"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Obv-KI-SRe">
@@ -661,7 +663,7 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" red="0.83137828110000001" green="0.83136254549999999" blue="0.83137315509999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstItem="Lvm-kB-rM6" firstAttribute="centerX" secondItem="Obv-KI-SRe" secondAttribute="centerX" id="PWl-PJ-mFG"/>
                                                     <constraint firstItem="Lvm-kB-rM6" firstAttribute="centerY" secondItem="Obv-KI-SRe" secondAttribute="centerY" id="TO9-n7-ujI"/>
@@ -688,7 +690,7 @@
                                                     <constraint firstAttribute="height" constant="28.5" id="icr-Fb-SiC"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="52x-Dn-dIb">
@@ -705,7 +707,7 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" red="0.83137828110000001" green="0.83136254549999999" blue="0.83137315509999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstItem="UeN-lU-XM0" firstAttribute="centerX" secondItem="52x-Dn-dIb" secondAttribute="centerX" id="Fnk-PX-FQU"/>
                                                     <constraint firstItem="UeN-lU-XM0" firstAttribute="centerY" secondItem="52x-Dn-dIb" secondAttribute="centerY" id="n65-Hz-dkn"/>
@@ -782,7 +784,7 @@
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tIS-N6-ZFD">
                                 <rect key="frame" x="55" y="728" width="304" height="40"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="b&amp;wbutton"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="b8m-WU-ZHP"/>
                                 </constraints>
@@ -859,7 +861,7 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.88231678300000005" green="0.88231678300000005" blue="0.88231678300000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="NaE-zK-Xle" secondAttribute="trailing" constant="30" id="jZL-6Z-s8s"/>
                                     <constraint firstItem="NaE-zK-Xle" firstAttribute="top" secondItem="gnz-Uo-FP7" secondAttribute="top" constant="20.02" id="pfd-sX-c3b"/>
@@ -904,7 +906,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1MH-CY-pPK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2535" y="909"/>
+            <point key="canvasLocation" x="2534.7826086956525" y="908.70535714285711"/>
         </scene>
         <!--Settings Screen-->
         <scene sceneID="Pje-32-I0o">
@@ -942,7 +944,7 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vC9-VS-YSV">
                                         <rect key="frame" x="40" y="131" width="334" height="40"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" name="b&amp;wbutton"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="1T1-7b-Cda"/>
                                         </constraints>
@@ -1025,7 +1027,7 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcx-28-g96">
                                         <rect key="frame" x="40" y="131" width="334" height="40"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" name="b&amp;wbutton"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="EuH-49-f6v"/>
                                         </constraints>
@@ -1109,7 +1111,7 @@
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tn2-w9-aDO">
                                                 <rect key="frame" x="0.0" y="184" width="334" height="40"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" name="b&amp;wbutton"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="T85-oM-nvb"/>
                                                 </constraints>
@@ -1168,5 +1170,8 @@
         <image name="cart.fill" catalog="system" width="64" height="50"/>
         <image name="plus" catalog="system" width="64" height="56"/>
         <image name="square.grid.2x2.fill" catalog="system" width="64" height="56"/>
+        <namedColor name="b&amp;wbutton">
+            <color red="0.61998334390862941" green="0.52104508905427571" blue="0.24532961699686334" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
     </resources>
 </document>
