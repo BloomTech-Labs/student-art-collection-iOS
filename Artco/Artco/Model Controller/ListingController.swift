@@ -15,42 +15,46 @@ class ListingController {
     
     static let shared = ListingController()
     
-    var artBySchool: [ArtBySchoolQuery.Data.ArtBySchool] = [] {
-        didSet {
-            performCoreDataFetch()
-        }
-    }
+    var artBySchool: [ArtBySchoolQuery.Data.ArtBySchool] = []
     
     //[AllArtQuery.Data.AllArt]()
     func syncCoreData() {
         
-        guard let id = SchoolServerID.shared.serverId else { return }
+        guard let id = UserDefaults.standard.string(forKey: "schoolID") else { return }
         
         Network.shared.apollo
             .fetch(query: ArtBySchoolQuery(school_id: id)) { [weak self] result in
                 
                 guard let self = self else {return}
+                let context = CoreDataStack.shared.backgroundContext
                 
-                switch result {
-                case .success(let graphQLResult):
-                    if let listings = graphQLResult.data?.artBySchool {
-                        if listings.count != self.artBySchool.count {
-                            self.artBySchool.append(contentsOf: listings)
-                            print(listings.count)
+                do {
+                    let fetchRequest: NSFetchRequest<Listing> = Listing.fetchRequest()
+                    let existingTasks = try context.fetch(fetchRequest)
+                    switch result {
+                    case .success(let graphQLResult):
+                        if let listings = graphQLResult.data?.artBySchool {
+                            if listings.count != existingTasks.count {
+                                self.artBySchool.append(contentsOf: listings)
+                                self.performCoreDataFetch()
+                                print(listings.count)
+                            }
                         }
+                        
+                        if let errors = graphQLResult.errors {
+                            let message = errors
+                                .map { $0.localizedDescription }
+                                .joined(separator: "\n")
+                            NSLog("\(message)")
+                        }
+                    case .failure:
+                        print("You suck this didn't work you dumb bitch")
                     }
-                    
-                    if let errors = graphQLResult.errors {
-                        let message = errors
-                            .map { $0.localizedDescription }
-                            .joined(separator: "\n")
-                        NSLog("\(message)")
-                    }
-                case .failure:
-                    print("You suck this didn't work you dumb bitch")
+                } catch {
+                    NSLog("Error fetching coredata objects: \(error)")
                 }
         }
-        performCoreDataFetch()
+        
     }
     
     private func performCoreDataFetch() {
@@ -73,7 +77,7 @@ class ListingController {
                 let fetchRequest: NSFetchRequest<Listing> = Listing.fetchRequest()
                 
                 // identifier == \(identifier)
-                fetchRequest.predicate = NSPredicate(format: "id IN %@", identifiersToFetch)
+               fetchRequest.predicate = NSPredicate(format: "id IN %@", identifiersToFetch)
                 
                 // Which of these tasks exist in Core Data already?
                 let existingTasks = try context.fetch(fetchRequest)
@@ -95,26 +99,28 @@ class ListingController {
                     $0.schoolId = Float(listing.schoolId)!
                     
                     tasksToCreate.removeValue(forKey: identifier)
+                    
+                }
+                
+                tasksToCreate.values.map { (art) in
+                    guard let title = art.title,
+                        let price = art.price,
+                        let artistName = art.artistName,
+                        let descriptioin = art.description,
+                        let images = art.images else {return}
+                    
+                    let image = #imageLiteral(resourceName: "artboard")
+                    guard let imageData = image.pngData() else { return }
+                    
+                    
+                    
+                    self.createListing(title: title, price: Float(price), category: ListingCategory(rawValue: 1)!, artistName: artistName, artDescription: descriptioin, images: imageData)
                 }
                 
             } catch {
                 NSLog("Error syncing coredata and networking: \(error)")
             }
-            
-            tasksToCreate.values.map { (art) in
-                guard let title = art.title,
-                    let price = art.price,
-                    let artistName = art.artistName,
-                    let descriptioin = art.description,
-                    let images = art.images else {return}
-                
-                let image = #imageLiteral(resourceName: "artboard")
-                guard let imageData = image.pngData() else { return }
-                
-                
-                
-                self.createListing(title: title, price: Float(price), category: ListingCategory(rawValue: 1)!, artistName: artistName, artDescription: descriptioin, images: imageData)
-            }
+        
         }
     }
     

@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class SGalleryTableViewController: UITableViewController {
-
+    
     lazy var fetchedResultsController: NSFetchedResultsController<Listing> = {
         let fetchRequest: NSFetchRequest<Listing> = Listing.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "artistName", ascending: true)]
@@ -21,25 +21,22 @@ class SGalleryTableViewController: UITableViewController {
         return frc
     }()
     
-
+    
     
     static var schoolGalleryListings: [Listing] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         deleteObjectsIfSchoolAccountChanges("Listing")
-        
-        sleep(1)
         ListingController.shared.syncCoreData()
-       
+        deleteObjectsIfSchoolAccountChanges("Listing")
+        
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-        ListingController.shared.syncCoreData()
-
+        
     }
     
     private func deleteObjectsIfSchoolAccountChanges(_ entity: String) {
@@ -49,29 +46,32 @@ class SGalleryTableViewController: UITableViewController {
         let registerSchoolID = UserDefaults.standard.string(forKey: "schoolID")
         
         if loggedInSchoolID != registerSchoolID {
+
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
-              fetchRequest.returnsObjectsAsFaults = false
-              do {
+            fetchRequest.returnsObjectsAsFaults = false
+            do {
                 let results = try CoreDataStack.shared.mainContext.fetch(fetchRequest)
-                  for object in results {
-                      guard let objectData = object as? NSManagedObject else {continue}
+                for object in results {
+                    guard let objectData = object as? NSManagedObject else {continue}
                     CoreDataStack.shared.mainContext.delete(objectData)
-                  }
-              } catch let error {
-                  print("Detele all data in \(entity) error :", error)
-              }
+                }
+            } catch let error {
+                print("Detele all data in \(entity) error :", error)
+            }
+            
+            UserDefaults.standard.set(loggedInSchoolID, forKey: "schoolID")
         }
         
     }
-
-
+    
+    
     // MARK: - Table view data source
-
-
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "GalleryTableViewCell", for: indexPath) as? SchoolGalleryTableViewCell else { return UITableViewCell() }
         let listing = fetchedResultsController.object(at: indexPath)
@@ -83,12 +83,12 @@ class SGalleryTableViewController: UITableViewController {
         
         return cell
     }
-
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         
         return true
     }
-
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let listing = fetchedResultsController.object(at: indexPath)
@@ -96,13 +96,13 @@ class SGalleryTableViewController: UITableViewController {
         } else if editingStyle == .insert {
         }    
     }
- 
+    
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+        
     }
-
+    
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
- 
+        
         return true
     }
     
@@ -112,9 +112,9 @@ class SGalleryTableViewController: UITableViewController {
         guard let image = UIImage(data: data) else { return UIImage() }
         return image
     }
-
+    
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let listingDetailVC = segue.destination as? SArtDetailViewController else { return }
         if segue.identifier == "ArtDetailSegue" {
@@ -123,7 +123,7 @@ class SGalleryTableViewController: UITableViewController {
             listingDetailVC.listing = listing
         }
     }
-
+    
 }
 
 extension SGalleryTableViewController: NSFetchedResultsControllerDelegate {

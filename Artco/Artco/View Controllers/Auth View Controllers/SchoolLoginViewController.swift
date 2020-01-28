@@ -98,6 +98,8 @@ class SchoolLoginViewController: UIViewController {
                    case .success(let graphQLResult):
                        if let serverId = graphQLResult.data?.schoolBySchoolId.id {
                            SchoolServerID.shared.serverId = serverId
+                        UserDefaults.standard.set(serverId, forKey: "loginID")
+                                                 print(serverId)
                            print(serverId)
                        }
                        
