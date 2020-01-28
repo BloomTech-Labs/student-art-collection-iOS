@@ -65,6 +65,7 @@
 		6ECC094D23DF7EE00007D409 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECC094C23DF7EE00007D409 /* ConcurrentOperation.swift */; };
 		6ECC094F23DF806D0007D409 /* UploadImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECC094E23DF806D0007D409 /* UploadImageOperation.swift */; };
 		6ECC095223DF9FA00007D409 /* FetchDetailOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECC095123DF9FA00007D409 /* FetchDetailOperation.swift */; };
+		6ECC095423DFDC420007D409 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECC095323DFDC420007D409 /* Cache.swift */; };
 		6EE984C923CCFA15003D3777 /* SchoolSignUp2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE984C823CCFA15003D3777 /* SchoolSignUp2ViewController.swift */; };
 		6EE984CE23CD0077003D3777 /* School+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE984CD23CD0077003D3777 /* School+Convenience.swift */; };
 		6EE984D023CD0299003D3777 /* SchoolController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE984CF23CD0299003D3777 /* SchoolController.swift */; };
@@ -162,6 +163,7 @@
 		6ECC094C23DF7EE00007D409 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 		6ECC094E23DF806D0007D409 /* UploadImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageOperation.swift; sourceTree = "<group>"; };
 		6ECC095123DF9FA00007D409 /* FetchDetailOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDetailOperation.swift; sourceTree = "<group>"; };
+		6ECC095323DFDC420007D409 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		6EE984C823CCFA15003D3777 /* SchoolSignUp2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolSignUp2ViewController.swift; sourceTree = "<group>"; };
 		6EE984CD23CD0077003D3777 /* School+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "School+Convenience.swift"; sourceTree = "<group>"; };
 		6EE984CF23CD0299003D3777 /* SchoolController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolController.swift; sourceTree = "<group>"; };
@@ -497,6 +499,7 @@
 			isa = PBXGroup;
 			children = (
 				6ECC094C23DF7EE00007D409 /* ConcurrentOperation.swift */,
+				6ECC095323DFDC420007D409 /* Cache.swift */,
 				6ECC094E23DF806D0007D409 /* UploadImageOperation.swift */,
 				6ECC095123DF9FA00007D409 /* FetchDetailOperation.swift */,
 			);
@@ -850,6 +853,7 @@
 				387DD19A23AC78A90041BC00 /* EmailViewController.swift in Sources */,
 				6E0A332E23AC32020073FA2F /* CameraPreviewView.swift in Sources */,
 				387DD19323AC784D0041BC00 /* CartViewController.swift in Sources */,
+				6ECC095423DFDC420007D409 /* Cache.swift in Sources */,
 				6E0A331B23AC11690073FA2F /* Category.swift in Sources */,
 				6E0A332A23AC18BE0073FA2F /* Listing+Convenience.swift in Sources */,
 				6EC75B6723AC8A9400BFAF44 /* Float+CurrencyFormatter.swift in Sources */,
