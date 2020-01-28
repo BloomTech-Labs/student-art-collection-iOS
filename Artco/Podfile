@@ -13,7 +13,7 @@ pod 'FirebaseUI/Google'
 pod 'Firebase/Storage'
 pod 'Cloudinary', '~> 2.0'
 pod 'DropDown'
-
+pod 'AlamofireImage', '~> 3.5'
 
   target 'ArtcoTests' do
     inherit! :search_paths

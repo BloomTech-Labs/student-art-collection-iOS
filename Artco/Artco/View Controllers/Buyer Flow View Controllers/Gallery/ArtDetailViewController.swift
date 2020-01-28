@@ -8,10 +8,8 @@
 
 import UIKit
 import Apollo
-
-enum Category: GraphQLID {
-    case category
-}
+import Alamofire
+import AlamofireImage
 
 class ArtDetailViewController: UIViewController {
     
@@ -27,101 +25,60 @@ class ArtDetailViewController: UIViewController {
     
     let ui = UIController.shared
     var id: GraphQLID?
-    var listing: ArtQuery.Data.Art? {
-        didSet {
-            updateViews()
-        }
-    }
+    var listing: ArtQuery.Data.Art? 
+    private let detailFetchQueue = OperationQueue()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadListing()
-        updateViews()
-    }
-    
-    private func setupUI() {
-        ui.configureButton(addToCartButton)
-    }
-    
-    func updateViews() {
-        setupUI()
-        guard isViewLoaded,
-            let listing = listing else { return }
-        listingImageView.image = convertToUIImage((listing.images?[0]?.imageUrl)!)!
-        artistNameLabel.text = listing.artistName
-        titleLabel.text = listing.title
-        priceLabel.text = "$\(String(describing: listing.price!)).00"
-        descriptionTextView.text = listing.description
-        categoryLabel.text = "Painting"
     }
     
     private func loadListing() {
-        guard isViewLoaded,
-            let id = id else { return }
+        guard let id = id else { return }
         
-        Network.shared.apollo
-            .fetch(query: ArtQuery(id: id)) { [weak self] result in
+        let fetchDetailOp = FetchDetailOperation(id: id)
+        
+        let imageConversionOp = BlockOperation {
+            guard let urlString = fetchDetailOp.listing?.images?[0]?.imageUrl,
+                let imageUrl = URL(string: urlString)?.usingHTTPS else { return }
+            
+            DispatchQueue.main.async {
+                let filter = AspectScaledToFitSizeFilter(size: self.listingImageView.frame.size)
                 
-                guard let self = self else {
-                    return
-                }
-                
-                defer {
-                    self.updateViews()
-                }
-                
-                switch result {
-                case .success(let graphQLResult):
-                    if let downloadedListing = graphQLResult.data?.art {
-                        self.listing = downloadedListing
-                    }
-                    
-                    if let errors = graphQLResult.errors {
-                        let message = errors
-                            .map { $0.localizedDescription }
-                            .joined(separator: "\n")
-                        self.showErrorAlert(title: "GraphQL Error(s)",
-                                            message: message)
-                    }
-                case .failure(let error):
-                    print("Error: \(error)")
-                }
+                self.listingImageView.af_setImage(withURL: imageUrl, filter: filter)
+            }
+
         }
+        
+        let updateViewsOp = BlockOperation {
+            guard let listing = fetchDetailOp.listing else { return }
+            self.listing = listing
+            
+            DispatchQueue.main.async {
+                self.ui.configureButton(self.addToCartButton)
+                self.artistNameLabel.text = listing.artistName
+                self.titleLabel.text = listing.title
+                self.priceLabel.text = "$\(String(describing: listing.price!)).00"
+                self.descriptionTextView.text = listing.description
+                self.categoryLabel.text = "Painting"
+            }
+        }
+        
+        imageConversionOp.addDependency(fetchDetailOp)
+        updateViewsOp.addDependency(imageConversionOp)
+        
+        detailFetchQueue.addOperation(fetchDetailOp)
+        detailFetchQueue.addOperation(imageConversionOp)
+        OperationQueue.main.addOperation(updateViewsOp)
+        
+        
     }
     
-    private func showErrorAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title,
-                                      message: message,
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        self.present(alert, animated: true)
-    }
-    
-    private func convertToUIImage(_ str: String) -> UIImage? {
-        var imageData: Data?
-        guard let url = URL(string: str) else { return UIImage() }
-        do {
-            let data = try? Data(contentsOf: url)
-            imageData = data
-        }
-        return UIImage(data: imageData ?? Data())
-    }
     
     @IBAction func addToCartButtonTapped(_ sender: UIButton) {
         guard let listing = listing else { return }
         BuyerController.shared.addToCart(listing)
         dismiss(animated: true, completion: nil)
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
