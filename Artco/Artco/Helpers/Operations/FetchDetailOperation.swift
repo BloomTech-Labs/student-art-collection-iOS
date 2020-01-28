@@ -13,21 +13,22 @@ class FetchDetailOperation: ConcurrentOperation {
     
     let id: GraphQLID
     var listing: ArtQuery.Data.Art?
-    var imageData: Data?
-    private let session: URLSession
-    private var dataTask: URLSessionDataTask?
     
-    init(id: GraphQLID, session: URLSession = URLSession.shared) {
+    init(id: GraphQLID) {
         self.id = id
-        self.session = session
-        super.init()
     }
     
     override func start() {
         state = .isExecuting
         
         Network.shared.apollo
-            .fetch(query: ArtQuery(id: id)) { result in
+            .fetch(query: ArtQuery(id: id)) { [weak self] result in
+                
+                print(result)
+                
+                guard let self = self else {
+                    return
+                }
                 
                 defer { self.state = .isFinished }
                 if self.isCancelled { return }
@@ -48,11 +49,6 @@ class FetchDetailOperation: ConcurrentOperation {
                     print("Error: \(error)")
                 }
         }
-    }
-    
-    override func cancel() {
-        Network.shared.apollo.fetch(query: ArtQuery(id: id)).cancel()
-        super.cancel()
     }
     
 }

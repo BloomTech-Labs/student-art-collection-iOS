@@ -38,26 +38,38 @@ class ArtDetailViewController: UIViewController {
         
         let fetchDetailOp = FetchDetailOperation(id: id)
         
+        let imageConversionOp = BlockOperation {
+            guard let urlString = fetchDetailOp.listing?.images?[0]?.imageUrl,
+                let imageUrl = URL(string: urlString),
+                let placeholderImage = UIImage(named: "artboard") else { return }
+            
+            DispatchQueue.main.async {
+                let filter = AspectScaledToFitSizeFilter(size: self.listingImageView.frame.size)
+                
+                self.listingImageView.af_setImage(withURL: imageUrl, placeholderImage: placeholderImage, filter: filter)
+            }
+
+        }
+        
         let updateViewsOp = BlockOperation {
             guard let listing = fetchDetailOp.listing else { return }
             self.listing = listing
             
-            if let data = fetchDetailOp.imageData {
-                DispatchQueue.main.async {
-                    self.ui.configureButton(self.addToCartButton)
-                    self.listingImageView.image = UIImage(data: data)
-                    self.artistNameLabel.text = listing.artistName
-                    self.titleLabel.text = listing.title
-                    self.priceLabel.text = "$\(String(describing: listing.price!)).00"
-                    self.descriptionTextView.text = listing.description
-                    self.categoryLabel.text = "Painting"
-                }
+            DispatchQueue.main.async {
+                self.ui.configureButton(self.addToCartButton)
+                self.artistNameLabel.text = listing.artistName
+                self.titleLabel.text = listing.title
+                self.priceLabel.text = "$\(String(describing: listing.price!)).00"
+                self.descriptionTextView.text = listing.description
+                self.categoryLabel.text = "Painting"
             }
         }
         
-        updateViewsOp.addDependency(fetchDetailOp)
+        imageConversionOp.addDependency(fetchDetailOp)
+        updateViewsOp.addDependency(imageConversionOp)
         
         detailFetchQueue.addOperation(fetchDetailOp)
+        detailFetchQueue.addOperation(imageConversionOp)
         OperationQueue.main.addOperation(updateViewsOp)
         
         
