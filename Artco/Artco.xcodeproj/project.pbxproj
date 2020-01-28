@@ -64,6 +64,7 @@
 		6ECC094B23DF7E9B0007D409 /* URL+Secure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECC094A23DF7E9B0007D409 /* URL+Secure.swift */; };
 		6ECC094D23DF7EE00007D409 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECC094C23DF7EE00007D409 /* ConcurrentOperation.swift */; };
 		6ECC094F23DF806D0007D409 /* UploadImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECC094E23DF806D0007D409 /* UploadImageOperation.swift */; };
+		6ECC095223DF9FA00007D409 /* FetchDetailOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECC095123DF9FA00007D409 /* FetchDetailOperation.swift */; };
 		6EE984C923CCFA15003D3777 /* SchoolSignUp2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE984C823CCFA15003D3777 /* SchoolSignUp2ViewController.swift */; };
 		6EE984CE23CD0077003D3777 /* School+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE984CD23CD0077003D3777 /* School+Convenience.swift */; };
 		6EE984D023CD0299003D3777 /* SchoolController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE984CF23CD0299003D3777 /* SchoolController.swift */; };
@@ -160,6 +161,7 @@
 		6ECC094A23DF7E9B0007D409 /* URL+Secure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Secure.swift"; sourceTree = "<group>"; };
 		6ECC094C23DF7EE00007D409 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 		6ECC094E23DF806D0007D409 /* UploadImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageOperation.swift; sourceTree = "<group>"; };
+		6ECC095123DF9FA00007D409 /* FetchDetailOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDetailOperation.swift; sourceTree = "<group>"; };
 		6EE984C823CCFA15003D3777 /* SchoolSignUp2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolSignUp2ViewController.swift; sourceTree = "<group>"; };
 		6EE984CD23CD0077003D3777 /* School+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "School+Convenience.swift"; sourceTree = "<group>"; };
 		6EE984CF23CD0299003D3777 /* SchoolController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolController.swift; sourceTree = "<group>"; };
@@ -496,6 +498,7 @@
 			children = (
 				6ECC094C23DF7EE00007D409 /* ConcurrentOperation.swift */,
 				6ECC094E23DF806D0007D409 /* UploadImageOperation.swift */,
+				6ECC095123DF9FA00007D409 /* FetchDetailOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -812,6 +815,7 @@
 				3865DE9923C3F11E00B548F6 /* Student+Convenience.swift in Sources */,
 				6EC75B8123C7DD0F00BFAF44 /* BuyerController.swift in Sources */,
 				6EA5B43C23A977F1007DD6AE /* SchoolLoginViewController.swift in Sources */,
+				6ECC095223DF9FA00007D409 /* FetchDetailOperation.swift in Sources */,
 				6ECC094D23DF7EE00007D409 /* ConcurrentOperation.swift in Sources */,
 				6EA5B40A23A9648C007DD6AE /* AppDelegate.swift in Sources */,
 				387DD18F23AC71C10041BC00 /* SStudentDetailViewController.swift in Sources */,
