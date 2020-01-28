@@ -41,7 +41,7 @@ class SGalleryTableViewController: UITableViewController {
     
     private func deleteObjectsIfSchoolAccountChanges(_ entity: String) {
         
-        let loggedInSchoolID = UserDefaults.standard.string(forKey: "loginID")
+        let loggedInSchoolID = SchoolServerID.shared.serverId
         
         let registerSchoolID = UserDefaults.standard.string(forKey: "schoolID")
         
