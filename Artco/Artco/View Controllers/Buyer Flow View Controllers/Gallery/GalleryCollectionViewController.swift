@@ -15,7 +15,16 @@ enum ListSection: Int, CaseIterable {
 
 class GalleryCollectionViewController: UICollectionViewController {
     
-    var results = [AllArtQuery.Data.AllArt]()
+    private let cache = Cache<Int, Data>()
+    private let galleryFetchQueue = OperationQueue()
+    private var operations = [Int : Operation]()
+    private var results = [AllArtQuery.Data.AllArt]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,11 +59,7 @@ class GalleryCollectionViewController: UICollectionViewController {
         
         switch listSection {
         case .allArts:
-            let listing = self.results[indexPath.row]
-            guard let image = listing.images?[0]?.imageUrl else {return UICollectionViewCell()}
-            cell.listingImageView.image = convertToUIImage(image)
-            cell.artistNameLabel.text = listing.artistName
-            cell.priceLabel.text = "$\(String(describing: listing.price!)).00"
+            loadInfo(forCell: cell, forItemAt: indexPath)
         }
         return cell
     }
@@ -89,6 +94,50 @@ class GalleryCollectionViewController: UICollectionViewController {
                     print("You suck this didn't work you dumb bitch")
                 }
         }
+    }
+    
+    private func loadInfo(forCell cell: ListingCollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        let listing = results[indexPath.item]
+        guard let listingId = Int(listing.id) else { return }
+        
+        if let cachedData = cache.value(key: listingId),
+            let image = UIImage(data: cachedData) {
+            cell.listingImageView.image = image
+            return
+        }
+        
+        let buyerFetchOp = BuyerGalleryOperation(listing: listing)
+        
+        let cacheOp = BlockOperation {
+            if let data = buyerFetchOp.imageData {
+                self.cache.cache(value: data, key: listingId)
+            }
+        }
+        
+        let completionOp = BlockOperation {
+            defer { self.operations.removeValue(forKey: listingId) }
+            if let currentIndexPath = self.collectionView.indexPath(for: cell),
+                currentIndexPath != indexPath {
+                print("Got image for reused cell")
+                return
+            }
+            if let data = buyerFetchOp.imageData {
+                cell.listingImageView.image = UIImage(data: data)
+                cell.artistNameLabel.text = listing.artistName
+                cell.priceLabel.text = "$\(listing.price ?? 00).00"
+            }
+        }
+        
+        cacheOp.addDependency(buyerFetchOp)
+        completionOp.addDependency(buyerFetchOp)
+        
+        galleryFetchQueue.addOperation(buyerFetchOp)
+        galleryFetchQueue.addOperation(cacheOp)
+        OperationQueue.main.addOperation(completionOp)
+        
+        operations[listingId] = buyerFetchOp
+        
     }
     
     private func showErrorAlert(title: String, message: String) {
