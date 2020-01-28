@@ -10,6 +10,12 @@ import UIKit
 
 class ListingCollectionViewCell: UICollectionViewCell {
     
+    override func prepareForReuse() {
+        listingImageView.image = #imageLiteral(resourceName: "MarsPlaceholder")
+        
+        super.prepareForReuse()
+    }
+    
     @IBOutlet weak var listingImageView: UIImageView!
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
