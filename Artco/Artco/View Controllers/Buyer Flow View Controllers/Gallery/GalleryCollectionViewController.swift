@@ -129,6 +129,14 @@ class GalleryCollectionViewController: UICollectionViewController {
             }
         }
         
+        cacheOp.addDependency(buyerFetchOp)
+        completionOp.addDependency(buyerFetchOp)
+        
+        galleryFetchQueue.addOperation(buyerFetchOp)
+        galleryFetchQueue.addOperation(cacheOp)
+        OperationQueue.main.addOperation(completionOp)
+        
+        operations[listingId] = buyerFetchOp
         
     }
     
