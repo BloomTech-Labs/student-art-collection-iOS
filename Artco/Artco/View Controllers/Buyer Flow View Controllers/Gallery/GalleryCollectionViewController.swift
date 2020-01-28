@@ -101,7 +101,7 @@ class GalleryCollectionViewController: UICollectionViewController {
     
     private func convertToUIImage(_ str: String) -> UIImage? {
         var imageData: Data?
-        guard let url = URL(string: str) else { return UIImage() }
+        guard let url = URL(string: str)?.usingHTTPS else { return UIImage() }
         do {
             let data = try? Data(contentsOf: url)
             imageData = data

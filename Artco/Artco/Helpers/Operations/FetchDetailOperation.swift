@@ -51,4 +51,9 @@ class FetchDetailOperation: ConcurrentOperation {
         }
     }
     
+    override func cancel() {
+        Network.shared.apollo.fetch(query: ArtQuery(id: id)).cancel()
+        super.cancel()
+    }
+    
 }
