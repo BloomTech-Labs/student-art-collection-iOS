@@ -40,13 +40,12 @@ class ArtDetailViewController: UIViewController {
         
         let imageConversionOp = BlockOperation {
             guard let urlString = fetchDetailOp.listing?.images?[0]?.imageUrl,
-                let imageUrl = URL(string: urlString),
-                let placeholderImage = UIImage(named: "artboard") else { return }
+                let imageUrl = URL(string: urlString) else { return }
             
             DispatchQueue.main.async {
                 let filter = AspectScaledToFitSizeFilter(size: self.listingImageView.frame.size)
                 
-                self.listingImageView.af_setImage(withURL: imageUrl, placeholderImage: placeholderImage, filter: filter)
+                self.listingImageView.af_setImage(withURL: imageUrl, filter: filter)
             }
 
         }
