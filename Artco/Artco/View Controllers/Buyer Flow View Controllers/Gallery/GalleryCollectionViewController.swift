@@ -25,6 +25,7 @@ class GalleryCollectionViewController: UICollectionViewController {
             }
         }
     }
+    private var token: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
