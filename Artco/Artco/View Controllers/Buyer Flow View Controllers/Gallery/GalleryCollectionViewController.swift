@@ -27,8 +27,8 @@ class GalleryCollectionViewController: UICollectionViewController {
     }
     private var token: String? {
         didSet {
-            self.results = results.filter{ $0.school?.zipcode == "84664" && $0.category?.category == "Photography" }
             DispatchQueue.main.async {
+                self.filter()
                 self.collectionView.reloadData()
             }
         }
@@ -144,9 +144,7 @@ class GalleryCollectionViewController: UICollectionViewController {
                 return
             }
             if let data = buyerFetchOp.imageData {
-                cell.listingImageView.image = UIImage(data: data)
-                cell.artistNameLabel.text = listing.artistName
-                cell.priceLabel.text = "$\(listing.price ?? 00).00"
+                cell.listingImageView.image = UIImage(data: data) ?? UIImage(named: "Nike")
             }
         }
         
@@ -177,6 +175,10 @@ class GalleryCollectionViewController: UICollectionViewController {
             imageData = data
         }
         return UIImage(data: imageData ?? Data())
+    }
+    
+    private func filter() {
+        self.results = results.filter{ $0.school?.zipcode == "54321" && $0.category?.category == "Photography" }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
