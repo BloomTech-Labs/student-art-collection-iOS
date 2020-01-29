@@ -42,7 +42,9 @@ class FilterViewController: UIViewController {
        }
     
     @IBAction func doneButtonTapped(_ sender: Any) {
-        
+        guard let filterString = zioCodeTextField.text else { return }
+        let zipcode = Notification.Name(String.filterNotificationKey)
+        NotificationCenter.default.post(name: zipcode, object: nil, userInfo: ["name": filterString])
         dismiss(animated: true, completion: nil)
     }
     
