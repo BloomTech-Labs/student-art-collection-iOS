@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -186,69 +186,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="layoutMargins" id="sGo-Xv-fi6">
-                            <size key="itemSize" width="125" height="150"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="safeArea" id="sGo-Xv-fi6">
+                            <size key="itemSize" width="207" height="207"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ListingCell" id="MBr-Mb-rqD" customClass="ListingCollectionViewCell" customModule="Artco" customModuleProvider="target">
-                                <rect key="frame" x="8" y="8" width="125" height="150"/>
+                                <rect key="frame" x="0.0" y="0.0" width="207" height="207"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2fH-2E-PZh">
-                                    <rect key="frame" x="0.0" y="0.0" width="125" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="207" height="207"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9sn-Ao-EuR">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="207" height="207"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U6O-Vd-DU0">
-                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="207" height="207"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="U6O-Vd-DU0" secondAttribute="height" multiplier="1:1" id="e0e-JD-uOi"/>
+                                                        <constraint firstAttribute="width" secondItem="U6O-Vd-DU0" secondAttribute="height" multiplier="1:1" id="oOt-JO-VvA"/>
                                                     </constraints>
                                                 </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uWo-iX-zmu">
-                                                    <rect key="frame" x="8" y="129.5" width="109" height="16.5"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YEY-sS-UpV">
-                                                            <rect key="frame" x="0.0" y="0.0" width="50.5" height="16.5"/>
-                                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="HOh-eW-aWX">
-                                                            <rect key="frame" x="58.5" y="0.0" width="50.5" height="16.5"/>
-                                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="uWo-iX-zmu" secondAttribute="trailing" constant="8" id="IY7-07-k0O"/>
-                                                <constraint firstItem="U6O-Vd-DU0" firstAttribute="leading" secondItem="9sn-Ao-EuR" secondAttribute="leading" id="JRt-mv-03f"/>
-                                                <constraint firstAttribute="bottom" secondItem="uWo-iX-zmu" secondAttribute="bottom" constant="4" id="SNv-lP-nni"/>
-                                                <constraint firstItem="uWo-iX-zmu" firstAttribute="leading" secondItem="9sn-Ao-EuR" secondAttribute="leading" constant="8" id="eBu-QK-TAY"/>
-                                                <constraint firstItem="U6O-Vd-DU0" firstAttribute="top" secondItem="9sn-Ao-EuR" secondAttribute="top" id="g5T-4b-7Qc"/>
-                                                <constraint firstAttribute="trailing" secondItem="U6O-Vd-DU0" secondAttribute="trailing" id="vMp-kn-HI0"/>
+                                                <constraint firstItem="U6O-Vd-DU0" firstAttribute="top" secondItem="9sn-Ao-EuR" secondAttribute="top" id="JBM-QR-hcS"/>
+                                                <constraint firstItem="U6O-Vd-DU0" firstAttribute="leading" secondItem="9sn-Ao-EuR" secondAttribute="leading" id="Qk6-qd-lgK"/>
+                                                <constraint firstAttribute="bottom" secondItem="U6O-Vd-DU0" secondAttribute="bottom" id="mcP-i0-LNo"/>
+                                                <constraint firstAttribute="trailing" secondItem="U6O-Vd-DU0" secondAttribute="trailing" id="pWW-LE-prL"/>
                                             </constraints>
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="9sn-Ao-EuR" secondAttribute="trailing" id="3oo-PR-bu8"/>
                                         <constraint firstItem="9sn-Ao-EuR" firstAttribute="top" secondItem="2fH-2E-PZh" secondAttribute="top" id="FaZ-dd-qMa"/>
                                         <constraint firstItem="9sn-Ao-EuR" firstAttribute="leading" secondItem="2fH-2E-PZh" secondAttribute="leading" id="HMc-H8-75p"/>
-                                        <constraint firstAttribute="bottom" secondItem="9sn-Ao-EuR" secondAttribute="bottom" id="i6A-0u-Kom"/>
+                                        <constraint firstAttribute="trailing" secondItem="9sn-Ao-EuR" secondAttribute="trailing" id="cuI-Ff-kZP"/>
+                                        <constraint firstAttribute="bottom" secondItem="9sn-Ao-EuR" secondAttribute="bottom" id="sd2-3N-DO8"/>
                                     </constraints>
                                 </collectionViewCellContentView>
+                                <size key="customSize" width="207" height="207"/>
                                 <connections>
-                                    <outlet property="artistNameLabel" destination="YEY-sS-UpV" id="cMF-bQ-qNp"/>
                                     <outlet property="listingImageView" destination="U6O-Vd-DU0" id="vKF-BW-JUU"/>
-                                    <outlet property="priceLabel" destination="HOh-eW-aWX" id="iWw-jS-65D"/>
                                     <segue destination="dFJ-6p-6sM" kind="showDetail" identifier="ShowListingDetail" id="UZY-fL-QLE"/>
                                 </connections>
                             </collectionViewCell>
@@ -1300,7 +1280,7 @@
         <image name="plus" catalog="system" width="64" height="56"/>
         <image name="square.grid.2x2.fill" catalog="system" width="64" height="56"/>
         <namedColor name="b&amp;wbutton">
-            <color red="0.62000000476837158" green="0.52100002765655518" blue="0.24500000476837158" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.13500000536441803" green="0.13500000536441803" blue="0.13600000739097595" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

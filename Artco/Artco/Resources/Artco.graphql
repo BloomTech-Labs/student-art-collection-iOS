@@ -1,6 +1,13 @@
 query AllArt {
   allArts {
     id
+    school {
+      zipcode
+  }
+    category {
+      id
+      category
+  }
     artist_name
     price
     date_posted

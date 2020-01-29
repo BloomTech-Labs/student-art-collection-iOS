@@ -11,6 +11,15 @@ public final class AllArtQuery: GraphQLQuery {
       allArts {
         __typename
         id
+        school {
+          __typename
+          zipcode
+        }
+        category {
+          __typename
+          id
+          category
+        }
         artist_name
         price
         date_posted
@@ -59,6 +68,8 @@ public final class AllArtQuery: GraphQLQuery {
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("school", type: .object(School.selections)),
+        GraphQLField("category", type: .object(Category.selections)),
         GraphQLField("artist_name", type: .scalar(String.self)),
         GraphQLField("price", type: .scalar(Int.self)),
         GraphQLField("date_posted", type: .scalar(String.self)),
@@ -71,8 +82,8 @@ public final class AllArtQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID, artistName: String? = nil, price: Int? = nil, datePosted: String? = nil, images: [Image?]? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Art", "id": id, "artist_name": artistName, "price": price, "date_posted": datePosted, "images": images.flatMap { (value: [Image?]) -> [ResultMap?] in value.map { (value: Image?) -> ResultMap? in value.flatMap { (value: Image) -> ResultMap in value.resultMap } } }])
+      public init(id: GraphQLID, school: School? = nil, category: Category? = nil, artistName: String? = nil, price: Int? = nil, datePosted: String? = nil, images: [Image?]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Art", "id": id, "school": school.flatMap { (value: School) -> ResultMap in value.resultMap }, "category": category.flatMap { (value: Category) -> ResultMap in value.resultMap }, "artist_name": artistName, "price": price, "date_posted": datePosted, "images": images.flatMap { (value: [Image?]) -> [ResultMap?] in value.map { (value: Image?) -> ResultMap? in value.flatMap { (value: Image) -> ResultMap in value.resultMap } } }])
       }
 
       public var __typename: String {
@@ -90,6 +101,24 @@ public final class AllArtQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var school: School? {
+        get {
+          return (resultMap["school"] as? ResultMap).flatMap { School(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "school")
+        }
+      }
+
+      public var category: Category? {
+        get {
+          return (resultMap["category"] as? ResultMap).flatMap { Category(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "category")
         }
       }
 
@@ -126,6 +155,90 @@ public final class AllArtQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue.flatMap { (value: [Image?]) -> [ResultMap?] in value.map { (value: Image?) -> ResultMap? in value.flatMap { (value: Image) -> ResultMap in value.resultMap } } }, forKey: "images")
+        }
+      }
+
+      public struct School: GraphQLSelectionSet {
+        public static let possibleTypes = ["School"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("zipcode", type: .nonNull(.scalar(String.self))),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(zipcode: String) {
+          self.init(unsafeResultMap: ["__typename": "School", "zipcode": zipcode])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var zipcode: String {
+          get {
+            return resultMap["zipcode"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "zipcode")
+          }
+        }
+      }
+
+      public struct Category: GraphQLSelectionSet {
+        public static let possibleTypes = ["Category"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("category", type: .nonNull(.scalar(String.self))),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(id: GraphQLID, category: String) {
+          self.init(unsafeResultMap: ["__typename": "Category", "id": id, "category": category])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return resultMap["id"]! as! GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var category: String {
+          get {
+            return resultMap["category"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "category")
+          }
         }
       }
 
