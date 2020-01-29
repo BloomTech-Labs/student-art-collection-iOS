@@ -14,6 +14,14 @@ import Apollo
 import Cloudinary
 import DropDown
 
+enum Category: String, CaseIterable {
+    case photograpy = "1"
+    case drawing = "2"
+    case painting = "3"
+    case scultpure = "4"
+    case other = "5"
+}
+
 class SAddArtViewController: UIViewController {
     
     // MARK: - Outlets and properties
@@ -32,7 +40,7 @@ class SAddArtViewController: UIViewController {
     let imagePickerController = UIImagePickerController()
     var imageData: Data?
     var imageURL: String?
-    let studentDropDown = DropDown()
+    let categoryDropDown = DropDown()
     var newListing: Listing?
     private let imageUploadQueue = OperationQueue()
     
@@ -40,22 +48,32 @@ class SAddArtViewController: UIViewController {
     
     override func viewDidLoad() {
         keyboardDismiss()
-        suggestedDonationTextField.addTarget(self, action: #selector (textFieldDidChangeSelection(_:)), for: .editingDidBegin)
+        DropDown.startListeningToKeyboard()
         titleTextField.delegate = self
         studentNameTextField.delegate = self
         categoryTextField.delegate = self
         suggestedDonationTextField.delegate = self
         descriptionTextView.delegate = self
-        studentDropDown.anchorView = studentNameTextField.rightView
-        studentNameTextField.rightViewMode = .always
-        studentDropDown.dataSource = []
-        studentNameTextField.addTarget(self, action:#selector(dropDown), for: .editingChanged)
+        suggestedDonationTextField.addTarget(self, action: #selector (textFieldDidChangeSelection(_:)), for: .editingDidBegin)
+        initializeDropDown()
     }
     
     // MARK: - Actions and methods
     
+    private func initializeDropDown() {
+        categoryDropDown.anchorView = categoryTextField.rightView
+        categoryTextField.rightViewMode = .always
+        categoryDropDown.direction = .bottom
+        categoryDropDown.dismissMode = .onTap
+        categoryDropDown.dataSource = ["Photography", "Drawing", "Painting", "Sculpture", "Other"]
+        categoryTextField.addTarget(self, action:#selector(dropDown), for: .allEditingEvents)
+        categoryDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            self.categoryTextField.text = item
+        }
+    }
+    
     @objc func dropDown() {
-        studentDropDown.show()
+        categoryDropDown.show()
     }
     
     @IBAction func addImages(_ sender: UITapGestureRecognizer) {
@@ -70,7 +88,7 @@ class SAddArtViewController: UIViewController {
             !artistName.isEmpty,
             let categoryText = categoryTextField.text,
             !categoryText.isEmpty,
-            let category = ListingCategory(rawValue: Float(categoryText)!),
+            let category = Category(rawValue: categoryText.lowercased()),
             var suggestedDonation = suggestedDonationTextField.text,
             !suggestedDonation.isEmpty,
             let artDescription = descriptionTextView.text,
@@ -92,7 +110,7 @@ class SAddArtViewController: UIViewController {
         ListingController.shared.createListing(title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: images)
         
         guard let serverId = SchoolServerID.shared.serverId,
-        let imageURL = imageURL else { return }
+            let imageURL = imageURL else { return }
         
         Network.shared.apollo.perform(mutation: AddArtMutation(category: categoryText, school_id: serverId, price: Int(price), title: title, artist_name: artistName, description: artDescription, image_url: imageURL), context: nil, queue: DispatchQueue.main) { result in
             
