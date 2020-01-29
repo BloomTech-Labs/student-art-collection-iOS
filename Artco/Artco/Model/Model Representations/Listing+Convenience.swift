@@ -15,7 +15,7 @@ extension Listing {
                                          sold: Bool = false,
                                          schoolId: Float = 1,
                                          price: Float,
-                                         category: ListingCategory,
+                                         category: String,
                                          datePosted: String = Date().fullDate,
                                          artistName: String,
                                          artDescription: String,
@@ -26,7 +26,7 @@ extension Listing {
         self.sold = sold
         self.schoolId = schoolId
         self.price = price
-        self.category = category.rawValue
+        self.category = category
         self.datePosted = datePosted
         self.artistName = artistName
         self.images = images
