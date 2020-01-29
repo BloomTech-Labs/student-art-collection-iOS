@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3808A87B23C7E8E700592FF0 /* CheckoutArtworkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3808A87A23C7E8E700592FF0 /* CheckoutArtworkCollectionViewCell.swift */; };
 		3808A87D23C7EEF400592FF0 /* NotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3808A87C23C7EEF400592FF0 /* NotificationKeys.swift */; };
+		38528D0123E144C5002C9E5E /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38528D0023E144C5002C9E5E /* FilterViewController.swift */; };
 		3865DE9923C3F11E00B548F6 /* Student+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3865DE9823C3F11E00B548F6 /* Student+Convenience.swift */; };
 		3865DE9B23C3F39200B548F6 /* StudentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3865DE9A23C3F39200B548F6 /* StudentController.swift */; };
 		3875135123C5336E0004B31D /* Artco.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 3875135023C5336E0004B31D /* Artco.xcdatamodel */; };
@@ -95,6 +96,7 @@
 		273F717A0227D61BDE43F2E5 /* Pods_Artco_ArtcoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Artco_ArtcoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3808A87A23C7E8E700592FF0 /* CheckoutArtworkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutArtworkCollectionViewCell.swift; sourceTree = "<group>"; };
 		3808A87C23C7EEF400592FF0 /* NotificationKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationKeys.swift; sourceTree = "<group>"; };
+		38528D0023E144C5002C9E5E /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		3865DE9823C3F11E00B548F6 /* Student+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Student+Convenience.swift"; sourceTree = "<group>"; };
 		3865DE9A23C3F39200B548F6 /* StudentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentController.swift; sourceTree = "<group>"; };
 		3875135023C5336E0004B31D /* Artco.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Artco.xcdatamodel; sourceTree = "<group>"; };
@@ -458,6 +460,7 @@
 			children = (
 				387DD19D23AC78CA0041BC00 /* GalleryCollectionViewController.swift */,
 				387DD19F23AC78E50041BC00 /* ArtDetailViewController.swift */,
+				38528D0023E144C5002C9E5E /* FilterViewController.swift */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
@@ -793,6 +796,7 @@
 				6ECC094B23DF7E9B0007D409 /* URL+Secure.swift in Sources */,
 				3808A87D23C7EEF400592FF0 /* NotificationKeys.swift in Sources */,
 				6EC75B7A23C5499300BFAF44 /* Network.swift in Sources */,
+				38528D0123E144C5002C9E5E /* FilterViewController.swift in Sources */,
 				6EA5B44723A98F2C007DD6AE /* AuthErrorCodes.swift in Sources */,
 				3865DE9923C3F11E00B548F6 /* Student+Convenience.swift in Sources */,
 				6EC75B8123C7DD0F00BFAF44 /* BuyerController.swift in Sources */,
