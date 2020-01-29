@@ -88,7 +88,7 @@ class SAddArtViewController: UIViewController {
             !artistName.isEmpty,
             let categoryText = categoryTextField.text,
             !categoryText.isEmpty,
-            let category = Category(rawValue: categoryText.lowercased()),
+            let category = ListingCategory(rawValue: Float(categoryText)!),
             var suggestedDonation = suggestedDonationTextField.text,
             !suggestedDonation.isEmpty,
             let artDescription = descriptionTextView.text,
