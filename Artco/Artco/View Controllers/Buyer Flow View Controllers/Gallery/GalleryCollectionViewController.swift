@@ -25,11 +25,24 @@ class GalleryCollectionViewController: UICollectionViewController {
             }
         }
     }
-    private var token: String?
+    private var token: String? {
+        didSet {
+            self.results = results.filter{ $0.school?.zipcode == "84664" && $0.category?.category == "Photography" }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createObservers()
         loadListings()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        createObservers()
     }
     
     // MARK: UICollectionViewDataSource
@@ -63,6 +76,13 @@ class GalleryCollectionViewController: UICollectionViewController {
             loadInfo(forCell: cell, forItemAt: indexPath)
         }
         return cell
+    }
+    
+    private func createObservers() {
+        NotificationCenter.default.addObserver(forName: Notification.Name(String.filterNotificationKey), object: nil, queue: OperationQueue.main) { (notification) in
+            guard let userInfo = notification.userInfo else {return}
+            self.token = "\(userInfo["name"])"
+        }
     }
     
     private func loadListings() {
