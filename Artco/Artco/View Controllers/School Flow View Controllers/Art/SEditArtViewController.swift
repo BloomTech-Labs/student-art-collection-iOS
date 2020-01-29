@@ -39,8 +39,6 @@ class SEditArtViewController: UIViewController {
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         guard let listing = listing,
             let title = titleTextField.text, !title.isEmpty,
-            let categoryText = categoryTextField.text, !categoryText.isEmpty,
-            let category = ListingCategory(rawValue: Float(categoryText)!),
             let artDescription = artDescriptionTextView.text, !artDescription.isEmpty,
             let artistName = artistNameTextField.text, !artistName.isEmpty,
             var priceText = priceTextField.text, !priceText.isEmpty else { return }
@@ -52,7 +50,7 @@ class SEditArtViewController: UIViewController {
         guard let price = Float(priceText),
             let currentListingImages = listing.images else { return }
         
-        ListingController.shared.updateListing(id: listing.id, listing: listing, title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: imageData ?? currentListingImages)
+        ListingController.shared.updateListing(id: listing.id, listing: listing, title: title, price: price, category: "1", artistName: artistName, artDescription: artDescription, images: imageData ?? currentListingImages)
         
 //      Network.shared.apollo.perform(mutation: UpdateArtMutation(id: <#T##GraphQLID#>, price: <#T##Int?#>, title: <#T##String?#>, artist_name: <#T##String?#>, description: <#T##String?#>), context: <#T##UnsafeMutableRawPointer?#>, queue: <#T##DispatchQueue#>, resultHandler: <#T##((Result<GraphQLResult<GraphQLSelectionSet>, Error>) -> Void)?##((Result<GraphQLResult<GraphQLSelectionSet>, Error>) -> Void)?##(Result<GraphQLResult<GraphQLSelectionSet>, Error>) -> Void#>)
         navigationController?.popToRootViewController(animated: true)

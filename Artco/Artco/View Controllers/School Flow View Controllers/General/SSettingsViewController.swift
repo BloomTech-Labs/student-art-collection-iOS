@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SSettingsViewController: UIViewController {
 
@@ -23,6 +24,19 @@ class SSettingsViewController: UIViewController {
     }
     
     @IBAction func signOutButtonTapped(_ sender: UIButton) {
+        do {
+            try Auth.auth().signOut()
+        } catch let error {
+            print(error)
+        }
+        
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginController = storyboard.instantiateViewController(withIdentifier: "RedirectViewController")
+            loginController.modalPresentationStyle = .fullScreen
+            self.present(loginController, animated: true, completion: nil)
+        }
+        
         
     }
     

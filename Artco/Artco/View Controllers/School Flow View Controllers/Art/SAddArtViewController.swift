@@ -86,9 +86,6 @@ class SAddArtViewController: UIViewController {
             !title.isEmpty,
             let artistName = studentNameTextField.text,
             !artistName.isEmpty,
-            let categoryText = categoryTextField.text,
-            !categoryText.isEmpty,
-            let category = ListingCategory(rawValue: Float(categoryText)!),
             var suggestedDonation = suggestedDonationTextField.text,
             !suggestedDonation.isEmpty,
             let artDescription = descriptionTextView.text,
@@ -107,12 +104,12 @@ class SAddArtViewController: UIViewController {
         guard let price = Float(suggestedDonation),
             let images = imageData else { return }
         
-        ListingController.shared.createListing(title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: images)
+        ListingController.shared.createListing(title: title, price: price, category: "1", artistName: artistName, artDescription: artDescription, images: images)
         
         guard let serverId = SchoolServerID.shared.serverId,
             let imageURL = imageURL else { return }
         
-        Network.shared.apollo.perform(mutation: AddArtMutation(category: categoryText, school_id: serverId, price: Int(price), title: title, artist_name: artistName, description: artDescription, image_url: imageURL), context: nil, queue: DispatchQueue.main) { result in
+        Network.shared.apollo.perform(mutation: AddArtMutation(category: "1", school_id: serverId, price: Int(price), title: title, artist_name: artistName, description: artDescription, image_url: imageURL), context: nil, queue: DispatchQueue.main) { result in
             
             switch result {
             case .success(let graphQLResult):

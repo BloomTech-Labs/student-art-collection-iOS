@@ -114,7 +114,7 @@ class ListingController {
                     
                     
                     
-                    self.createListing(title: title, price: Float(price), category: ListingCategory(rawValue: 1)!, artistName: artistName, artDescription: descriptioin, images: imageData)
+                    self.createListing(title: title, price: Float(price), category: "1", artistName: artistName, artDescription: descriptioin, images: imageData)
                 }
                 
             } catch {
@@ -125,17 +125,17 @@ class ListingController {
     }
     
     
-    @discardableResult func createListing(title: String, price: Float, category: ListingCategory, artistName: String, artDescription: String, images: Data) -> Listing {
+    @discardableResult func createListing(title: String, price: Float, category: String, artistName: String, artDescription: String, images: Data) -> Listing {
         let listing = Listing(title: title, price: price, category: category, artistName: artistName, artDescription: artDescription, images: images)
         CoreDataStack.shared.save()
         return listing
     }
     
-    @discardableResult func updateListing(id: Float, listing: Listing, title: String, price: Float, category: ListingCategory, artistName: String, artDescription: String, images: Data) -> Listing {
+    @discardableResult func updateListing(id: Float, listing: Listing, title: String, price: Float, category: String, artistName: String, artDescription: String, images: Data) -> Listing {
         listing.id = id
         listing.title = title
         listing.price = price
-        listing.category = category.rawValue
+        listing.category = category
         listing.artistName = artistName
         listing.artDescription = artDescription
         listing.images = images
