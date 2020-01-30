@@ -10,6 +10,8 @@ import UIKit
 
 class CartTableViewCell: UITableViewCell {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var categoryLabel: UILabel!
