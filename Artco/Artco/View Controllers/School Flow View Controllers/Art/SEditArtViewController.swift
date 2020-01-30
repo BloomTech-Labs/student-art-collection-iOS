@@ -72,7 +72,7 @@ class SEditArtViewController: UIViewController {
         titleTextField.text = title
         artDescriptionTextView.text = artDescription
         priceTextField.text = listing.price.currencyOutputFormatting()
-        categoryTextField.text = "\(listing.category)"
+        categoryTextField.text = "\(String(describing: listing.category))"
         artistNameTextField.text = artistName
         topLeftImageView.image = convertDataToImage(imageData)
     }

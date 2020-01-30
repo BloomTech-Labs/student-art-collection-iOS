@@ -81,7 +81,7 @@ class GalleryCollectionViewController: UICollectionViewController {
     private func createObservers() {
         NotificationCenter.default.addObserver(forName: Notification.Name(String.filterNotificationKey), object: nil, queue: OperationQueue.main) { (notification) in
             guard let userInfo = notification.userInfo else {return}
-            self.token = "\(userInfo["name"])"
+            self.token = "\(String(describing: userInfo["name"]))"
         }
     }
     

@@ -223,7 +223,7 @@ extension SAddArtViewController: UIImagePickerControllerDelegate, UINavigationCo
         let completionOp = BlockOperation {
             if let result = uploadImageOp.imageURL {
                 self.imageURL = result
-                print(self.imageURL)
+                print(self.imageURL as Any)
                 DispatchQueue.main.async {
                     self.topLeftImageView.image = image
                     self.imagePickerController.dismiss(animated: true, completion: nil)
