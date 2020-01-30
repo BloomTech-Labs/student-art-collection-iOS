@@ -322,10 +322,9 @@
 		6EA5B40823A9648C007DD6AE /* Artco */ = {
 			isa = PBXGroup;
 			children = (
-				6EA5B44023A9871F007DD6AE /* Views */,
-				6EC75B7823C5493500BFAF44 /* Networking */,
 				6EA5B44223A9872F007DD6AE /* Model */,
 				6EA5B44123A98726007DD6AE /* Model Controller */,
+				6EA5B44023A9871F007DD6AE /* Views */,
 				6EA5B43D23A986F9007DD6AE /* View Controllers */,
 				6EA5B43E23A98704007DD6AE /* Storyboards */,
 				6EA5B44323A98738007DD6AE /* Helpers */,
@@ -420,6 +419,7 @@
 		6EA5B44323A98738007DD6AE /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				6EC75B7823C5493500BFAF44 /* Networking */,
 				6EA5B44623A98F2C007DD6AE /* AuthErrorCodes.swift */,
 				6E0A332D23AC32020073FA2F /* CameraPreviewView.swift */,
 				6E0A331A23AC11690073FA2F /* Category.swift */,
