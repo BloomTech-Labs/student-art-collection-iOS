@@ -13,9 +13,13 @@ import CoreData
 
 class ListingController {
     
+    // MARK: Properties
+    
     static let shared = ListingController()
     
     var artBySchool: [ArtBySchoolQuery.Data.ArtBySchool] = []
+    
+    // MARK: Functions 
     
     func syncCoreData() {
         

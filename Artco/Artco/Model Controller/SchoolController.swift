@@ -10,7 +10,11 @@ import Foundation
 
 class SchoolController {
     
+    // MARK: - Properties
+    
     static let shared = SchoolController()
+    
+    // MARK: - Functions
     
     @discardableResult func createSchool(schoolId: String, schoolName: String, email: String, address: String, city: String, zipcode: String) -> School {
         let school = School(schoolId: schoolId, schoolName: schoolName, email: email, address: address, city: city, zipcode: zipcode)
