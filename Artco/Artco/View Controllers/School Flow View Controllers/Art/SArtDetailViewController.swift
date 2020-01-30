@@ -40,9 +40,8 @@ class SArtDetailViewController: UIViewController, NSFetchedResultsControllerDele
         updateViews()
     }
     
-    // MARK: Methods and functions
+    // MARK: - Functions
     
-
     public func convertDataToImage(_ data: Data) -> UIImage {
         guard let image = UIImage(data: data) else { return UIImage() }
         return image
@@ -58,7 +57,7 @@ class SArtDetailViewController: UIViewController, NSFetchedResultsControllerDele
         descriptionTextView.text = listing.artDescription
     }
     
-    // MARK: Segues
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let editListingVC = segue.destination as? SEditArtViewController else { return }

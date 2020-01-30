@@ -11,9 +11,12 @@ import Apollo
 
 class UserRedirectViewController: UIViewController {
     
+    // MARK: - View lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    // MARK: - Actions
     
     @IBAction func buyerRedirectButtonTapped(_ sender: UIButton) {
         DispatchQueue.main.async {

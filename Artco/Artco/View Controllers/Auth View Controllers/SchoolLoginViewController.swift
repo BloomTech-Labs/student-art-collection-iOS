@@ -11,33 +11,21 @@ import FirebaseUI
 
 class SchoolLoginViewController: UIViewController {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
+    // MARK: - View lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        
-        
-        //        DispatchQueue.main.async {
-        //            let storyboard = UIStoryboard(name: "SchoolFlow", bundle: nil)
-        //            let schoolTabBarController = storyboard.instantiateViewController(withIdentifier: "SchoolTabBarController")
-        //            schoolTabBarController.modalPresentationStyle = .fullScreen
-        //            self.present(schoolTabBarController, animated: true, completion: nil)
-        //
-        //        }
-        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    
-    // TODO: - Redirect to separate view controller for creating account
+    // MARK: - Actions and functions
     
     @IBAction func loginButtonPressed(_ sender: Any) {
         guard let email = emailTextField.text,
@@ -74,6 +62,7 @@ class SchoolLoginViewController: UIViewController {
                 }
             }
             
+            // Sets the Firebase id token in SchoolServerID.swift
             SchoolServerID.shared.firebaseId = Auth.auth().currentUser?.uid
             self?.setServerId()
             DispatchQueue.main.async {
@@ -85,6 +74,7 @@ class SchoolLoginViewController: UIViewController {
         }
     }
     
+    // Almost every GraphQL mutation requires an argument of either the Firebase id (captured when authenticated on Google Firebase) or the school server id (captured by this method that queries for the school's id using the Firebase id). See SchoolServerID.swift where tokens are kept.
     private func setServerId() {
            
            guard let schoolId = SchoolServerID.shared.firebaseId else { return }
@@ -128,8 +118,11 @@ class SchoolLoginViewController: UIViewController {
     
 }
 
+// MARK: - Text field delegate methods
+
 extension SchoolLoginViewController: UITextFieldDelegate {
     
+    // Allows dismissal of text field after user entry is completed
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

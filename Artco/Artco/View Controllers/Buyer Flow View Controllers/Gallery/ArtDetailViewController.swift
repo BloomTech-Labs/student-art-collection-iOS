@@ -13,7 +13,7 @@ import AlamofireImage
 
 class ArtDetailViewController: UIViewController {
     
-    // MARK: Properties & Outlets
+    // MARK: Properties & outlets
     
     @IBOutlet weak var listingImageView: UIImageView!
     @IBOutlet weak var artistNameLabel: UILabel!
@@ -28,11 +28,16 @@ class ArtDetailViewController: UIViewController {
     var listing: ArtQuery.Data.Art? 
     private let detailFetchQueue = OperationQueue()
     
+    // MARK: - View lifecycle methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadListing()
     }
     
+    // MARK: - Actions and functions
+    
+    // See FetchDetailOperation.swift for information about executing an individual query for listing information. 
     private func loadListing() {
         guard let id = id else { return }
         
@@ -58,8 +63,9 @@ class ArtDetailViewController: UIViewController {
                 self.ui.configureButton(self.addToCartButton)
                 self.artistNameLabel.text = listing.artistName
                 self.titleLabel.text = listing.title
-                self.priceLabel.text = "$\(String(describing: listing.price!)).00"
+                self.priceLabel.text = "$\(String(describing: listing.price ?? 00)).00"
                 self.descriptionTextView.text = listing.description
+                // Categories need to be optimized when finalized on the backend tables
                 self.categoryLabel.text = "Painting"
             }
         }

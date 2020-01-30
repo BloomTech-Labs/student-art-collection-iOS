@@ -10,14 +10,12 @@ import UIKit
 
 class NameViewController: UIViewController {
     
+    // MARK: - Outlets
     
     @IBOutlet weak var nameTextField: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+    // MARK: - Actions
+    
     @IBAction func doneButtonTapped(_ sender: UIButton) {
         guard let nameString = nameTextField.text else { return }
         let name = Notification.Name(String.nameNotificationKey)

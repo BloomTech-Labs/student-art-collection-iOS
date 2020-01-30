@@ -9,8 +9,12 @@
 import UIKit
 import DropDown
 
+// At the time of the RC2 demo, searching was only feasible with local filtering due to backend complexities. When functional, it is recommended to implement GraphQL queries depending on user inputs. 
+
 class FilterViewController: UIViewController {
 
+    // MARK: - Properties and outlets
+    
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var zioCodeTextField: UITextField!
     @IBOutlet weak var schoolNameCategory: UITextField!
@@ -18,13 +22,16 @@ class FilterViewController: UIViewController {
     
     let categoryDropDown = DropDown()
 
+    // MARK: - View lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         DropDown.startListeningToKeyboard()
         initializeDropDown()
-
     }
+    
+    // MARK: - Actions and functions
+    
     private func initializeDropDown() {
            categoryDropDown.anchorView = categoryTextField.rightView
            categoryTextField.rightViewMode = .always

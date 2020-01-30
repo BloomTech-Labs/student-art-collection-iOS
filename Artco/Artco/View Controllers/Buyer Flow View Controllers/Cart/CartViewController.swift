@@ -10,6 +10,8 @@ import UIKit
 
 class CartViewController: UIViewController {
     
+    // MARK: - Properties and outlets
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var checkoutButton: UIButton!
     @IBOutlet weak var subtotalLabel: UILabel!
@@ -17,6 +19,8 @@ class CartViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     
     let ui = UIController.shared
+    
+    // MARK: - View lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +34,8 @@ class CartViewController: UIViewController {
         self.tableView.reloadData()
         updateTotal()
     }
+    
+    // MARK: Functions
     
     private func setupUI() {
         ui.configureButton(checkoutButton)
@@ -71,7 +77,6 @@ class CartViewController: UIViewController {
             subTotal += price
         }
         
-        
         subtotalLabel.text = "$\(subTotal).00"
         totalLabel.text = "$\(subTotal).00"
         
@@ -88,17 +93,9 @@ class CartViewController: UIViewController {
         return UIImage(data: imageData ?? Data())
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
+
+// MARK: - Table view delegate and data source methods
 
 extension CartViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -115,9 +112,9 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
         cell.categoryLabel.text = "Painting"
         return cell
     }
-    
-    
 }
+
+// MARK: - Text field delegate methods
 
 extension CartViewController: UITextFieldDelegate {
     

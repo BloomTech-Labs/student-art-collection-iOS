@@ -10,6 +10,8 @@ import UIKit
 
 class CheckoutViewController: UIViewController {
     
+    // MARK: - Properties and outlets
+    
     @IBOutlet weak var nameButton: UIButton!
     @IBOutlet weak var emailButton: UIButton!
     @IBOutlet weak var messageButton: UIButton!
@@ -27,6 +29,8 @@ class CheckoutViewController: UIViewController {
     let message = Notification.Name(rawValue: String.messageNotificationKey)
     let ui = UIController.shared
     
+    // MARK: - View lifecycle methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         createObservers()
@@ -38,7 +42,7 @@ class CheckoutViewController: UIViewController {
         _ = updateTotal()
     }
     
-    // MARK: Methods
+    // MARK: Functions and actions
     
     private func setupUI() {
         ui.configureButton(submitInquiryButton)
@@ -75,15 +79,14 @@ class CheckoutViewController: UIViewController {
         }
         
         NotificationCenter.default.addObserver(forName: Notification.Name(String.messageNotificationKey), object: nil, queue: OperationQueue.main) { (notification) in
-            self.messageLabel.text = "Message sucessfully added!"
+            self.messageLabel.text = "Message successfully added!"
             
             self.messageButton.setBackgroundImage(#imageLiteral(resourceName: "checkmark"), for: .normal)
         }
         
     }
     
-    
-    
+    // This function is largely for aesthetic purposes. In later releases involving purchases, this is where redirect to a payment service like Stripe would occur
     @IBAction func submitInquiryButtonTapped(_ sender: UIButton) {
         
         let alert = UIAlertController(title: "Success", message: "You will receive an email confirming your order! Thank you!", preferredStyle: .alert)
@@ -95,9 +98,9 @@ class CheckoutViewController: UIViewController {
         alert.addAction(alertAction)
         self.present(alert, animated: true, completion: nil)
     }
-    
-    
 }
+
+// MARK: - Collection view delegate and data source methods
 
 extension CheckoutViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     

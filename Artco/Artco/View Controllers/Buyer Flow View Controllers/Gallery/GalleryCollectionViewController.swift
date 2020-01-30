@@ -10,10 +10,12 @@ import UIKit
 
 enum ListSection: Int, CaseIterable {
     case allArts
-    
+    // different cases can allow for different displays depending on what query to fetch listings is executed.
 }
 
 class GalleryCollectionViewController: UICollectionViewController {
+    
+    // MARK: - Properties
     
     private let cache = Cache<Int, Data>()
     private let galleryFetchQueue = OperationQueue()
@@ -25,14 +27,8 @@ class GalleryCollectionViewController: UICollectionViewController {
             }
         }
     }
-    private var token: String? {
-        didSet {
-            DispatchQueue.main.async {
-                self.filter()
-                self.collectionView.reloadData()
-            }
-        }
-    }
+    
+    // MARK: - View lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +41,7 @@ class GalleryCollectionViewController: UICollectionViewController {
         createObservers()
     }
     
-    // MARK: UICollectionViewDataSource
+    // MARK: - Collection view data source methods
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return ListSection.allCases.count
@@ -78,13 +74,17 @@ class GalleryCollectionViewController: UICollectionViewController {
         return cell
     }
     
+    // MARK: - Functions
+    
+    // This partially unfinished methods will look for changes in FilterViewController.swift's text fields to narrow search and filter results
     private func createObservers() {
         NotificationCenter.default.addObserver(forName: Notification.Name(String.filterNotificationKey), object: nil, queue: OperationQueue.main) { (notification) in
             guard let userInfo = notification.userInfo else {return}
-            self.token = "\(String(describing: userInfo["name"]))"
+            // Execute filtering here locally if the backend queries are not functional (which was the case at the time of the RC2 demonstation
         }
     }
     
+    // This method will fetch all possible listings on the server.
     private func loadListings() {
         guard isViewLoaded else { return }
         Network.shared.apollo
@@ -111,12 +111,15 @@ class GalleryCollectionViewController: UICollectionViewController {
                         self.showErrorAlert(title: "GraphQL Error(s)",
                                             message: message)
                     }
-                case .failure:
-                    print("You suck this didn't work you dumb bitch")
+                case .failure(let error):
+                    if let error = error {
+                        print("Unable to fetch results from server: \(error)")
+                    }
                 }
         }
     }
     
+    // This concurrent method moves image conversion and caching to background thread for optimized performance. This method could certainly be more optimized.
     private func loadInfo(forCell cell: ListingCollectionViewCell, forItemAt indexPath: IndexPath) {
         
         let listing = results[indexPath.item]
@@ -140,7 +143,6 @@ class GalleryCollectionViewController: UICollectionViewController {
             defer { self.operations.removeValue(forKey: listingId) }
             if let currentIndexPath = self.collectionView.indexPath(for: cell),
                 currentIndexPath != indexPath {
-                print("Got image for reused cell")
                 return
             }
             if let data = buyerFetchOp.imageData {
@@ -177,14 +179,13 @@ class GalleryCollectionViewController: UICollectionViewController {
         return UIImage(data: imageData ?? Data())
     }
     
-    private func filter() {
-        self.results = results.filter{ $0.school?.zipcode == "54321" && $0.category?.category == "Photography" }
-    }
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowListingDetail" {
             let destination = segue.destination as? ArtDetailViewController
             guard let indexPath = collectionView.indexPathsForSelectedItems?.first else { return }
+            // Pass the listings id so that it can be queried (it might be more optimal to just pass the entire object) 
             destination?.id = self.results[indexPath.row].id
         }
     }

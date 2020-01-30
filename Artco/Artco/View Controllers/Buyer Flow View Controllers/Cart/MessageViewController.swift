@@ -10,14 +10,11 @@ import UIKit
 
 class MessageViewController: UIViewController {
 
+    // MARK: - Outlets
+    
     @IBOutlet weak var messageTextView: UITextView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
+    // MARK: - Actions
 
     @IBAction func doneButtonTapped(_ sender: UIButton) {
         guard let message = messageTextView.text else { return }
