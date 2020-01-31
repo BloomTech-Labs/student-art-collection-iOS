@@ -79,7 +79,7 @@ class GalleryCollectionViewController: UICollectionViewController {
     // This partially unfinished methods will look for changes in FilterViewController.swift's text fields to narrow search and filter results
     private func createObservers() {
         NotificationCenter.default.addObserver(forName: Notification.Name(String.filterNotificationKey), object: nil, queue: OperationQueue.main) { (notification) in
-            guard let userInfo = notification.userInfo else {return}
+            guard notification.userInfo != nil else {return}
             // Execute filtering here locally if the backend queries are not functional (which was the case at the time of the RC2 demonstation
         }
     }
@@ -112,9 +112,7 @@ class GalleryCollectionViewController: UICollectionViewController {
                                             message: message)
                     }
                 case .failure(let error):
-                    if let error = error {
                         print("Unable to fetch results from server: \(error)")
-                    }
                 }
         }
     }
