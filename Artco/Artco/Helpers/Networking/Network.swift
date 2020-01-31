@@ -11,8 +11,11 @@ import Apollo
 
 class Network {
     
-  static let shared = Network()
+    // MARK: - Properties
     
-  private(set) lazy var apollo = ApolloClient(url: URL(string: "https://student-artco-staging.herokuapp.com/graphql")!)
+    static let shared = Network()
+    
+    // This is the staging server endpoint. Use https://student-artco.herokuapp.com/graphql for the production endpoint.
+    private(set) lazy var apollo = ApolloClient(url: URL(string: "https://student-artco-staging.herokuapp.com/graphql")!)
     
 }

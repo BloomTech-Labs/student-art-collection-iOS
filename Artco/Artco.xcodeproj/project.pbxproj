@@ -419,18 +419,11 @@
 		6EA5B44323A98738007DD6AE /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				6ECC096723E3A5B20007D409 /* Extensions */,
+				6ECC096823E3A6930007D409 /* Misc */,
 				6EC75B7823C5493500BFAF44 /* Networking */,
-				6EA5B44623A98F2C007DD6AE /* AuthErrorCodes.swift */,
-				6E0A332D23AC32020073FA2F /* CameraPreviewView.swift */,
-				6E0A331A23AC11690073FA2F /* Category.swift */,
-				6E0A333123AC58DC0073FA2F /* String+CurrencyFormatter.swift */,
-				6EC75B6623AC8A9400BFAF44 /* Float+CurrencyFormatter.swift */,
-				6EC75B6423AC85D500BFAF44 /* Date+DateFormatter.swift */,
-				387DD1A323AD3A500041BC00 /* EditArtProtocol.swift */,
-				3808A87C23C7EEF400592FF0 /* NotificationKeys.swift */,
-				38EBDD8923CE69440051BC30 /* UIController.swift */,
-				6ECC094A23DF7E9B0007D409 /* URL+Secure.swift */,
 				6ECC095023DF826D0007D409 /* Operations */,
+				6ECC096623E3A5910007D409 /* User Interface */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -441,6 +434,7 @@
 				6EC75B7923C5499300BFAF44 /* Network.swift */,
 				6EE984D323CD3865003D3777 /* Cloudinary.swift */,
 				6EE984D123CD1D1D003D3777 /* SchoolServerID.swift */,
+				6EA5B44623A98F2C007DD6AE /* AuthErrorCodes.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -487,6 +481,36 @@
 				6ECC095523DFE0060007D409 /* BuyerGalleryOperation.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		6ECC096623E3A5910007D409 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				38EBDD8923CE69440051BC30 /* UIController.swift */,
+			);
+			path = "User Interface";
+			sourceTree = "<group>";
+		};
+		6ECC096723E3A5B20007D409 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6E0A333123AC58DC0073FA2F /* String+CurrencyFormatter.swift */,
+				6EC75B6623AC8A9400BFAF44 /* Float+CurrencyFormatter.swift */,
+				6EC75B6423AC85D500BFAF44 /* Date+DateFormatter.swift */,
+				6ECC094A23DF7E9B0007D409 /* URL+Secure.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6ECC096823E3A6930007D409 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				3808A87C23C7EEF400592FF0 /* NotificationKeys.swift */,
+				6E0A332D23AC32020073FA2F /* CameraPreviewView.swift */,
+				387DD1A323AD3A500041BC00 /* EditArtProtocol.swift */,
+				6E0A331A23AC11690073FA2F /* Category.swift */,
+			);
+			path = Misc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
