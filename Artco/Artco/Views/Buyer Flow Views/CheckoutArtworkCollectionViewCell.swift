@@ -10,6 +10,8 @@ import UIKit
 
 class CheckoutArtworkCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var checkoutArtworkImageView: UIImageView!
 
     

@@ -11,6 +11,8 @@ import Photos
 
 class SEditArtViewController: UIViewController {
     
+    // MARK: - Outlets and properties
+    
     @IBOutlet weak var artistNameTextField: UITextField!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!
@@ -20,6 +22,13 @@ class SEditArtViewController: UIViewController {
     
     var imageData: Data?
     let imagePickerController = UIImagePickerController()
+    var listing: Listing? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    // MARK: - View lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +39,9 @@ class SEditArtViewController: UIViewController {
         artDescriptionTextView.delegate = self
     }
     
-    var listing: Listing? {
-        didSet {
-            updateViews()
-        }
-    }
+    // MARK: - Actions and functions
     
+    // This method currently only updates listings locally. While the backend was undergoing changes, updateArt functionality was not possible. The mutation is staged but commented out until functional.
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         guard let listing = listing,
             let title = titleTextField.text, !title.isEmpty,
@@ -68,11 +74,10 @@ class SEditArtViewController: UIViewController {
             let imageData = listing.images,
             isViewLoaded else { return }
         
-        
         titleTextField.text = title
         artDescriptionTextView.text = artDescription
         priceTextField.text = listing.price.currencyOutputFormatting()
-        categoryTextField.text = "\(listing.category)"
+        categoryTextField.text = "\(String(describing: listing.category))"
         artistNameTextField.text = artistName
         topLeftImageView.image = convertDataToImage(imageData)
     }
@@ -83,10 +88,9 @@ class SEditArtViewController: UIViewController {
     }
 }
 
+// MARK: - Image picker delegate methods
+
 extension SEditArtViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    // TODO: - Implement alerts for different authorization statuses
-    // TODO: - Allow camera access via permission check and transition to separate view controller
     
     func checkPhotoPermission() {
         let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
@@ -113,8 +117,6 @@ extension SEditArtViewController: UIImagePickerControllerDelegate, UINavigationC
             print("An unknown error occurred.")
         }
     }
-    
-    // TODO: - Move logic from background to serial queue for improved speed?
     
     func presentImagePicker() {
         let alert = UIAlertController(title: "Please select a photo source", message: nil, preferredStyle: .actionSheet)
@@ -147,9 +149,11 @@ extension SEditArtViewController: UIImagePickerControllerDelegate, UINavigationC
     
 }
 
+// MARK: - Text field and view delegate methods
+
 extension SEditArtViewController: UITextFieldDelegate, UITextViewDelegate {
     
-    
+    // Allows for dynamic user input when entering a price for correct currency formatting. See String+CurrencyFormatter.swift for additional information.
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if textField == priceTextField {
             if let priceString = textField.text?.currencyInputFormatting() {
@@ -166,7 +170,6 @@ extension SEditArtViewController: UITextFieldDelegate, UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         textView.text = ""
     }
-    
     
 }
 

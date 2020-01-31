@@ -13,11 +13,14 @@ import CoreData
 
 class ListingController {
     
+    // MARK: Properties
+    
     static let shared = ListingController()
     
     var artBySchool: [ArtBySchoolQuery.Data.ArtBySchool] = []
     
-    //[AllArtQuery.Data.AllArt]()
+    // MARK: Functions 
+    
     func syncCoreData() {
         
         guard let id = UserDefaults.standard.string(forKey: "schoolID") else { return }
@@ -30,11 +33,11 @@ class ListingController {
                 
                 do {
                     let fetchRequest: NSFetchRequest<Listing> = Listing.fetchRequest()
-                    let existingTasks = try context.fetch(fetchRequest)
+                    let existingListings = try context.fetch(fetchRequest)
                     switch result {
                     case .success(let graphQLResult):
                         if let listings = graphQLResult.data?.artBySchool {
-                            if listings.count != existingTasks.count {
+                            if listings.count != existingListings.count {
                                 self.artBySchool.append(contentsOf: listings)
                                 self.performCoreDataFetch()
                                 print(listings.count)
@@ -61,12 +64,9 @@ class ListingController {
         
         let identifiersToFetch = self.artBySchool.compactMap({ $0.id })
         
-        // [UUID: TaskRepresentation]
-        
         let listingsByID = Dictionary(uniqueKeysWithValues: zip(self.artBySchool.compactMap({ $0.id }), self.artBySchool))
         
-        // Make a mutable copy of the dictionary above
-        var tasksToCreate = listingsByID
+        var listingsToCreate = listingsByID
         
         let context = CoreDataStack.shared.backgroundContext
         
@@ -75,16 +75,13 @@ class ListingController {
             
             do {
                 let fetchRequest: NSFetchRequest<Listing> = Listing.fetchRequest()
-                
-                // identifier == \(identifier)
+    
                fetchRequest.predicate = NSPredicate(format: "id IN %@", identifiersToFetch)
                 
-                // Which of these tasks exist in Core Data already?
-                let existingTasks = try context.fetch(fetchRequest)
+                let existingListings = try context.fetch(fetchRequest)
                 
-                existingTasks.map {
+                _ = existingListings.map {
                     let identifier = String($0.id)
-                    // This gets the task representation that corresponds to the task from Core Data
                     guard let listing = listingsByID[identifier] else { return }
                     
                     $0.artDescription = listing.description
@@ -98,16 +95,16 @@ class ListingController {
                     $0.price = Float(listing.price!)
                     $0.schoolId = Float(listing.schoolId)!
                     
-                    tasksToCreate.removeValue(forKey: identifier)
+                    listingsToCreate.removeValue(forKey: identifier)
                     
                 }
                 
-                tasksToCreate.values.map { (art) in
+                _ = listingsToCreate.values.map { (art) in
                     guard let title = art.title,
                         let price = art.price,
                         let artistName = art.artistName,
                         let descriptioin = art.description,
-                        let images = art.images else {return}
+                        let _ = art.images else {return}
                     
                     let image = #imageLiteral(resourceName: "artboard")
                     guard let imageData = image.pngData() else { return }

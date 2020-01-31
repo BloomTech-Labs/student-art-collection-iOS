@@ -10,13 +10,11 @@ import UIKit
 
 class EmailViewController: UIViewController {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var emailTextField: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-    }
+    // MARK: - Actions
     
     @IBAction func doneButtonTapped(_ sender: UIButton) {
         guard let email = emailTextField.text else { return }

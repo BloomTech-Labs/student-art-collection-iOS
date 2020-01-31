@@ -10,9 +10,12 @@ import UIKit
 
 class SchoolGalleryTableViewCell: UITableViewCell {
 
+    // MARK: - Outlets
+    
     @IBOutlet weak var galleryImageView: UIImageView!
     @IBOutlet weak var studentNameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    // Date label is currently unused
     @IBOutlet weak var dateLabel: UILabel!
 
 }

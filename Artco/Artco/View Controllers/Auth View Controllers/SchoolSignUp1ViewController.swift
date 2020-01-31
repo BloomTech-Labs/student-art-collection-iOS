@@ -11,16 +11,13 @@ import FirebaseAuth
 
 class SchoolSignUp1ViewController: UIViewController {
 
+    // MARK: - Outlets
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordConfirmationTextField: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
+    // MARK: - Actions 
 
     @IBAction func createAccountButtonPressed(_ sender: Any) {
         guard let email = emailTextField.text,
@@ -41,6 +38,7 @@ class SchoolSignUp1ViewController: UIViewController {
                 }
             }
             
+            // Sets the Firebase id token in SchoolServerID.swift
             SchoolServerID.shared.firebaseId = Auth.auth().currentUser?.uid
             
             DispatchQueue.main.async {

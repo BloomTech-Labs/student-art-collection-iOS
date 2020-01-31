@@ -58,23 +58,7 @@ class SAddArtViewController: UIViewController {
         initializeDropDown()
     }
     
-    // MARK: - Actions and methods
-    
-    private func initializeDropDown() {
-        categoryDropDown.anchorView = categoryTextField.rightView
-        categoryTextField.rightViewMode = .always
-        categoryDropDown.direction = .bottom
-        categoryDropDown.dismissMode = .onTap
-        categoryDropDown.dataSource = ["Photography", "Drawing", "Painting", "Sculpture", "Other"]
-        categoryTextField.addTarget(self, action:#selector(dropDown), for: .allEditingEvents)
-        categoryDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-            self.categoryTextField.text = item
-        }
-    }
-    
-    @objc func dropDown() {
-        categoryDropDown.show()
-    }
+    // MARK: - Actions
     
     @IBAction func addImages(_ sender: UITapGestureRecognizer) {
         checkPhotoPermission()
@@ -132,6 +116,25 @@ class SAddArtViewController: UIViewController {
         resetViews()
     }
     
+    // MARK: - Functions
+    
+    // Shows drop down options in category selection
+    private func initializeDropDown() {
+        categoryDropDown.anchorView = categoryTextField.rightView
+        categoryTextField.rightViewMode = .always
+        categoryDropDown.direction = .bottom
+        categoryDropDown.dismissMode = .onTap
+        categoryDropDown.dataSource = ["Photography", "Drawing", "Painting", "Sculpture", "Other"]
+        categoryTextField.addTarget(self, action:#selector(dropDown), for: .allEditingEvents)
+        categoryDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            self.categoryTextField.text = item
+        }
+    }
+    
+    @objc func dropDown() {
+        categoryDropDown.show()
+    }
+    
     private func keyboardDismiss() {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
@@ -168,6 +171,8 @@ class SAddArtViewController: UIViewController {
     }
     
 }
+
+// MARK: - Image picker delegate methods
 
 extension SAddArtViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -214,6 +219,7 @@ extension SAddArtViewController: UIImagePickerControllerDelegate, UINavigationCo
         }
     }
     
+    // See UploadImageOperation.swift for information about image upload to Cloudinary. This function will capture the imageURL returned from Cloudinary for use in the addArt mutation to create listings on the server.
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.originalImage] as? UIImage else { return }
         imageData = image.pngData()
@@ -223,7 +229,7 @@ extension SAddArtViewController: UIImagePickerControllerDelegate, UINavigationCo
         let completionOp = BlockOperation {
             if let result = uploadImageOp.imageURL {
                 self.imageURL = result
-                print(self.imageURL)
+                print(self.imageURL as Any)
                 DispatchQueue.main.async {
                     self.topLeftImageView.image = image
                     self.imagePickerController.dismiss(animated: true, completion: nil)
@@ -236,6 +242,8 @@ extension SAddArtViewController: UIImagePickerControllerDelegate, UINavigationCo
         OperationQueue.main.addOperation(completionOp)
     }
 }
+
+// MARK: Text field delegate methods
 
 extension SAddArtViewController: UITextFieldDelegate, UITextViewDelegate {
     

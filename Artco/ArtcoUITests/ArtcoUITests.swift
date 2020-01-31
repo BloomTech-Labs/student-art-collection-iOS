@@ -7,27 +7,10 @@
 //
 
 import XCTest
+@testable import Artco
 
 class ArtcoUITests: XCTestCase {
 
-//
-//    func testLogin() {
-//        
-//        
-//        let app = XCUIApplication()
-//        app.buttons["School"].tap()
-//        let emailTextfield = app.textFields["EmailTextField"]
-//        
-//        emailTextfield.tap()
-//        emailTextfield.typeText("mitch@mitch.com")
-//        
-//        let passwordtextfieldSecureTextField = app.secureTextFields["PasswordTextField"]
-//      
-//        passwordtextfieldSecureTextField.tap()
-//        passwordtextfieldSecureTextField.typeText("mitchell")
-//        app.buttons["Login"].tap()
-//               
-//
-//    }
+    // Previous tests consistently failed due to periodic backend changes. These tests have been cleared out for that purpose. 
 
 }

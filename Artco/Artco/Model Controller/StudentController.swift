@@ -10,8 +10,11 @@ import Foundation
 
 class StudentController {
     
+    // MARK: - Properties
     
     static let shared = StudentController()
+    
+    // MARK: - Functions
     
     @discardableResult func createStudent(studentName: String, bio: String) -> Student {
         let student = Student(studentName: studentName, bio: bio)

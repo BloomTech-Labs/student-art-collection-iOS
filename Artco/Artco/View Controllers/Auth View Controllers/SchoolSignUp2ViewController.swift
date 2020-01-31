@@ -12,10 +12,14 @@ import Apollo
 
 class SchoolSignUp2ViewController: UIViewController {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var schoolNameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var zipcodeTextField: UITextField!
+    
+    // MARK: - Actions and functions
     
     @IBAction func doneButtonTapped(_ sender: UIButton) {
         
@@ -53,6 +57,7 @@ class SchoolSignUp2ViewController: UIViewController {
         }
     }
     
+    // Almost every GraphQL mutation requires an argument of either the Firebase id (captured when authenticated on Google Firebase) or the school server id (captured by this method that queries for the school's id using the Firebase id). See SchoolServerID.swift where tokens are kept.
     private func setServerId() {
         
         guard let schoolId = SchoolServerID.shared.firebaseId else { return }

@@ -5,6 +5,7 @@
         <attribute name="id" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Buyer" representedClassName="Buyer" syncable="YES" codeGenerationType="class"/>
+    <entity name="Entity" representedClassName="Entity" isAbstract="YES" syncable="YES" codeGenerationType="class"/>
     <entity name="Images" representedClassName="Images" syncable="YES" codeGenerationType="class"/>
     <entity name="Listing" representedClassName="Listing" syncable="YES" codeGenerationType="class">
         <attribute name="artDescription" optional="YES" attributeType="String"/>
@@ -39,5 +40,6 @@
         <element name="Listing" positionX="-63" positionY="-18" width="128" height="208"/>
         <element name="School" positionX="-54" positionY="45" width="128" height="133"/>
         <element name="Student" positionX="-36" positionY="54" width="128" height="88"/>
+        <element name="Entity" positionX="-27" positionY="72" width="128" height="43"/>
     </elements>
 </model>

@@ -7,15 +7,15 @@
 //
 
 import Foundation
-import Apollo
-import FirebaseAuth
 
 class SchoolServerID {
     
+    // MARK: - Properties
+    
     static let shared = SchoolServerID()
-    
+    // School id based upon Firebase authenticated sign in
     var firebaseId: String?
-    
+    // Server id based upon unique GraphQL school identification 
     var serverId: String? 
     
 }
