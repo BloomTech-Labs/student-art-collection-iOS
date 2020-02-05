@@ -27,6 +27,14 @@ class GalleryCollectionViewController: UICollectionViewController {
             }
         }
     }
+    private var token: String? {
+        didSet {
+            DispatchQueue.main.async {
+                self.filter()
+                self.collectionView.reloadData()
+            }
+        }
+    }
     
     // MARK: - View lifecycle methods
     
@@ -79,7 +87,8 @@ class GalleryCollectionViewController: UICollectionViewController {
     // This partially unfinished methods will look for changes in FilterViewController.swift's text fields to narrow search and filter results
     private func createObservers() {
         NotificationCenter.default.addObserver(forName: Notification.Name(String.filterNotificationKey), object: nil, queue: OperationQueue.main) { (notification) in
-            guard notification.userInfo != nil else {return}
+            guard let userInfo = notification.userInfo else {return}
+            self.token = "\(userInfo["name"])"
             // Execute filtering here locally if the backend queries are not functional (which was the case at the time of the RC2 demonstation
         }
     }
@@ -175,6 +184,10 @@ class GalleryCollectionViewController: UICollectionViewController {
             imageData = data
         }
         return UIImage(data: imageData ?? Data())
+    }
+    
+    private func filter() {
+        self.results = results.filter{ $0.school?.zipcode == "10001" }
     }
     
     // MARK: - Navigation

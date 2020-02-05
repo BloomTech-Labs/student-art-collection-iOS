@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class CartViewController: UIViewController {
     
@@ -106,10 +107,15 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CartCell", for: indexPath) as? CartTableViewCell else { return UITableViewCell() }
         let listing = BuyerController.shared.cart[indexPath.row]
-        cell.artImageView.image = convertToUIImage((listing.images?[0]?.imageUrl)!)!
         cell.artistNameLabel.text = listing.artistName
         cell.priceTextField.text = "$\(listing.price!).00"
         cell.categoryLabel.text = "Painting"
+        guard let urlString = listing.images?[0]?.imageUrl,
+            let imageUrl = URL(string: urlString)?.usingHTTPS else { return UITableViewCell() }
+        let filter = AspectScaledToFitSizeFilter(size: cell.artImageView.frame.size)
+        
+        cell.artImageView.af_setImage(withURL: imageUrl, filter: filter)
+        
         return cell
     }
 }

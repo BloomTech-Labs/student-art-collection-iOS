@@ -21,6 +21,7 @@ class BuyerController {
     
     func addToCart(_ listing: ArtQuery.Data.Art) {
         cart.append(listing)
+        print(listing.images?.count)
     }
     
 }

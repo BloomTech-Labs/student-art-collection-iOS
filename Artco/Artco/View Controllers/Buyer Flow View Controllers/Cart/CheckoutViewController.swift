@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class CheckoutViewController: UIViewController {
     
@@ -112,7 +113,11 @@ extension CheckoutViewController: UICollectionViewDelegate, UICollectionViewData
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CheckoutArtworkCell", for: indexPath) as? CheckoutArtworkCollectionViewCell else { return UICollectionViewCell() }
         
         let listing = BuyerController.shared.cart[indexPath.row]
-        cell.checkoutArtworkImageView.image = convertToUIImage((listing.images?[0]?.imageUrl)!)!
+        guard let urlString = listing.images?[0]?.imageUrl,
+            let imageUrl = URL(string: urlString)?.usingHTTPS else { return UICollectionViewCell() }
+        let filter = AspectScaledToFitSizeFilter(size: cell.checkoutArtworkImageView.frame.size)
+        
+        cell.checkoutArtworkImageView.af_setImage(withURL: imageUrl, filter: filter)
         
         return cell
     }
