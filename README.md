@@ -1,6 +1,6 @@
 # Artco - Student Art Collection
 
-1️⃣ You can find the deployed project on [TestFlight](https://testflight.apple.com/join/UIrs4MeC).
+You can find the deployed project on [TestFlight](https://testflight.apple.com/join/UIrs4MeC).
 
 ## Contributors
 
@@ -20,13 +20,13 @@
 
 ## Project Overview
 
-1️⃣ You can find the deployed project on [TestFlight](https://testflight.apple.com/join/UIrs4MeC).
+You can find the deployed project on [TestFlight](https://testflight.apple.com/join/UIrs4MeC).
 
-1️⃣ [Trello Board](https://trello.com/b/mOvtOPY4/labs-19-student-art-collection)
+[Trello Board](https://trello.com/b/mOvtOPY4/labs-19-student-art-collection)
 
-1️⃣ [Product Canvas](https://www.notion.so/dd6ac194eead45b29117e379272f9f86?v=1c84e67089544bd68f9a06a4ad184bda)
+[Product Canvas](https://www.notion.so/dd6ac194eead45b29117e379272f9f86?v=1c84e67089544bd68f9a06a4ad184bda)
 
-1️⃣ [UX Design files](https://www.notion.so/Mockups-12401aaa1da8472fa060c45e5d068bf0)
+[UX Design files](https://www.notion.so/Mockups-12401aaa1da8472fa060c45e5d068bf0)
 
 Student ArtCo is an application to help schools raise money to fund their art programs by offering student art in exchange for donations. Many art students have said their finished projects end up in the garbage or collecting dust. With our app schools or art teachers can accept art donations from students and list them for sale. Family, members of the community, and art lovers can browse the art listings and connect with the school to make a donation and collect the art.
 
