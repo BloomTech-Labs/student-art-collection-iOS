@@ -29,7 +29,7 @@ You can find the deployed project on [TestFlight](https://testflight.apple.com/j
 [UX Design files](https://www.notion.so/Mockups-12401aaa1da8472fa060c45e5d068bf0)
 
 
-![very good|512x397,20%](https://user-images.githubusercontent.com/52641879/73978431-ee446780-48f1-11ea-9ec6-40fd504d8fbc.png)
+![very good|256x196,20%](https://user-images.githubusercontent.com/52641879/73978431-ee446780-48f1-11ea-9ec6-40fd504d8fbc.png)
 ![very good|512x397,20%](https://user-images.githubusercontent.com/52641879/73978434-f00e2b00-48f1-11ea-926f-0a7e660f9dfe.png)
 ![very good|512x397,20%](https://user-images.githubusercontent.com/52641879/73978435-f13f5800-48f1-11ea-9a06-1ccd5d4652fb.png)
 ![very good|512x397,20%](https://user-images.githubusercontent.com/52641879/73978440-f7353900-48f1-11ea-9a95-422dbb0a30cd.png)
