@@ -28,20 +28,19 @@ You can find the deployed project on [TestFlight](https://testflight.apple.com/j
 
 [UX Design files](https://www.notion.so/Mockups-12401aaa1da8472fa060c45e5d068bf0)
 
-
-![very good|256x196,20%](https://user-images.githubusercontent.com/52641879/73978431-ee446780-48f1-11ea-9ec6-40fd504d8fbc.png)
-![very good|512x397,20%](https://user-images.githubusercontent.com/52641879/73978434-f00e2b00-48f1-11ea-926f-0a7e660f9dfe.png)
-![very good|512x397,20%](https://user-images.githubusercontent.com/52641879/73978435-f13f5800-48f1-11ea-9a06-1ccd5d4652fb.png)
-![very good|512x397,20%](https://user-images.githubusercontent.com/52641879/73978440-f7353900-48f1-11ea-9a95-422dbb0a30cd.png)
-![very good|512x397,20%](https://user-images.githubusercontent.com/52641879/73978444-f7cdcf80-48f1-11ea-8f36-375279000484.png)
-![very good|512x397,20%](https://user-images.githubusercontent.com/52641879/73978449-fa302980-48f1-11ea-9258-2648d8f86823.png)
-![very good|512x397,20%](https://user-images.githubusercontent.com/52641879/73978451-fac8c000-48f1-11ea-81f8-844dff08814d.png)
-![very good|512x397,20%](https://user-images.githubusercontent.com/52641879/73978452-fb615680-48f1-11ea-9c5a-5978473e5a41.png)
+<img src="https://user-images.githubusercontent.com/52641879/73978431-ee446780-48f1-11ea-9ec6-40fd504d8fbc.png" width="375" height="812" />
+<img src="https://user-images.githubusercontent.com/52641879/73978434-f00e2b00-48f1-11ea-926f-0a7e660f9dfe.png" width="375" height="812" />
+<img src="https://user-images.githubusercontent.com/52641879/73978434-f00e2b00-48f1-11ea-926f-0a7e660f9dfe.png" width="375" height="812" />
+<img src="https://user-images.githubusercontent.com/52641879/73978435-f13f5800-48f1-11ea-9a06-1ccd5d4652fb.png" width="375" height="812" />
+<img src="https://user-images.githubusercontent.com/52641879/73978435-f13f5800-48f1-11ea-9a06-1ccd5d4652fb.png" width="375" height="812" />
+<img src="https://user-images.githubusercontent.com/52641879/73978440-f7353900-48f1-11ea-9a95-422dbb0a30cd.png" width="375" height="812" />
+<img src="https://user-images.githubusercontent.com/52641879/73978444-f7cdcf80-48f1-11ea-8f36-375279000484.png" width="375" height="812" />
+<img src="https://user-images.githubusercontent.com/52641879/73978449-fa302980-48f1-11ea-9258-2648d8f86823.png" width="375" height="812" />
+<img src="https://user-images.githubusercontent.com/52641879/73978451-fac8c000-48f1-11ea-81f8-844dff08814d.png" width="375" height="812" />
+<img src="https://user-images.githubusercontent.com/52641879/73978452-fb615680-48f1-11ea-9c5a-5978473e5a41.png" width="375" height="812" />
 
 
 Student ArtCo is an application to help schools raise money to fund their art programs by offering student art in exchange for donations. Many art students have said their finished projects end up in the garbage or collecting dust. With our app schools or art teachers can accept art donations from students and list them for sale. Family, members of the community, and art lovers can browse the art listings and connect with the school to make a donation and collect the art.
-
-![](header.png)
 
 ### Features
 
