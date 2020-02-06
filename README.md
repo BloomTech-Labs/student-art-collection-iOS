@@ -70,13 +70,9 @@ Please note we have a [code of conduct](./CODE_OF_CONDUCT.md). Please follow it 
 
 ### Issue/Bug Request
 
-    ## Contributing
-
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
 
 Please note we have a [code of conduct](./code_of_conduct.md). Please follow it in all your interactions with the project.
-
-### Issue/Bug Request
 
  **If you are having an issue with the existing project code, please submit a bug report under the following guidelines:**
  - Check first to see if your issue has already been reported.
