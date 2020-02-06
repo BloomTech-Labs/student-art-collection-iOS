@@ -28,8 +28,7 @@ You can find the deployed project on [TestFlight](https://testflight.apple.com/j
 
 [UX Design files](https://www.notion.so/Mockups-12401aaa1da8472fa060c45e5d068bf0)
 
-<img src="https://user-images.githubusercontent.com/52641879/73978431-ee446780-48f1-11ea-9ec6-40fd504d8fbc.png" width="375" height="812" />
-<img src="https://user-images.githubusercontent.com/52641879/73978434-f00e2b00-48f1-11ea-926f-0a7e660f9dfe.png" width="375" height="812" />
+<img src="https://user-images.githubusercontent.com/52641879/73978431-ee446780-48f1-11ea-9ec6-40fd504d8fbc.png" width="375" height="812" /> <img src="https://user-images.githubusercontent.com/52641879/73978434-f00e2b00-48f1-11ea-926f-0a7e660f9dfe.png" width="375" height="812" />
 <img src="https://user-images.githubusercontent.com/52641879/73978434-f00e2b00-48f1-11ea-926f-0a7e660f9dfe.png" width="375" height="812" />
 <img src="https://user-images.githubusercontent.com/52641879/73978435-f13f5800-48f1-11ea-9a06-1ccd5d4652fb.png" width="375" height="812" />
 <img src="https://user-images.githubusercontent.com/52641879/73978435-f13f5800-48f1-11ea-9a06-1ccd5d4652fb.png" width="375" height="812" />
