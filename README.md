@@ -1,6 +1,6 @@
 # Artco - Student Art Collection
 
-1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
+1️⃣ You can find the deployed project on [TestFlight](https://testflight.apple.com/join/UIrs4MeC).
 
 ## Contributors
 
@@ -18,11 +18,9 @@
 [![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://cocoapods.org/pods/LFAlertController)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-🚫 more info on using badges [here](https://github.com/badges/shields)
-
 ## Project Overview
 
-1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
+1️⃣ You can find the deployed project on [TestFlight](https://testflight.apple.com/join/UIrs4MeC).
 
 1️⃣ [Trello Board](https://trello.com/b/mOvtOPY4/labs-19-student-art-collection)
 
@@ -30,41 +28,34 @@
 
 1️⃣ [UX Design files](https://www.notion.so/Mockups-12401aaa1da8472fa060c45e5d068bf0)
 
-🚫 One to two paragraph statement about your product and what it does.
+Student ArtCo is an application to help schools raise money to fund their art programs by offering student art in exchange for donations. Many art students have said their finished projects end up in the garbage or collecting dust. With our app schools or art teachers can accept art donations from students and list them for sale. Family, members of the community, and art lovers can browse the art listings and connect with the school to make a donation and collect the art.
 
 ![](header.png)
 
 ### Features
 
--    Feature 1
--    Feature 2
--    Feature 3
--    Feature 4
--    Feature 5
+-    Schools can create accounts and list art created by students for sale.
+-    Buyers can browse art and find pieces they like and then contact the school to make a purchase.
+-    Interested parties can search by a number of critera, including art category, location, price, and student/school name
 
-### Authentication API here
 
-🚫Replace text below with a description of the API
+### Firebase Authentication
 
-### Payment API here
+Firebase Authentication allows for us to have secure access to our application by our users. The users all get unique identifiers set for them that we can connect to their data in our database.
 
-🚫Replace text below with a description of the API
+### Stripe 
 
-### Misc API here
+Industry standard for payments. Safe and secure, easy to set up, will allow customers to purchase art work easily.
 
-🚫Replace text below with a description of the API
+### Cloudinary
 
-### Misc API here
+Media management API used to upload and host images associated with art listings.
 
-🚫Replace text below with a description of the API
+### Apollo SDK
 
-### Misc API here
-
-🚫Replace text below with a description of the API
+Apollo allows you to execute queries and mutations against a GraphQL server and returns results as query-specific Swift types. This means you don't have to deal with parsing JSON, or passing around dictionaries and making clients cast values to the right type manually. You also don't have to write model types yourself, because these are generated from the GraphQL definitions your UI uses.
 
 ## Requirements
-
-🚫 These are examples, make sure this matches your project's requirements
 
 -   iOS 8.0+
 -   Xcode 11.3.1
