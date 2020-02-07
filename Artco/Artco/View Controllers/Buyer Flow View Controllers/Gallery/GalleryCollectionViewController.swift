@@ -131,6 +131,10 @@ class GalleryCollectionViewController: UICollectionViewController {
         
         let listing = results[indexPath.item]
         guard let listingId = Int(listing.id) else { return }
+        cell.infoView.layer.cornerRadius = 15
+        
+        cell.artistNameLabel.text = listing.artistName
+        cell.priceLabel.text = "$\(listing.price ?? 0).00"
         
         if let cachedData = cache.value(key: listingId),
             let image = UIImage(data: cachedData) {

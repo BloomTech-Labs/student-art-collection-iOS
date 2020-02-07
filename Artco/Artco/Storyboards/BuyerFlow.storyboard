@@ -209,11 +209,39 @@
                                                         <constraint firstAttribute="width" secondItem="U6O-Vd-DU0" secondAttribute="height" multiplier="1:1" id="oOt-JO-VvA"/>
                                                     </constraints>
                                                 </imageView>
+                                                <view opaque="NO" alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGh-7m-oZY">
+                                                    <rect key="frame" x="0.0" y="172" width="207" height="35"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Artco" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szL-Ye-9QZ">
+                                                            <rect key="frame" x="8" y="7.5" width="84.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zbl-uw-UwY">
+                                                            <rect key="frame" x="168" y="7.5" width="31" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="szL-Ye-9QZ" firstAttribute="centerY" secondItem="bGh-7m-oZY" secondAttribute="centerY" id="NEc-tO-dn1"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Zbl-uw-UwY" secondAttribute="trailing" constant="8" id="Oi6-K9-9hn"/>
+                                                        <constraint firstItem="szL-Ye-9QZ" firstAttribute="leading" secondItem="bGh-7m-oZY" secondAttribute="leading" constant="8" id="ftj-II-uAd"/>
+                                                        <constraint firstItem="Zbl-uw-UwY" firstAttribute="centerY" secondItem="bGh-7m-oZY" secondAttribute="centerY" id="mqp-jM-SVW"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
+                                                <constraint firstItem="bGh-7m-oZY" firstAttribute="trailing" secondItem="U6O-Vd-DU0" secondAttribute="trailing" id="AHJ-ZY-awd"/>
+                                                <constraint firstItem="bGh-7m-oZY" firstAttribute="bottom" secondItem="U6O-Vd-DU0" secondAttribute="bottom" id="GnJ-uz-L8g"/>
                                                 <constraint firstItem="U6O-Vd-DU0" firstAttribute="top" secondItem="9sn-Ao-EuR" secondAttribute="top" id="JBM-QR-hcS"/>
+                                                <constraint firstItem="bGh-7m-oZY" firstAttribute="top" secondItem="9sn-Ao-EuR" secondAttribute="top" constant="172" id="JfM-6Z-V73"/>
                                                 <constraint firstItem="U6O-Vd-DU0" firstAttribute="leading" secondItem="9sn-Ao-EuR" secondAttribute="leading" id="Qk6-qd-lgK"/>
+                                                <constraint firstItem="bGh-7m-oZY" firstAttribute="leading" secondItem="U6O-Vd-DU0" secondAttribute="leading" id="gEQ-NL-DkT"/>
                                                 <constraint firstAttribute="bottom" secondItem="U6O-Vd-DU0" secondAttribute="bottom" id="mcP-i0-LNo"/>
                                                 <constraint firstAttribute="trailing" secondItem="U6O-Vd-DU0" secondAttribute="trailing" id="pWW-LE-prL"/>
                                             </constraints>
@@ -228,7 +256,10 @@
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="207" height="207"/>
                                 <connections>
+                                    <outlet property="artistNameLabel" destination="szL-Ye-9QZ" id="tvD-VE-yPE"/>
+                                    <outlet property="infoView" destination="bGh-7m-oZY" id="fJJ-Cg-g3q"/>
                                     <outlet property="listingImageView" destination="U6O-Vd-DU0" id="vKF-BW-JUU"/>
+                                    <outlet property="priceLabel" destination="Zbl-uw-UwY" id="z0X-Ll-9aT"/>
                                     <segue destination="dFJ-6p-6sM" kind="showDetail" identifier="ShowListingDetail" id="UZY-fL-QLE"/>
                                 </connections>
                             </collectionViewCell>
@@ -1125,7 +1156,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="2hg-71-985"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" smartDashesType="no" textContentType="name"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" smartDashesType="no" textContentType="name"/>
                                             </textField>
                                         </subviews>
                                         <constraints>
