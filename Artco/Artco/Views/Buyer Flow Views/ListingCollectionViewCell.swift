@@ -18,6 +18,7 @@ class ListingCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     
     @IBOutlet weak var infoView: UIView!
+    @IBOutlet weak var priceView: UIView!
     
     
 }

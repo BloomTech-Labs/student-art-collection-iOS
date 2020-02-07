@@ -42,6 +42,7 @@ class GalleryCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         createObservers()
         loadListings()
+        collectionView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -131,10 +132,11 @@ class GalleryCollectionViewController: UICollectionViewController {
         
         let listing = results[indexPath.item]
         guard let listingId = Int(listing.id) else { return }
-        cell.infoView.layer.cornerRadius = 15
+        cell.infoView.layer.cornerRadius = 10
+        cell.priceView.layer.cornerRadius = 10
         
         cell.artistNameLabel.text = listing.artistName
-        cell.priceLabel.text = "$\(listing.price ?? 0).00"
+        cell.priceLabel.text = "$\(listing.price ?? 0)"
         
         if let cachedData = cache.value(key: listingId),
             let image = UIImage(data: cachedData) {
@@ -191,7 +193,7 @@ class GalleryCollectionViewController: UICollectionViewController {
     }
     
     private func filter() {
-        self.results = results.filter{ $0.school?.zipcode == "10001" }
+        self.results = results.filter{ $0.school?.zipcode == "10001" && $0.category?.category == "Painting" }
     }
     
     // MARK: - Navigation
